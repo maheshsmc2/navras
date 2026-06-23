@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navras — India's Cinema, Finally Understood</title>
+  <meta name="description" content="Discover and rate Indian films, series and art across every language — by the mood they make you feel. Powered by the ancient philosophy of the Nine Rasas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Tricolour top bar -->
+  <div class="tricolour"><span></span><span></span><span></span></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+      </div>
+      <div>
+        <div class="logo-text">Navras</div>
+        <div class="logo-sub">Cinema · Music · Art</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="#" class="nav-link active">Films</a>
+      <a href="#" class="nav-link">Series</a>
+      <a href="#" class="nav-link">Music</a>
+      <a href="#" class="nav-link">Awards</a>
+      <a href="#" class="nav-link">Critics</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active">EN</button>
+        <button class="lang-btn">हि</button>
+        <button class="lang-btn">த</button>
+        <button class="lang-btn">తె</button>
+        <button class="lang-btn">বা</button>
+      </div>
+      <div class="nav-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span>Search films, people...</span>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" class="mobile-link active">Films</a>
+    <a href="#" class="mobile-link">Series</a>
+    <a href="#" class="mobile-link">Music</a>
+    <a href="#" class="mobile-link">Awards</a>
+    <a href="#" class="mobile-link">Critics</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      Rated by emotion, not just stars
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1 class="hero-headline">India's cinema,<br>finally <em>understood</em>.</h1>
+    <p class="hero-sub">Review, rate and discover films across every Indian language — by the mood they make you feel.</p>
+    <div class="hero-searchbar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search any film, director, actor or language..." id="heroSearch" autocomplete="off" />
+    </div>
+  </section>
+
+  <!-- Mood Search -->
+  <section class="mood-section">
+    <div class="section-head">
+      <div class="section-title">
+        <span class="title-bar"></span>
+        How do you want to feel?
+      </div>
+      <a href="pages/mood.html" class="see-all">All rasas →</a>
+    </div>
+    <p class="mood-hint">Pick a rasa — the ancient Indian art of emotion — and we'll find your perfect film.</p>
+
+    <div class="mood-grid" id="moodGrid">
+      <button class="mood-card selected" data-rasa="shringara">
+        <div class="mood-icon">♡</div>
+        <div class="mood-name">Shringara</div>
+        <div class="mood-meaning">Love · Romance</div>
+      </button>
+      <button class="mood-card" data-rasa="hasya">
+        <div class="mood-icon">☺</div>
+        <div class="mood-name">Hasya</div>
+        <div class="mood-meaning">Joy · Laughter</div>
+      </button>
+      <button class="mood-card" data-rasa="karuna">
+        <div class="mood-icon">◇</div>
+        <div class="mood-name">Karuna</div>
+        <div class="mood-meaning">Sorrow · Compassion</div>
+      </button>
+      <button class="mood-card" data-rasa="veera">
+        <div class="mood-icon">◈</div>
+        <div class="mood-name">Veera</div>
+        <div class="mood-meaning">Courage · Heroism</div>
+      </button>
+      <button class="mood-card" data-rasa="bhayanaka">
+        <div class="mood-icon">◉</div>
+        <div class="mood-name">Bhayanaka</div>
+        <div class="mood-meaning">Fear · Suspense</div>
+      </button>
+      <button class="mood-card" data-rasa="adbhuta">
+        <div class="mood-icon">✦</div>
+        <div class="mood-name">Adbhuta</div>
+        <div class="mood-meaning">Wonder · Fantasy</div>
+      </button>
+      <button class="mood-card" data-rasa="raudra">
+        <div class="mood-icon">△</div>
+        <div class="mood-name">Raudra</div>
+        <div class="mood-meaning">Anger · Intensity</div>
+      </button>
+      <button class="mood-card" data-rasa="shanta">
+        <div class="mood-icon">〇</div>
+        <div class="mood-name">Shanta</div>
+        <div class="mood-meaning">Peace · Serenity</div>
+      </button>
+      <button class="mood-card" data-rasa="bibhatsa">
+        <div class="mood-icon">▣</div>
+        <div class="mood-name">Bibhatsa</div>
+        <div class="mood-meaning">Dark · Gritty</div>
+      </button>
+    </div>
+
+    <div class="mood-results" id="moodResults">
+      <div class="mood-results-label" id="moodResultsLabel">Top Shringara picks for you</div>
+      <div class="mood-result-list" id="moodResultList">
+        <!-- Filled by JS -->
+      </div>
+      <div class="mood-ai-bar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <span id="moodPromptText">Tell us more — "romantic but not too cheesy, set in modern India"</span>
+        <a href="pages/mood.html" class="mood-ai-btn">Ask Navras AI →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry filter -->
+  <section class="browse-section">
+    <div class="section-head">
+      <div class="section-title"><span class="title-bar"></span>Browse by industry</div>
+      <a href="pages/browse.html" class="see-all">All →</a>
+    </div>
+    <div class="industry-row" id="industryRow">
+      <button class="ind-chip active" data-filter="all">All</button>
+      <button class="ind-chip" data-filter="bollywood">Bollywood</button>
+      <button class="ind-chip" data-filter="tamil">Tamil</button>
+      <button class="ind-chip" data-filter="telugu">Telugu</button>
+      <button class="ind-chip" data-filter="malayalam">Malayalam</button>
+      <button class="ind-chip" data-filter="kannada">Kannada</button>
+      <button class="ind-chip" data-filter="bengali">Bengali</button>
+      <button class="ind-chip" data-filter="marathi">Marathi</button>
+      <button class="ind-chip" data-filter="punjabi">Punjabi</button>
+      <button class="ind-chip" data-filter="ott">OTT Originals</button>
+      <button class="ind-chip" data-filter="hollywood">Hollywood</button>
+      <button class="ind-chip" data-filter="world">World Cinema</button>
+    </div>
+  </section>
+
+  <!-- Trending Films -->
+  <section class="films-section">
+    <div class="section-head">
+      <div class="section-title"><span class="title-bar"></span>Trending this week</div>
+      <a href="pages/browse.html" class="see-all">See all →</a>
+    </div>
+    <div class="films-grid" id="filmsGrid">
+      <a href="pages/movie.html" class="film-card" data-industry="bollywood">
+        <div class="film-poster" style="background:linear-gradient(160deg,#1a1030,#3a1060);">
+          <span class="film-lang">Hindi</span>
+          <span class="film-score-badge"><span class="sdot green"></span>9.3</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">Stree 2</div>
+          <div class="film-meta">2024 · Horror Comedy</div>
+          <div class="film-rasatags">
+            <span class="rtag">Hasya</span>
+            <span class="rtag">Bhayanaka</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="tamil">
+        <div class="film-poster" style="background:linear-gradient(160deg,#100a2e,#2a1060);">
+          <span class="film-lang">Tamil</span>
+          <span class="film-score-badge"><span class="sdot green"></span>9.1</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">Kanguva</div>
+          <div class="film-meta">2024 · Action</div>
+          <div class="film-rasatags">
+            <span class="rtag">Veera</span>
+            <span class="rtag">Adbhuta</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="malayalam">
+        <div class="film-poster" style="background:linear-gradient(160deg,#0a2010,#1a5030);">
+          <span class="film-lang">Malayalam</span>
+          <span class="film-score-badge"><span class="sdot green"></span>9.6</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">All We Imagine as Light</div>
+          <div class="film-meta">2024 · Drama</div>
+          <div class="film-rasatags">
+            <span class="rtag">Karuna</span>
+            <span class="rtag">Shanta</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="telugu">
+        <div class="film-poster" style="background:linear-gradient(160deg,#1a1000,#3a2800);">
+          <span class="film-lang">Telugu</span>
+          <span class="film-score-badge"><span class="sdot amber"></span>7.4</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">Kalki 2898-AD</div>
+          <div class="film-meta">2024 · Sci-Fi</div>
+          <div class="film-rasatags">
+            <span class="rtag">Adbhuta</span>
+            <span class="rtag">Veera</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="bollywood">
+        <div class="film-poster" style="background:linear-gradient(160deg,#200a0a,#501010);">
+          <span class="film-lang">Hindi</span>
+          <span class="film-score-badge"><span class="sdot green"></span>9.4</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">Tumbbad</div>
+          <div class="film-meta">2018 · Horror</div>
+          <div class="film-rasatags">
+            <span class="rtag">Bhayanaka</span>
+            <span class="rtag">Bibhatsa</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="bollywood">
+        <div class="film-poster" style="background:linear-gradient(160deg,#0a0a20,#102050);">
+          <span class="film-lang">Hindi</span>
+          <span class="film-score-badge"><span class="sdot green"></span>9.6</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">Dangal</div>
+          <div class="film-meta">2016 · Sports Drama</div>
+          <div class="film-rasatags">
+            <span class="rtag">Veera</span>
+            <span class="rtag">Karuna</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="telugu">
+        <div class="film-poster" style="background:linear-gradient(160deg,#200a1a,#501030);">
+          <span class="film-lang">Telugu</span>
+          <span class="film-score-badge"><span class="sdot green"></span>9.5</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">RRR</div>
+          <div class="film-meta">2022 · Action Epic</div>
+          <div class="film-rasatags">
+            <span class="rtag">Veera</span>
+            <span class="rtag">Raudra</span>
+          </div>
+        </div>
+      </a>
+      <a href="pages/movie.html" class="film-card" data-industry="hollywood">
+        <div class="film-poster" style="background:linear-gradient(160deg,#0a1020,#102040);">
+          <span class="film-lang">Hollywood</span>
+          <span class="film-score-badge"><span class="sdot green"></span>8.9</span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">Oppenheimer</div>
+          <div class="film-meta">2023 · Historical Drama</div>
+          <div class="film-rasatags">
+            <span class="rtag">Adbhuta</span>
+            <span class="rtag">Bhayanaka</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Top Rated Chart -->
+  <section class="chart-section">
+    <div class="section-head">
+      <div class="section-title"><span class="title-bar"></span>Top rated right now</div>
+      <a href="pages/browse.html" class="see-all">Full chart →</a>
+    </div>
+    <div class="chart-list">
+      <a href="pages/movie.html" class="chart-item">
+        <div class="chart-num gold">1</div>
+        <div class="chart-poster" style="background:linear-gradient(135deg,#1a1a2e,#2a2a4e);"></div>
+        <div class="chart-info">
+          <div class="chart-title">IC 814: The Kandahar Hijack</div>
+          <div class="chart-detail">Netflix Series · Hindi · Thriller</div>
+          <div class="chart-rasas"><span class="rtag">Bhayanaka</span><span class="rtag">Veera</span></div>
+        </div>
+        <div class="chart-score green">9.4</div>
+      </a>
+      <a href="pages/movie.html" class="chart-item">
+        <div class="chart-num gold">2</div>
+        <div class="chart-poster" style="background:linear-gradient(135deg,#2e1a0d,#4e2a10);"></div>
+        <div class="chart-info">
+          <div class="chart-title">Stree 2</div>
+          <div class="chart-detail">Film · Hindi · Horror Comedy</div>
+          <div class="chart-rasas"><span class="rtag">Hasya</span><span class="rtag">Shringara</span></div>
+        </div>
+        <div class="chart-score green">9.3</div>
+      </a>
+      <a href="pages/movie.html" class="chart-item">
+        <div class="chart-num">3</div>
+        <div class="chart-poster" style="background:linear-gradient(135deg,#0d2e1a,#104a28);"></div>
+        <div class="chart-info">
+          <div class="chart-title">All We Imagine as Light</div>
+          <div class="chart-detail">Film · Malayalam · Drama</div>
+          <div class="chart-rasas"><span class="rtag">Karuna</span><span class="rtag">Shanta</span></div>
+        </div>
+        <div class="chart-score green">9.6</div>
+      </a>
+      <a href="pages/movie.html" class="chart-item">
+        <div class="chart-num">4</div>
+        <div class="chart-poster" style="background:linear-gradient(135deg,#2e0d1a,#4e1028);"></div>
+        <div class="chart-info">
+          <div class="chart-title">Devara: Part 1</div>
+          <div class="chart-detail">Film · Telugu · Action</div>
+          <div class="chart-rasas"><span class="rtag">Veera</span><span class="rtag">Raudra</span></div>
+        </div>
+        <div class="chart-score amber">6.9</div>
+      </a>
+      <a href="pages/movie.html" class="chart-item">
+        <div class="chart-num">5</div>
+        <div class="chart-poster" style="background:linear-gradient(135deg,#0a1020,#122040);"></div>
+        <div class="chart-info">
+          <div class="chart-title">The Buckingham Murders</div>
+          <div class="chart-detail">Film · Hindi · Crime Thriller</div>
+          <div class="chart-rasas"><span class="rtag">Bhayanaka</span><span class="rtag">Raudra</span></div>
+        </div>
+        <div class="chart-score amber">7.8</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- OTT Strip -->
+  <section class="ott-section">
+    <div class="section-head">
+      <div class="section-title"><span class="title-bar"></span>Find it on OTT</div>
+    </div>
+    <div class="ott-row">
+      <button class="ott-btn">Netflix</button>
+      <button class="ott-btn">Prime Video</button>
+      <button class="ott-btn">Disney+ Hotstar</button>
+      <button class="ott-btn">SonyLIV</button>
+      <button class="ott-btn">ZEE5</button>
+      <button class="ott-btn">JioHotstar</button>
+      <button class="ott-btn">MX Player</button>
+      <button class="ott-btn">Apple TV+</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Navras</div>
+        <div class="footer-tagline">All art forms. All languages. All emotions.</div>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Discover</div>
+          <a href="#">Films</a>
+          <a href="#">Series</a>
+          <a href="#">Music</a>
+          <a href="#">Awards</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Community</div>
+          <a href="#">Write a review</a>
+          <a href="#">Top critics</a>
+          <a href="#">Contribute data</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navras</div>
+          <a href="#">About</a>
+          <a href="#">API</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Navras. Built with love for Indian cinema.</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </footer>
+
+  <div class="tricolour"><span></span><span></span><span></span></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
