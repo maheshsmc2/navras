@@ -290,3 +290,68 @@ function initTheme() {
 
 // Run before paint to avoid flash
 initTheme();
+
+/* ===========================
+   TMDB — Load real posters on homepage
+   =========================== */
+async function loadHomepagePosters() {
+  if (typeof TMDB === 'undefined') return;
+
+  // Load trending Indian films for the film cards grid
+  const trending = await TMDB.discover({
+    with_original_language: 'hi|ta|te|ml|kn|mr|bn|pa|gu',
+    sort_by: 'popularity.desc',
+    'vote_count.gte': 100,
+    page: 1
+  });
+
+  if (!trending || !trending.results) return;
+
+  const films = trending.results.slice(0, 8);
+  const grid = document.getElementById('filmsGrid');
+  if (!grid) return;
+
+  const langNames = { hi:'Hindi', ta:'Tamil', te:'Telugu', ml:'Malayalam', kn:'Kannada', bn:'Bengali', mr:'Marathi', en:'English' };
+
+  grid.innerHTML = films.map(film => {
+    const posterUrl = TMDB.poster(film.poster_path, 'w342');
+    const score = TMDB.navrasScore(film.vote_average, film.vote_count);
+    const scoreColor = TMDB.scoreColor(score);
+    const dotClass = TMDB.scoreDotClass(score);
+    const lang = film.original_language;
+    const langName = langNames[lang] || lang?.toUpperCase() || '';
+    const year = film.release_date ? film.release_date.slice(0,4) : '';
+    const rasas = TMDB.rasaFromGenres((film.genre_ids||[]).map(id => ({id})));
+
+    return `
+      <a href="pages/movie.html?id=${film.id}" class="film-card" data-industry="${lang}">
+        <div class="film-poster" style="${posterUrl ? '' : 'background:linear-gradient(160deg,#1a0d2e,#3a1060);'}">
+          ${posterUrl
+            ? `<img src="${posterUrl}" alt="${film.title}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" loading="lazy" />`
+            : ''}
+          <span class="film-lang" style="position:relative;z-index:1;">${langName}</span>
+          <span class="film-score-badge" style="position:relative;z-index:1;">
+            <span class="sdot ${dotClass}"></span>
+            <span style="color:${scoreColor}">${score || '?'}</span>
+          </span>
+        </div>
+        <div class="film-info">
+          <div class="film-title">${film.title}</div>
+          <div class="film-meta">${year}</div>
+          <div class="film-rasatags">${rasas.map(r=>`<span class="rtag">${r}</span>`).join('')}</div>
+        </div>
+      </a>
+    `;
+  }).join('');
+
+  // Fix poster container to be relative
+  grid.querySelectorAll('.film-poster').forEach(p => {
+    p.style.position = 'relative';
+    p.style.overflow = 'hidden';
+  });
+}
+
+// Run on homepage only
+if (document.getElementById('filmsGrid')) {
+  document.addEventListener('DOMContentLoaded', loadHomepagePosters);
+}
