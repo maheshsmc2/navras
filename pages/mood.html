@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood Search — Find a Film by How You Feel | Navras</title>
+  <meta name="description" content="Not sure what to watch? Tell Navras how you feel — pick your rasa and discover the perfect Indian film for your mood." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/mood.css" />
+</head>
+<body>
+
+  <div class="tricolour"><span></span><span></span><span></span></div>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+      </div>
+      <div>
+        <div class="logo-text">Navras</div>
+        <div class="logo-sub">Cinema · Music · Art</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="nav-link active">Films</a>
+      <a href="#" class="nav-link">Series</a>
+      <a href="#" class="nav-link">Music</a>
+      <a href="#" class="nav-link">Awards</a>
+      <a href="#" class="nav-link">Critics</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active">EN</button>
+        <button class="lang-btn">हि</button>
+        <button class="lang-btn">த</button>
+        <button class="lang-btn">తె</button>
+        <button class="lang-btn">বা</button>
+      </div>
+      <div class="nav-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span>Search...</span>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- MOOD HERO -->
+  <div class="mood-hero">
+    <div class="mood-hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      The nine rasas of Indian aesthetics
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1 class="mood-hero-headline">How do you want<br>to <em>feel</em> tonight?</h1>
+    <p class="mood-hero-sub">Pick your rasa — the ancient Sanskrit theory of emotion — and Navras finds your perfect film.</p>
+
+    <!-- AI Prompt bar -->
+    <div class="mood-ai-prompt">
+      <div class="map-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <input type="text" id="moodPromptInput" placeholder='Or just describe your mood — "something funny but emotional, set in the South"' />
+      <button class="map-search-btn" onclick="searchByPrompt()">Find films →</button>
+    </div>
+  </div>
+
+  <!-- NINE RASAS GRID -->
+  <div class="rasas-full-grid" id="rasasFullGrid">
+
+    <button class="rasa-full-card" data-rasa="shringara" onclick="selectRasa('shringara', this)">
+      <div class="rfc-icon">♡</div>
+      <div class="rfc-name">Shringara</div>
+      <div class="rfc-meaning">Love · Romance · Beauty</div>
+      <div class="rfc-desc">For when you want warmth, longing, and the ache of love — requited or otherwise.</div>
+      <div class="rfc-examples">DDLJ · Jab We Met · OK Kanmani</div>
+      <div class="rfc-count">142 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="hasya" onclick="selectRasa('hasya', this)">
+      <div class="rfc-icon">☺</div>
+      <div class="rfc-name">Hasya</div>
+      <div class="rfc-meaning">Joy · Laughter · Comedy</div>
+      <div class="rfc-desc">For when you need to laugh until it hurts and forget everything else.</div>
+      <div class="rfc-examples">3 Idiots · Stree 2 · Golmaal</div>
+      <div class="rfc-count">218 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="karuna" onclick="selectRasa('karuna', this)">
+      <div class="rfc-icon">◇</div>
+      <div class="rfc-name">Karuna</div>
+      <div class="rfc-meaning">Sorrow · Compassion · Pathos</div>
+      <div class="rfc-desc">For when you want to feel deeply, cry it out, and emerge lighter.</div>
+      <div class="rfc-examples">Taare Zameen Par · Masaan · Drishyam</div>
+      <div class="rfc-count">196 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="veera" onclick="selectRasa('veera', this)">
+      <div class="rfc-icon">◈</div>
+      <div class="rfc-name">Veera</div>
+      <div class="rfc-meaning">Courage · Heroism · Pride</div>
+      <div class="rfc-desc">For when you need to feel inspired, pumped up, and ready to take on the world.</div>
+      <div class="rfc-examples">Dangal · RRR · Lagaan</div>
+      <div class="rfc-count">184 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="bhayanaka" onclick="selectRasa('bhayanaka', this)">
+      <div class="rfc-icon">◉</div>
+      <div class="rfc-name">Bhayanaka</div>
+      <div class="rfc-meaning">Fear · Suspense · Dread</div>
+      <div class="rfc-desc">For when you want to be on the edge of your seat, heart racing, lights on.</div>
+      <div class="rfc-examples">Tumbbad · Drishyam 2 · IC 814</div>
+      <div class="rfc-count">127 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="adbhuta" onclick="selectRasa('adbhuta', this)">
+      <div class="rfc-icon">✦</div>
+      <div class="rfc-name">Adbhuta</div>
+      <div class="rfc-meaning">Wonder · Fantasy · Amazement</div>
+      <div class="rfc-desc">For when you want your mind completely blown by something you have never seen before.</div>
+      <div class="rfc-examples">Baahubali · Kalki 2898-AD · Enthiran</div>
+      <div class="rfc-count">98 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="raudra" onclick="selectRasa('raudra', this)">
+      <div class="rfc-icon">△</div>
+      <div class="rfc-name">Raudra</div>
+      <div class="rfc-meaning">Anger · Fury · Intensity</div>
+      <div class="rfc-desc">For when you want raw, unfiltered, morally complex storytelling that pulls no punches.</div>
+      <div class="rfc-examples">Gangs of Wasseypur · Vikram · Article 15</div>
+      <div class="rfc-count">153 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="shanta" onclick="selectRasa('shanta', this)">
+      <div class="rfc-icon">〇</div>
+      <div class="rfc-name">Shanta</div>
+      <div class="rfc-meaning">Peace · Serenity · Contemplation</div>
+      <div class="rfc-desc">For when you want to breathe, slow down, and let a film wash gently over you.</div>
+      <div class="rfc-examples">Piku · Masaan · All We Imagine as Light</div>
+      <div class="rfc-count">89 films</div>
+    </button>
+
+    <button class="rasa-full-card" data-rasa="bibhatsa" onclick="selectRasa('bibhatsa', this)">
+      <div class="rfc-icon">▣</div>
+      <div class="rfc-name">Bibhatsa</div>
+      <div class="rfc-meaning">Dark · Gritty · Unsettling</div>
+      <div class="rfc-desc">For when you want something dark, gritty and real — cinema that doesn't look away.</div>
+      <div class="rfc-examples">Ugly · Tumbbad · Andhadhun</div>
+      <div class="rfc-count">74 films</div>
+    </button>
+
+  </div>
+
+  <!-- RESULTS PANEL — shown after rasa selected -->
+  <div class="mood-results-panel" id="moodResultsPanel" style="display:none;">
+
+    <div class="mrp-header">
+      <div class="mrp-header-left">
+        <button class="mrp-back" onclick="clearRasa()">← All rasas</button>
+        <div class="mrp-title" id="mrpTitle">Shringara · Love & Romance</div>
+      </div>
+      <div class="mrp-filters">
+        <select class="mrp-select" id="langFilter" onchange="applyFilters()">
+          <option value="all">All languages</option>
+          <option value="hindi">Hindi</option>
+          <option value="tamil">Tamil</option>
+          <option value="telugu">Telugu</option>
+          <option value="malayalam">Malayalam</option>
+          <option value="kannada">Kannada</option>
+          <option value="bengali">Bengali</option>
+        </select>
+        <select class="mrp-select" id="ottFilter" onchange="applyFilters()">
+          <option value="all">All platforms</option>
+          <option value="netflix">Netflix</option>
+          <option value="prime">Prime Video</option>
+          <option value="hotstar">Disney+ Hotstar</option>
+          <option value="sony">SonyLIV</option>
+          <option value="zee5">ZEE5</option>
+        </select>
+        <select class="mrp-select" id="eraFilter" onchange="applyFilters()">
+          <option value="all">Any era</option>
+          <option value="new">2020s</option>
+          <option value="2010s">2010s</option>
+          <option value="2000s">2000s</option>
+          <option value="classic">Classics</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Top pick — featured -->
+    <div class="mrp-featured" id="mrpFeatured"></div>
+
+    <!-- Results grid -->
+    <div class="mrp-grid-head">
+      <div class="mrp-grid-label" id="mrpGridLabel">All Shringara films</div>
+      <div class="mrp-sort">
+        <span>Sort:</span>
+        <button class="sort-btn active" onclick="sortResults('navras')">Navras score</button>
+        <button class="sort-btn" onclick="sortResults('year')">Newest</button>
+        <button class="sort-btn" onclick="sortResults('popular')">Most rated</button>
+      </div>
+    </div>
+
+    <div class="mrp-films-grid" id="mrpFilmsGrid"></div>
+
+    <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load more films →</button>
+
+  </div>
+
+  <!-- RASA PHILOSOPHY — shown when no rasa selected -->
+  <div class="rasa-philosophy" id="rasaPhilosophy">
+    <div class="rp-inner">
+      <div class="rp-eyebrow">The philosophy behind Navras</div>
+      <div class="rp-headline">Rasa — the ancient science of emotion</div>
+      <div class="rp-text">Over 2,000 years ago, the Sanskrit scholar Bharata Muni described nine fundamental human emotions in the Natyashastra — the world's oldest treatise on performing arts. He called them <em>Nava Rasa</em> — the nine emotional essences that all great art evokes.</div>
+      <div class="rp-text">Every Indian film, every classical dance, every raga in Carnatic music is designed to evoke one or more of these rasas. At Navras, we use this 2,000-year-old framework to help you find exactly the film you need for exactly how you feel.</div>
+      <div class="rp-text">No algorithm. No black box. Just the oldest emotional intelligence system in the world — applied to modern cinema.</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Navras</div>
+        <div class="footer-tagline">All art forms. All languages. All emotions.</div>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Discover</div>
+          <a href="#">Films</a><a href="#">Series</a><a href="#">Music</a><a href="#">Awards</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Community</div>
+          <a href="#">Write a review</a><a href="#">Top critics</a><a href="#">Contribute data</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navras</div>
+          <a href="#">About</a><a href="#">API</a><a href="#">Careers</a><a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Navras. Built with love for Indian cinema.</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </footer>
+
+  <div class="tricolour"><span></span><span></span><span></span></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/mood.js"></script>
+</body>
+</html>
