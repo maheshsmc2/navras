@@ -740,3 +740,54 @@
   .navras100-num { font-size: 44px; }
   .n100-label { width: 58px; font-size: 10px; }
 }
+
+/* ===========================
+   LIGHT MODE overrides — movie page
+   =========================== */
+.movie-hero-overlay {
+  background: linear-gradient(to right,
+    rgba(250,247,242,0.96) 0%,
+    rgba(250,247,242,0.75) 55%,
+    rgba(250,247,242,0.3) 100%);
+}
+
+body.dark-mode .movie-hero-overlay {
+  background: linear-gradient(to right,
+    rgba(18,16,14,0.95) 0%,
+    rgba(18,16,14,0.7) 60%,
+    rgba(18,16,14,0.4) 100%);
+}
+
+.review-card {
+  background: var(--ink2);
+  border: 0.5px solid var(--ink3);
+  box-shadow: var(--shadow);
+}
+
+.score-box {
+  background: var(--ink2);
+  border: 0.5px solid var(--ink3);
+  box-shadow: var(--shadow);
+}
+
+.sidebar-card {
+  border-bottom: 0.5px solid var(--ink3);
+}
+
+.desi-bar-bg { background: var(--ink3); }
+
+.navras100-wrap {
+  background: var(--ink2);
+  box-shadow: var(--shadow-md);
+}
+
+.n100-bar-bg { background: var(--ink3); }
+
+.watch-card { background: var(--ink2); border-color: var(--ink3); box-shadow: var(--shadow); }
+.watch-card.good { border-color: rgba(26,122,60,0.3); }
+.watch-card.ok { border-color: rgba(184,112,0,0.3); }
+
+.rate-rasa-btn { background: var(--ink2); border-color: var(--ink3); box-shadow: var(--shadow); }
+.rate-rasa-btn.selected { background: var(--gold-bg); }
+
+.poster-action-btn.secondary { color: var(--gold); }

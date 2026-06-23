@@ -256,3 +256,37 @@ function initOttTabs() {
 document.addEventListener('DOMContentLoaded', () => {
   initOttTabs();
 });
+
+/* ===========================
+   THEME TOGGLE — Light / Dark
+   =========================== */
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.getElementById('toggleIcon');
+  const label = document.getElementById('toggleLabel');
+  const isDark = body.classList.toggle('dark-mode');
+
+  if (icon) icon.textContent = isDark ? '🌙' : '☀️';
+  if (label) label.textContent = isDark ? 'Dark' : 'Light';
+
+  localStorage.setItem('navras-theme', isDark ? 'dark' : 'light');
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('navras-theme');
+  const icon = document.getElementById('toggleIcon');
+  const label = document.getElementById('toggleLabel');
+
+  if (saved === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (icon) icon.textContent = '🌙';
+    if (label) label.textContent = 'Dark';
+  } else {
+    document.body.classList.remove('dark-mode');
+    if (icon) icon.textContent = '☀️';
+    if (label) label.textContent = 'Light';
+  }
+}
+
+// Run before paint to avoid flash
+initTheme();

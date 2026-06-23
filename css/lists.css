@@ -496,3 +496,13 @@
   .list-modal { padding: 20px 16px 48px; }
   .lm-film-row { gap: 10px; }
 }
+
+/* Light mode overrides — lists page */
+.featured-list-banner { background: var(--ink2); border-bottom-color: var(--gold); box-shadow: var(--shadow); }
+.flb-rank-item { background: var(--ink); border-color: var(--ink3); }
+.list-card { background: var(--ink2); box-shadow: var(--shadow); }
+.list-overlay { background: rgba(250,247,242,0.97); }
+body.dark-mode .list-overlay { background: rgba(18,16,14,0.97); }
+.list-modal { background: transparent; }
+.lm-film-row:hover { background: var(--gold-bg); }
+.lm-intro { background: var(--ink2); }

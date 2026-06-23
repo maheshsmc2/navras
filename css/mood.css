@@ -443,3 +443,14 @@
   .mrp-films-grid { padding: 0 20px 20px; grid-template-columns: repeat(2,1fr); }
   .rasa-philosophy { padding: 36px 20px; }
 }
+
+/* Light mode overrides — mood page */
+.rasa-full-card { background: var(--ink2); box-shadow: var(--shadow); }
+.rasa-full-card:hover { box-shadow: var(--shadow-md); }
+.rasa-full-card.active { background: var(--gold-bg); }
+.featured-pick-card { background: var(--ink2); box-shadow: var(--shadow-md); }
+.mood-results { background: var(--ink2); box-shadow: var(--shadow-md); }
+.mood-result-item { background: var(--ink); }
+.mood-ai-bar { background: var(--ink); }
+.mrp-header { background: var(--ink); }
+.mrp-select { background: var(--ink2); }
