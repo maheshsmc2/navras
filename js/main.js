@@ -179,3 +179,80 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+/* ===========================
+   OTT EDITORIAL — New on OTT
+   =========================== */
+const ottData = {
+  netflix: [
+    { title: "IC 814: The Kandahar Hijack", meta: "Series · Hindi · Thriller", score: 91, color: "#1a1a2e", rasas: ["Bhayanaka","Veera"], isNew: true },
+    { title: "Heeramandi", meta: "Series · Hindi · Drama", score: 78, color: "#2e1a0d", rasas: ["Shringara","Karuna"], isNew: false },
+    { title: "Scam 2003", meta: "Series · Hindi · Crime", score: 85, color: "#0d1a2e", rasas: ["Raudra","Adbhuta"], isNew: false },
+    { title: "All We Imagine as Light", meta: "Film · Malayalam · Drama", score: 96, color: "#0d2e1a", rasas: ["Karuna","Shanta"], isNew: true }
+  ],
+  prime: [
+    { title: "Stree 2", meta: "Film · Hindi · Horror Comedy", score: 87, color: "#1a0d2e", rasas: ["Hasya","Bhayanaka"], isNew: true },
+    { title: "Mirzapur S3", meta: "Series · Hindi · Crime", score: 82, color: "#2e0d0d", rasas: ["Raudra","Bhayanaka"], isNew: false },
+    { title: "Panchayat S3", meta: "Series · Hindi · Comedy", score: 93, color: "#1a2e0d", rasas: ["Hasya","Shanta"], isNew: false },
+    { title: "Farzi", meta: "Series · Hindi · Thriller", score: 88, color: "#0d1a2e", rasas: ["Raudra","Adbhuta"], isNew: false }
+  ],
+  hotstar: [
+    { title: "Anupama", meta: "Series · Hindi · Drama", score: 74, color: "#2e1a0d", rasas: ["Karuna","Shringara"], isNew: false },
+    { title: "The Great Indian Kapil Show", meta: "Series · Hindi · Comedy", score: 80, color: "#1a2e0d", rasas: ["Hasya"], isNew: true },
+    { title: "Shaitaan", meta: "Film · Hindi · Horror", score: 77, color: "#1a0d0d", rasas: ["Bhayanaka","Raudra"], isNew: false },
+    { title: "Kalki 2898-AD", meta: "Film · Telugu · Sci-Fi", score: 74, color: "#1a1a0d", rasas: ["Adbhuta","Veera"], isNew: false }
+  ],
+  sony: [
+    { title: "The Family Man S3", meta: "Series · Hindi · Thriller", score: 91, color: "#0d1a2e", rasas: ["Veera","Bhayanaka"], isNew: true },
+    { title: "Aspirants S2", meta: "Series · Hindi · Drama", score: 89, color: "#1a2e1a", rasas: ["Veera","Karuna"], isNew: false },
+    { title: "Rocket Boys S2", meta: "Series · Hindi · Drama", score: 87, color: "#0d0d2e", rasas: ["Veera","Adbhuta"], isNew: false },
+    { title: "Jamtara S2", meta: "Series · Hindi · Crime", score: 83, color: "#2e0d1a", rasas: ["Raudra","Bibhatsa"], isNew: false }
+  ],
+  zee5: [
+    { title: "Kaala Paani", meta: "Series · Hindi · Thriller", score: 85, color: "#0d1a2e", rasas: ["Bhayanaka","Veera"], isNew: false },
+    { title: "Dhoom Dhaam", meta: "Film · Hindi · Comedy", score: 72, color: "#1a2e0d", rasas: ["Hasya","Shringara"], isNew: true },
+    { title: "Murder in Mahim", meta: "Series · Hindi · Crime", score: 80, color: "#1a0d0d", rasas: ["Raudra","Bhayanaka"], isNew: false },
+    { title: "Bhakshak", meta: "Film · Hindi · Drama", score: 86, color: "#0d0d1a", rasas: ["Raudra","Karuna"], isNew: false }
+  ],
+  jio: [
+    { title: "Thalavara", meta: "Film · Malayalam · Action", score: 79, color: "#1a0d2e", rasas: ["Veera","Raudra"], isNew: true },
+    { title: "Singham Again", meta: "Film · Hindi · Action", score: 68, color: "#2e1a0d", rasas: ["Veera","Raudra"], isNew: false },
+    { title: "Yudhra", meta: "Film · Hindi · Action", score: 65, color: "#0d1a0d", rasas: ["Veera","Hasya"], isNew: false },
+    { title: "Manjummel Boys", meta: "Film · Malayalam · Thriller", score: 91, color: "#0d2e2e", rasas: ["Veera","Bhayanaka"], isNew: false }
+  ]
+};
+
+function renderOttCards(platform) {
+  const grid = document.getElementById('ottCardsGrid');
+  if (!grid) return;
+  const films = ottData[platform] || [];
+  grid.innerHTML = films.map(f => `
+    <a href="pages/movie.html" class="ott-film-card">
+      <div class="ott-card-poster" style="background:linear-gradient(160deg,${f.color},${f.color}88);">
+        ${f.isNew ? '<span class="ott-card-new">NEW</span>' : '<span class="ott-card-new" style="background:var(--ink3);color:var(--text-muted);">AVAILABLE</span>'}
+        <span class="ott-card-score">${f.score}<span style="font-size:9px;font-weight:400;color:var(--gold-dim);"> /100</span></span>
+      </div>
+      <div class="ott-card-info">
+        <div class="ott-card-title">${f.title}</div>
+        <div class="ott-card-meta">${f.meta}</div>
+        <div class="ott-card-rasas">${f.rasas.map(r => `<span class="rtag">${r}</span>`).join('')}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+function initOttTabs() {
+  const tabs = document.querySelectorAll('.ott-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderOttCards(tab.dataset.platform);
+    });
+  });
+  renderOttCards('netflix');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initOttTabs();
+});

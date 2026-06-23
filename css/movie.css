@@ -597,3 +597,146 @@
   .rate-rasa-grid { grid-template-columns: repeat(3, 1fr); }
   .desi-label { width: 100px; font-size: 11px; }
 }
+
+/* ===========================
+   NAVRAS /100 SCORE SYSTEM
+   =========================== */
+.navras100-wrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: var(--ink2);
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.navras100-main {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.navras100-num {
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  font-family: var(--font-display);
+}
+
+.navras100-denom {
+  font-size: 16px;
+  color: var(--gold-dim);
+  margin-top: -4px;
+  margin-bottom: 4px;
+}
+
+.navras100-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.navras100-cert {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--gold);
+  border-radius: 4px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.navras100-breakdown {
+  flex: 1;
+  min-width: 200px;
+}
+
+.n100-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.n100-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.n100-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--ink3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.n100-bar-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.n100-bar-fill.gold-bar { background: var(--gold); }
+
+.n100-val {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  width: 44px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.n100-val span { color: var(--text-dim); font-weight: 400; }
+
+.n100-external {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px solid var(--ink3);
+}
+
+.ext-score {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--ink3);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.ext-score strong { color: var(--text); }
+
+/* Score tiers legend */
+.score-tiers {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.tier-pill {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 0.5px solid var(--ink3);
+  color: var(--text-dim);
+}
+
+.tier-pill.active { border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 600px) {
+  .navras100-wrap { gap: 14px; padding: 14px; }
+  .navras100-num { font-size: 44px; }
+  .n100-label { width: 58px; font-size: 10px; }
+}

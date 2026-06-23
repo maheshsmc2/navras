@@ -355,20 +355,134 @@
   </section>
 
   <!-- OTT Strip -->
-  <section class="ott-section">
-    <div class="section-head">
-      <div class="section-title"><span class="title-bar"></span>Find it on OTT</div>
+  <!-- OTT Editorial Section — Decider style -->
+  <section class="ott-editorial">
+
+    <!-- Platform tabs -->
+    <div class="ott-platform-tabs">
+      <div class="section-head" style="margin-bottom:0;">
+        <div class="section-title"><span class="title-bar"></span>New on OTT this week</div>
+        <a href="#" class="see-all">All platforms →</a>
+      </div>
+      <div class="ott-tabs-row" id="ottTabsRow">
+        <button class="ott-tab active" data-platform="netflix">Netflix</button>
+        <button class="ott-tab" data-platform="prime">Prime Video</button>
+        <button class="ott-tab" data-platform="hotstar">Disney+ Hotstar</button>
+        <button class="ott-tab" data-platform="sony">SonyLIV</button>
+        <button class="ott-tab" data-platform="zee5">ZEE5</button>
+        <button class="ott-tab" data-platform="jio">JioHotstar</button>
+      </div>
     </div>
-    <div class="ott-row">
-      <button class="ott-btn">Netflix</button>
-      <button class="ott-btn">Prime Video</button>
-      <button class="ott-btn">Disney+ Hotstar</button>
-      <button class="ott-btn">SonyLIV</button>
-      <button class="ott-btn">ZEE5</button>
-      <button class="ott-btn">JioHotstar</button>
-      <button class="ott-btn">MX Player</button>
-      <button class="ott-btn">Apple TV+</button>
+
+    <!-- OTT Cards -->
+    <div class="ott-cards-grid" id="ottCardsGrid">
+      <!-- Filled by JS -->
     </div>
+
+    <!-- What to Watch Tonight — Decider style -->
+    <div class="what-to-watch">
+      <div class="section-head">
+        <div class="section-title"><span class="title-bar"></span>What to watch tonight</div>
+        <a href="pages/mood.html" class="see-all">More picks →</a>
+      </div>
+      <div class="wtw-grid">
+        <a href="pages/movie.html" class="wtw-card">
+          <div class="wtw-poster" style="background:linear-gradient(160deg,#1a1030,#3a1060);"></div>
+          <div class="wtw-info">
+            <div class="wtw-platform">Netflix · Series</div>
+            <div class="wtw-title">IC 814: The Kandahar Hijack</div>
+            <div class="wtw-verdict">If you want edge-of-seat tension based on a true story</div>
+            <div class="wtw-score"><span class="navras-score-pill">91 <span>Navras</span></span></div>
+          </div>
+        </a>
+        <a href="pages/movie.html" class="wtw-card">
+          <div class="wtw-poster" style="background:linear-gradient(160deg,#0d1a2e,#1a3060);"></div>
+          <div class="wtw-info">
+            <div class="wtw-platform">Prime Video · Film</div>
+            <div class="wtw-title">Stree 2</div>
+            <div class="wtw-verdict">If you want to laugh, scream, and laugh again</div>
+            <div class="wtw-score"><span class="navras-score-pill">87 <span>Navras</span></span></div>
+          </div>
+        </a>
+        <a href="pages/movie.html" class="wtw-card">
+          <div class="wtw-poster" style="background:linear-gradient(160deg,#0a2010,#1a5030);"></div>
+          <div class="wtw-info">
+            <div class="wtw-platform">MUBI · Film</div>
+            <div class="wtw-title">All We Imagine as Light</div>
+            <div class="wtw-verdict">If you want something quiet, beautiful and unforgettable</div>
+            <div class="wtw-score"><span class="navras-score-pill">96 <span>Navras</span></span></div>
+          </div>
+        </a>
+        <a href="pages/movie.html" class="wtw-card">
+          <div class="wtw-poster" style="background:linear-gradient(160deg,#200a0a,#501010);"></div>
+          <div class="wtw-info">
+            <div class="wtw-platform">Prime Video · Film</div>
+            <div class="wtw-title">Tumbbad</div>
+            <div class="wtw-verdict">If you want the most original Indian horror film ever made</div>
+            <div class="wtw-score"><span class="navras-score-pill">94 <span>Navras</span></span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navras Lists teaser -->
+    <div class="lists-teaser">
+      <div class="section-head">
+        <div class="section-title"><span class="title-bar"></span>Navras lists</div>
+        <a href="#" class="see-all">All lists →</a>
+      </div>
+      <div class="lists-grid">
+        <a href="#" class="list-card">
+          <div class="list-num">50</div>
+          <div class="list-info">
+            <div class="list-title">Greatest Bollywood Films of All Time</div>
+            <div class="list-meta">Curated by Navras · Updated June 2025</div>
+          </div>
+          <div class="list-arrow">→</div>
+        </a>
+        <a href="#" class="list-card">
+          <div class="list-num">25</div>
+          <div class="list-info">
+            <div class="list-title">Tamil Films Everyone Must Watch</div>
+            <div class="list-meta">Curated by Navras · Updated June 2025</div>
+          </div>
+          <div class="list-arrow">→</div>
+        </a>
+        <a href="#" class="list-card">
+          <div class="list-num">30</div>
+          <div class="list-info">
+            <div class="list-title">Best Indian Films on Netflix Right Now</div>
+            <div class="list-meta">Curated by Navras · Updated weekly</div>
+          </div>
+          <div class="list-arrow">→</div>
+        </a>
+        <a href="#" class="list-card">
+          <div class="list-num">10</div>
+          <div class="list-info">
+            <div class="list-title">Malayalam Films That Changed Indian Cinema</div>
+            <div class="list-meta">Curated by Navras · Updated June 2025</div>
+          </div>
+          <div class="list-arrow">→</div>
+        </a>
+        <a href="#" class="list-card">
+          <div class="list-num">20</div>
+          <div class="list-info">
+            <div class="list-title">Most Underrated Telugu Films Ever</div>
+            <div class="list-meta">Curated by Navras · Updated June 2025</div>
+          </div>
+          <div class="list-arrow">→</div>
+        </a>
+        <a href="#" class="list-card">
+          <div class="list-num">15</div>
+          <div class="list-info">
+            <div class="list-title">Indian Films That Won at Cannes</div>
+            <div class="list-meta">Curated by Navras · Complete list</div>
+          </div>
+          <div class="list-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
   </section>
 
   <!-- Footer -->
