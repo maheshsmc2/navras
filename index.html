@@ -16,6 +16,7 @@
 
   <div class="tricolour"><span></span><span></span><span></span></div>
 
+  <!-- NAV -->
   <nav class="nav">
     <a href="index.html" class="nav-logo">
       <div class="logo-mark">
@@ -44,10 +45,6 @@
         <span class="toggle-icon" id="toggleIcon">🌙</span>
         <span class="toggle-label" id="toggleLabel">Dark</span>
       </button>
-      <div class="nav-search" onclick="document.getElementById('heroSearch').focus()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <span>Search...</span>
-      </div>
     </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </nav>
@@ -59,7 +56,14 @@
     <a href="pages/lists.html" class="mobile-link">Lists</a>
   </div>
 
-  <!-- 1. SEARCH -->
+  <!-- TOP TABS — Movies / TV Shows / News -->
+  <div class="top-tabs-bar">
+    <button class="top-tab active" data-tab="movies">Movies</button>
+    <button class="top-tab" data-tab="tv">TV Shows & Series</button>
+    <button class="top-tab" data-tab="news">News</button>
+  </div>
+
+  <!-- SEARCH -->
   <div class="home-search-section">
     <div class="home-searchbar">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -76,108 +80,146 @@
     </div>
   </div>
 
-  <!-- 2. IN CINEMAS NOW -->
-  <section class="home-section" id="cinemasSection">
-    <div class="home-section-head">
-      <div class="home-section-title">
-        <span class="live-dot"></span>
-        In cinemas now
+  <!-- MOVIES TAB CONTENT -->
+  <div id="tab-movies">
+
+    <!-- IN CINEMAS NOW -->
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title">
+          <span class="live-dot"></span>In cinemas now
+        </div>
+        <a href="pages/browse.html" class="home-see-all">See all →</a>
       </div>
-      <a href="pages/browse.html" class="home-see-all">See all →</a>
-    </div>
-    <div class="cinemas-grid" id="cinemasGrid">
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-    </div>
-  </section>
-
-  <!-- 3. NEW ON OTT -->
-  <section class="home-section" id="ottSection">
-    <div class="home-section-head">
-      <div class="home-section-title">New on OTT</div>
-      <div class="ott-platform-tabs" id="ottPlatformTabs">
-        <button class="ott-tab active" data-platform="netflix">Netflix</button>
-        <button class="ott-tab" data-platform="prime">Prime Video</button>
-        <button class="ott-tab" data-platform="hotstar">Hotstar</button>
-        <button class="ott-tab" data-platform="sony">SonyLIV</button>
-        <button class="ott-tab" data-platform="zee5">ZEE5</button>
+      <div class="cinemas-grid" id="cinemasGrid">
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
       </div>
-    </div>
-    <div class="ott-grid" id="ottGrid">
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 4. RECENT REVIEWS — Metacritic list style -->
-  <section class="home-section" id="reviewsSection">
-    <div class="home-section-head">
-      <div class="home-section-title">Recent reviews</div>
-      <div class="review-sort">
-        <button class="rsort-btn active" data-sort="recent">Recent</button>
-        <button class="rsort-btn" data-sort="top">Top rated</button>
-        <button class="rsort-btn" data-sort="controversial">Debated</button>
+    <!-- NEW ON OTT -->
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title">New on OTT</div>
+        <div class="ott-platform-tabs" id="ottPlatformTabs">
+          <button class="ott-tab active" data-platform="netflix">Netflix</button>
+          <button class="ott-tab" data-platform="prime">Prime Video</button>
+          <button class="ott-tab" data-platform="hotstar">Hotstar</button>
+          <button class="ott-tab" data-platform="sony">SonyLIV</button>
+          <button class="ott-tab" data-platform="zee5">ZEE5</button>
+        </div>
       </div>
-    </div>
-    <div class="reviews-list" id="reviewsList">
-      <div class="review-skeleton"></div>
-      <div class="review-skeleton"></div>
-      <div class="review-skeleton"></div>
-      <div class="review-skeleton"></div>
-      <div class="review-skeleton"></div>
-    </div>
-    <a href="pages/browse.html" class="see-more-reviews">See all reviews →</a>
-  </section>
+      <div class="ott-grid" id="ottGrid">
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+      </div>
+    </section>
 
-  <!-- 5. COMING SOON -->
-  <section class="home-section" id="comingSoonSection">
-    <div class="home-section-head">
-      <div class="home-section-title">Coming soon</div>
-      <a href="pages/browse.html" class="home-see-all">All upcoming →</a>
-    </div>
-    <div class="coming-grid" id="comingGrid">
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-      <div class="poster-skeleton"></div>
-    </div>
-  </section>
+    <!-- RECENT REVIEWS -->
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title">Recent reviews</div>
+        <div class="review-sort">
+          <button class="rsort-btn active" data-sort="recent">Recent</button>
+          <button class="rsort-btn" data-sort="top">Top rated</button>
+        </div>
+      </div>
+      <div class="reviews-list" id="reviewsList">
+        <div class="review-skeleton"></div><div class="review-skeleton"></div>
+        <div class="review-skeleton"></div><div class="review-skeleton"></div>
+        <div class="review-skeleton"></div>
+      </div>
+      <a href="pages/browse.html" class="see-more-reviews">See all reviews →</a>
+    </section>
 
-  <!-- 6. NAVRAS MOOD SEARCH — dropped down -->
+    <!-- COMING SOON -->
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title">Coming soon</div>
+        <a href="pages/browse.html" class="home-see-all">All upcoming →</a>
+      </div>
+      <div class="coming-grid" id="comingGrid">
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- TV SHOWS TAB CONTENT -->
+  <div id="tab-tv" style="display:none;">
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title"><span class="live-dot"></span>Popular series right now</div>
+        <a href="pages/browse.html" class="home-see-all">See all →</a>
+      </div>
+      <div class="cinemas-grid" id="tvGrid">
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+      </div>
+    </section>
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title">Top rated Indian series</div>
+      </div>
+      <div class="reviews-list" id="tvReviewsList">
+        <div class="review-skeleton"></div><div class="review-skeleton"></div>
+        <div class="review-skeleton"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- NEWS TAB CONTENT -->
+  <div id="tab-news" style="display:none;">
+    <section class="home-section">
+      <div class="home-section-title" style="margin-bottom:20px;">Latest from Indian cinema</div>
+      <div class="news-grid" id="newsGrid">
+        <div class="news-card"><div class="news-thumb-skeleton"></div><div class="news-info"><div class="news-cat">Box Office</div><div class="news-title">Pushpa 2 crosses ₹1800 crore worldwide — becomes highest grossing Indian film ever</div><div class="news-meta">Navras · 2 days ago</div></div></div>
+        <div class="news-card"><div class="news-thumb-skeleton"></div><div class="news-info"><div class="news-cat">Awards</div><div class="news-title">All We Imagine as Light wins Grand Prix at Cannes 2024 — India's greatest triumph at the festival</div><div class="news-meta">Navras · 1 week ago</div></div></div>
+        <div class="news-card"><div class="news-thumb-skeleton"></div><div class="news-info"><div class="news-cat">Release</div><div class="news-title">Kantara Chapter 1 release date confirmed — Rishab Shetty speaks about the sequel</div><div class="news-meta">Navras · 3 days ago</div></div></div>
+        <div class="news-card"><div class="news-thumb-skeleton"></div><div class="news-info"><div class="news-cat">Review</div><div class="news-title">Saiyaara review — Ahaan Panday announces himself in the most-searched film of 2025</div><div class="news-meta">Navras · 5 days ago</div></div></div>
+        <div class="news-card"><div class="news-thumb-skeleton"></div><div class="news-info"><div class="news-cat">OTT</div><div class="news-title">The Family Man Season 3 — everything we know about the release date and cast</div><div class="news-meta">Navras · 1 week ago</div></div></div>
+        <div class="news-card"><div class="news-thumb-skeleton"></div><div class="news-info"><div class="news-cat">Industry</div><div class="news-title">Malayalam cinema box office 2025 — how Kerala is redefining Indian film</div><div class="news-meta">Navras · 4 days ago</div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- EXPLORER ZONE — for those who want more -->
+  <div class="explorer-divider">
+    <span>For explorers</span>
+  </div>
+
+  <!-- NAVRAS MOOD SEARCH -->
   <section class="home-section navras-section">
     <div class="navras-section-inner">
       <div class="navras-section-left">
-        <div class="navras-label">Navras</div>
+        <div class="navras-label">Navras — Mood Search</div>
         <div class="navras-title">Find a film by how<br>you want to <em>feel</em></div>
         <div class="navras-sub">Pick your rasa — the ancient Sanskrit art of emotion — and we find your perfect film.</div>
         <a href="pages/mood.html" class="navras-cta">Try mood search →</a>
       </div>
       <div class="navras-rasas-mini">
-        <a href="pages/mood.html?rasa=shringara" class="rasa-mini">♡ Shringara · Love</a>
-        <a href="pages/mood.html?rasa=hasya" class="rasa-mini">☺ Hasya · Joy</a>
-        <a href="pages/mood.html?rasa=karuna" class="rasa-mini">◇ Karuna · Sorrow</a>
-        <a href="pages/mood.html?rasa=veera" class="rasa-mini">◈ Veera · Courage</a>
-        <a href="pages/mood.html?rasa=bhayanaka" class="rasa-mini">◉ Bhayanaka · Fear</a>
-        <a href="pages/mood.html?rasa=adbhuta" class="rasa-mini">✦ Adbhuta · Wonder</a>
-        <a href="pages/mood.html?rasa=raudra" class="rasa-mini">△ Raudra · Anger</a>
-        <a href="pages/mood.html?rasa=shanta" class="rasa-mini">〇 Shanta · Peace</a>
-        <a href="pages/mood.html?rasa=bibhatsa" class="rasa-mini">▣ Bibhatsa · Dark</a>
+        <a href="pages/mood.html" class="rasa-mini">♡ Shringara · Love</a>
+        <a href="pages/mood.html" class="rasa-mini">☺ Hasya · Joy</a>
+        <a href="pages/mood.html" class="rasa-mini">◇ Karuna · Sorrow</a>
+        <a href="pages/mood.html" class="rasa-mini">◈ Veera · Courage</a>
+        <a href="pages/mood.html" class="rasa-mini">◉ Bhayanaka · Fear</a>
+        <a href="pages/mood.html" class="rasa-mini">✦ Adbhuta · Wonder</a>
+        <a href="pages/mood.html" class="rasa-mini">△ Raudra · Anger</a>
+        <a href="pages/mood.html" class="rasa-mini">〇 Shanta · Peace</a>
+        <a href="pages/mood.html" class="rasa-mini">▣ Bibhatsa · Dark</a>
       </div>
     </div>
   </section>
 
-  <!-- 7. RANKINGS -->
-  <section class="home-section" id="rankingsSection">
+  <!-- RANKINGS -->
+  <section class="home-section">
     <div class="home-section-head">
       <div class="home-section-title">Rankings</div>
       <div class="ranking-tabs">
-        <button class="rtab active" data-rank="top">All time best</button>
+        <button class="rtab active" data-rank="top">All time</button>
         <button class="rtab" data-rank="bollywood">Bollywood</button>
         <button class="rtab" data-rank="south">South</button>
         <button class="rtab" data-rank="ott">OTT series</button>
@@ -187,13 +229,13 @@
     <a href="pages/lists.html" class="see-more-reviews">Full rankings →</a>
   </section>
 
-  <!-- 8. LISTS TEASER -->
+  <!-- LISTS -->
   <section class="home-section lists-teaser-section">
     <div class="home-section-head">
       <div class="home-section-title">Navras lists</div>
       <a href="pages/lists.html" class="home-see-all">All lists →</a>
     </div>
-    <div class="lists-strip" id="listsStrip">
+    <div class="lists-strip">
       <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">50</span><span class="lsc-title">Greatest Bollywood Films of All Time</span><span class="lsc-arrow">→</span></a>
       <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">35</span><span class="lsc-title">Best Malayalam Films Ever</span><span class="lsc-arrow">→</span></a>
       <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">30</span><span class="lsc-title">Best Indian Films on Netflix 2025</span><span class="lsc-arrow">→</span></a>
@@ -213,7 +255,7 @@
         <div class="footer-col">
           <div class="footer-col-title">Discover</div>
           <a href="pages/browse.html">Browse films</a>
-          <a href="#">Series</a>
+          <a href="#">TV Shows</a>
           <a href="#">Music</a>
           <a href="#">Awards</a>
         </div>
@@ -222,13 +264,11 @@
           <a href="pages/mood.html">Mood search</a>
           <a href="pages/lists.html">Lists</a>
           <a href="#">Write a review</a>
-          <a href="#">Top critics</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Company</div>
           <a href="#">About</a>
           <a href="#">API</a>
-          <a href="#">Careers</a>
           <a href="#">Contact</a>
         </div>
       </div>
