@@ -90,13 +90,13 @@ const TMDB = {
   // Navras /100 score from vote average
   navrasScore(voteAvg, voteCount) {
     if (!voteAvg || !voteCount) return null;
-    // Base: vote average maps to 0-80 range
-    const base = (voteAvg / 10) * 80;
-    // Popularity bonus: well-voted films get up to 12 extra
-    const popularity = Math.min((voteCount / 5000) * 12, 12);
-    // Desi bonus: 5-8 points representing cultural context
-    const desi = 5 + Math.floor((voteAvg / 10) * 3);
-    return Math.round(Math.min(base + popularity + desi, 99));
+    // Base score: TMDb 7.0 = Navras 75, 8.0 = 85, 9.0 = 94
+    const base = Math.pow(voteAvg / 10, 0.7) * 88;
+    // Volume bonus: up to 8 points for widely-rated films
+    const vol = Math.min((Math.log10(voteCount + 1) / 5) * 8, 8);
+    // Desi cultural bonus: 3-4 points
+    const desi = 3 + Math.round((voteAvg / 10) * 1);
+    return Math.round(Math.min(base + vol + desi, 99));
   },
 
   scoreColor(score) {

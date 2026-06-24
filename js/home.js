@@ -1,6 +1,6 @@
 /* ===========================
-   NAVRAS — Home Page JS v2
-   Fixed TMDb loading + top tabs
+   NAVRAS — Home Page JS v3
+   Indian films only, fixed gaps, OTT posters
    =========================== */
 
 const langNames = {
@@ -9,19 +9,20 @@ const langNames = {
   gu:'Gujarati', en:'English'
 };
 
-/* ---- Score helpers ---- */
-function scoreClass(s) { return s >= 85 ? 'green' : s >= 60 ? 'amber' : 'red'; }
-function scoreColorHex(s) { return s >= 85 ? '#2ECC71' : s >= 60 ? '#F39C12' : '#E74C3C'; }
+const INDIAN_LANGS = ['hi','ta','te','ml','kn','mr','bn','pa','gu'];
 
-/* ---- Render cinema/poster card ---- */
+function scoreClass(s) { return s >= 75 ? 'green' : s >= 55 ? 'amber' : 'red'; }
+function scoreColorHex(s) { return s >= 75 ? '#2ECC71' : s >= 55 ? '#F39C12' : '#E74C3C'; }
+
+/* ---- Render poster card ---- */
 function renderCinemaCard(film, type) {
   const isTV = type === 'tv';
-  const title = isTV ? (film.name || film.original_name) : (film.title || film.original_title);
+  const title = isTV ? (film.name||film.original_name) : (film.title||film.original_title);
   const posterUrl = film.poster_path ? TMDB.poster(film.poster_path, 'w342') : null;
   const score = TMDB.navrasScore(film.vote_average, film.vote_count);
   const lang = film.original_language;
   const langName = langNames[lang] || (lang ? lang.toUpperCase() : '');
-  const year = (film.release_date || film.first_air_date || '').slice(0,4);
+  const year = (film.release_date||film.first_air_date||'').slice(0,4);
   const rasas = TMDB.rasaFromGenres((film.genre_ids||[]).map(id=>({id})));
   const sc = scoreClass(score);
 
@@ -29,61 +30,35 @@ function renderCinemaCard(film, type) {
     <a href="pages/movie.html?id=${film.id}" class="cinema-card">
       <div class="cinema-poster">
         ${posterUrl
-          ? `<img src="${posterUrl}" alt="${title}" loading="lazy"
-               onerror="this.parentElement.style.background='var(--ink3)';this.remove()" />`
-          : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--ink3);">🎬</div>`}
+          ? `<img src="${posterUrl}" alt="${title}" loading="lazy" onerror="this.parentElement.style.background='var(--ink3)';this.remove()" />`
+          : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;">🎬</div>`}
         ${langName ? `<div class="cinema-lang">${langName}</div>` : ''}
         ${score ? `<div class="cinema-score ${sc}"><div>${score}</div><div class="cinema-score-sub">NAVRAS</div></div>` : ''}
       </div>
       <div class="cinema-info">
-        <div class="cinema-title">${title || 'Unknown'}</div>
+        <div class="cinema-title">${title||'Unknown'}</div>
         <div class="cinema-meta">${year}</div>
         <div class="cinema-rasas">${rasas.slice(0,2).map(r=>`<span class="rtag">${r}</span>`).join('')}</div>
       </div>
     </a>`;
 }
 
-/* ---- Render OTT card (local data) ---- */
-const ottFilms = {
-  netflix: [
-    { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", score:91, color:"#1a1a2e", rasas:["Bhayanaka","Veera"], platform:"Netflix" },
-    { title:"All We Imagine as Light", year:2024, lang:"Malayalam", score:96, color:"#0d2e1a", rasas:["Karuna","Shanta"], platform:"Netflix" },
-    { title:"Tumbbad", year:2018, lang:"Hindi", score:94, color:"#2e0d0d", rasas:["Bhayanaka","Bibhatsa"], platform:"Netflix" },
-    { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix" }
-  ],
-  prime: [
-    { title:"Stree 2", year:2024, lang:"Hindi", score:87, color:"#1a0d2e", rasas:["Hasya","Bhayanaka"], platform:"Prime Video" },
-    { title:"Panchayat S3", year:2024, lang:"Hindi", score:93, color:"#1a2e0d", rasas:["Hasya","Shanta"], platform:"Prime Video" },
-    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Prime Video" },
-    { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Prime Video" }
-  ],
-  hotstar: [
-    { title:"Kalki 2898-AD", year:2024, lang:"Telugu", score:74, color:"#1a1a0d", rasas:["Adbhuta","Veera"], platform:"Hotstar" },
-    { title:"Manjummel Boys", year:2024, lang:"Malayalam", score:91, color:"#0d2e2e", rasas:["Veera","Bhayanaka"], platform:"Hotstar" },
-    { title:"Shaitaan", year:2024, lang:"Hindi", score:77, color:"#1a0d0d", rasas:["Bhayanaka","Raudra"], platform:"Hotstar" },
-    { title:"Kanguva", year:2024, lang:"Tamil", score:79, color:"#1a0d2e", rasas:["Veera","Adbhuta"], platform:"Hotstar" }
-  ],
-  sony: [
-    { title:"The Family Man S2", year:2021, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"SonyLIV" },
-    { title:"Scam 1992", year:2020, lang:"Hindi", score:97, color:"#2e2e0d", rasas:["Adbhuta","Raudra"], platform:"SonyLIV" },
-    { title:"Aspirants S2", year:2023, lang:"Hindi", score:89, color:"#1a2e1a", rasas:["Veera","Karuna"], platform:"SonyLIV" },
-    { title:"Rocket Boys S2", year:2023, lang:"Hindi", score:87, color:"#0d0d2e", rasas:["Veera","Adbhuta"], platform:"SonyLIV" }
-  ],
-  zee5: [
-    { title:"Kaala Paani", year:2023, lang:"Hindi", score:85, color:"#0d1a2e", rasas:["Bhayanaka","Veera"], platform:"ZEE5" },
-    { title:"Murder in Mahim", year:2024, lang:"Hindi", score:80, color:"#1a0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5" },
-    { title:"Bhakshak", year:2024, lang:"Hindi", score:86, color:"#0d0d1a", rasas:["Raudra","Karuna"], platform:"ZEE5" },
-    { title:"Dhoom Dhaam", year:2025, lang:"Hindi", score:72, color:"#1a2e0d", rasas:["Hasya","Shringara"], platform:"ZEE5" }
-  ]
-};
+/* ---- Render OTT card with real poster ---- */
+function renderOttCard(f, film) {
+  // film = TMDb result with poster, f = local OTT data
+  const posterUrl = film && film.poster_path ? TMDB.poster(film.poster_path, 'w342') : null;
+  const score = f.score;
+  const sc = scoreClass(score);
 
-function renderOttCard(f) {
   return `
     <a href="pages/movie.html" class="cinema-card">
-      <div class="cinema-poster" style="background:linear-gradient(160deg,${f.color},${f.color}cc);">
+      <div class="cinema-poster" style="${!posterUrl ? `background:linear-gradient(160deg,${f.color},${f.color}cc)` : ''}">
+        ${posterUrl
+          ? `<img src="${posterUrl}" alt="${f.title}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(160deg,${f.color},${f.color}cc)';this.remove()" />`
+          : ''}
         <div class="cinema-lang">${f.lang}</div>
-        <div class="cinema-score ${scoreClass(f.score)}">
-          <div>${f.score}</div><div class="cinema-score-sub">NAVRAS</div>
+        <div class="cinema-score ${sc}">
+          <div>${score}</div><div class="cinema-score-sub">NAVRAS</div>
         </div>
       </div>
       <div class="cinema-info">
@@ -98,7 +73,7 @@ function renderOttCard(f) {
 function renderReviewRow(film, type) {
   const isTV = type === 'tv';
   const title = isTV ? (film.name||film.original_name) : (film.title||film.original_title);
-  const posterUrl = film.poster_path ? TMDB.poster(film.poster_path, 'w92') : null;
+  const posterUrl = film.poster_path ? TMDB.poster(film.poster_path,'w92') : null;
   const score = TMDB.navrasScore(film.vote_average, film.vote_count);
   const lang = film.original_language;
   const langName = langNames[lang] || (lang ? lang.toUpperCase() : '');
@@ -131,6 +106,40 @@ function renderReviewRow(film, type) {
     </a>`;
 }
 
+/* ---- OTT local data ---- */
+const ottFilms = {
+  netflix: [
+    { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", score:91, color:"#1a1a2e", rasas:["Bhayanaka","Veera"], platform:"Netflix", tmdbId:242074 },
+    { title:"All We Imagine as Light", year:2024, lang:"Malayalam", score:96, color:"#0d2e1a", rasas:["Karuna","Shanta"], platform:"Netflix", tmdbId:1017336 },
+    { title:"Tumbbad", year:2018, lang:"Hindi", score:94, color:"#2e0d0d", rasas:["Bhayanaka","Bibhatsa"], platform:"Netflix", tmdbId:520110 },
+    { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix", tmdbId:759244 }
+  ],
+  prime: [
+    { title:"Stree 2", year:2024, lang:"Hindi", score:87, color:"#1a0d2e", rasas:["Hasya","Bhayanaka"], platform:"Prime Video", tmdbId:1100782 },
+    { title:"Panchayat S3", year:2024, lang:"Hindi", score:93, color:"#1a2e0d", rasas:["Hasya","Shanta"], platform:"Prime Video", tmdbId:94954 },
+    { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Prime Video", tmdbId:363676 },
+    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Prime Video", tmdbId:933131 }
+  ],
+  hotstar: [
+    { title:"Kalki 2898-AD", year:2024, lang:"Telugu", score:74, color:"#1a1a0d", rasas:["Adbhuta","Veera"], platform:"Hotstar", tmdbId:1064213 },
+    { title:"Manjummel Boys", year:2024, lang:"Malayalam", score:91, color:"#0d2e2e", rasas:["Veera","Bhayanaka"], platform:"Hotstar", tmdbId:1186532 },
+    { title:"Kanguva", year:2024, lang:"Tamil", score:79, color:"#1a0d2e", rasas:["Veera","Adbhuta"], platform:"Hotstar", tmdbId:1245492 },
+    { title:"Shaitaan", year:2024, lang:"Hindi", score:77, color:"#1a0d0d", rasas:["Bhayanaka","Raudra"], platform:"Hotstar", tmdbId:1172034 }
+  ],
+  sony: [
+    { title:"Scam 1992", year:2020, lang:"Hindi", score:97, color:"#2e2e0d", rasas:["Adbhuta","Raudra"], platform:"SonyLIV", tmdbId:113855 },
+    { title:"The Family Man S2", year:2021, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"SonyLIV", tmdbId:95557 },
+    { title:"Aspirants S2", year:2023, lang:"Hindi", score:89, color:"#1a2e1a", rasas:["Veera","Karuna"], platform:"SonyLIV", tmdbId:112130 },
+    { title:"Rocket Boys S2", year:2023, lang:"Hindi", score:87, color:"#0d0d2e", rasas:["Veera","Adbhuta"], platform:"SonyLIV", tmdbId:120168 }
+  ],
+  zee5: [
+    { title:"Kaala Paani", year:2023, lang:"Hindi", score:85, color:"#0d1a2e", rasas:["Bhayanaka","Veera"], platform:"ZEE5", tmdbId:229268 },
+    { title:"Bhakshak", year:2024, lang:"Hindi", score:86, color:"#0d0d1a", rasas:["Raudra","Karuna"], platform:"ZEE5", tmdbId:1156452 },
+    { title:"Murder in Mahim", year:2024, lang:"Hindi", score:80, color:"#1a0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5", tmdbId:245786 },
+    { title:"Dhoom Dhaam", year:2025, lang:"Hindi", score:72, color:"#1a2e0d", rasas:["Hasya","Shringara"], platform:"ZEE5", tmdbId:1299065 }
+  ]
+};
+
 /* ---- Rankings data ---- */
 const rankingsData = {
   top:[
@@ -150,8 +159,8 @@ const rankingsData = {
   south:[
     {rank:1,title:"Nayakan",year:1987,lang:"Tamil",score:98,color:"#2e0d0d",rasas:["Raudra","Karuna"]},
     {rank:2,title:"Drishyam",year:2013,lang:"Malayalam",score:97,color:"#0d2e1a",rasas:["Bhayanaka","Karuna"]},
-    {rank:3,title:"RRR",year:2022,lang:"Telugu",score:95,color:"#2e0d1a",rasas:["Veera","Raudra"]},
-    {rank:4,title:"96",year:2018,lang:"Tamil",score:96,color:"#1a1a2e",rasas:["Shringara","Karuna"]},
+    {rank:3,title:"96",year:2018,lang:"Tamil",score:96,color:"#1a1a2e",rasas:["Shringara","Karuna"]},
+    {rank:4,title:"RRR",year:2022,lang:"Telugu",score:95,color:"#2e0d1a",rasas:["Veera","Raudra"]},
     {rank:5,title:"Baahubali 2",year:2017,lang:"Telugu",score:92,color:"#2e1a0d",rasas:["Adbhuta","Veera"]}
   ],
   ott:[
@@ -163,6 +172,186 @@ const rankingsData = {
   ]
 };
 
+/* ---- LOAD FUNCTIONS ---- */
+
+/* In cinemas — Indian films only */
+async function loadCinemas() {
+  const grid = document.getElementById('cinemasGrid');
+  if (!grid) return;
+
+  // Use discover with Indian languages + now playing date range
+  const today = new Date().toISOString().slice(0,10);
+  const threeMonthsAgo = new Date(Date.now() - 90*24*60*60*1000).toISOString().slice(0,10);
+
+  let results = [];
+
+  // Fetch Hindi films in theatres
+  const hi = await TMDB.get('/discover/movie', {
+    with_original_language: 'hi',
+    'primary_release_date.gte': threeMonthsAgo,
+    'primary_release_date.lte': today,
+    sort_by: 'popularity.desc',
+    region: 'IN'
+  });
+  if (hi?.results) results.push(...hi.results);
+
+  // Fetch South Indian films
+  const south = await TMDB.get('/discover/movie', {
+    with_original_language: 'ta,te,ml,kn',
+    'primary_release_date.gte': threeMonthsAgo,
+    'primary_release_date.lte': today,
+    sort_by: 'popularity.desc',
+    region: 'IN'
+  });
+  if (south?.results) results.push(...south.results);
+
+  // Filter to Indian languages only and deduplicate
+  results = results
+    .filter(f => INDIAN_LANGS.includes(f.original_language))
+    .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
+    .sort((a,b) => b.popularity - a.popularity)
+    .slice(0, 6);
+
+  if (!results.length) {
+    // Final fallback — trending Indian films
+    const trending = await TMDB.get('/trending/movie/week', {});
+    results = (trending?.results || [])
+      .filter(f => INDIAN_LANGS.includes(f.original_language))
+      .slice(0, 6);
+  }
+
+  grid.innerHTML = results.length
+    ? results.map(f => renderCinemaCard(f, 'movie')).join('')
+    : '<div style="color:var(--text-muted);grid-column:1/-1;padding:20px;text-align:center;">No current Indian releases found</div>';
+}
+
+/* Recent reviews — Indian films */
+async function loadReviews(sort) {
+  const list = document.getElementById('reviewsList');
+  if (!list) return;
+  list.innerHTML = '<div class="review-skeleton"></div>'.repeat(5);
+
+  let data;
+  if (sort === 'top') {
+    data = await TMDB.get('/discover/movie', {
+      with_original_language: 'hi',
+      sort_by: 'vote_average.desc',
+      'vote_count.gte': 500
+    });
+  } else {
+    // Trending Indian films this week
+    const trending = await TMDB.get('/trending/movie/week', {});
+    const indianFilms = (trending?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language));
+
+    if (indianFilms.length >= 4) {
+      list.innerHTML = indianFilms.slice(0, 6).map(f => renderReviewRow(f, 'movie')).join('');
+      return;
+    }
+
+    // Supplement with discover
+    data = await TMDB.get('/discover/movie', {
+      with_original_language: 'hi',
+      sort_by: 'popularity.desc',
+      'vote_count.gte': 100
+    });
+  }
+
+  const results = (data?.results || [])
+    .filter(f => INDIAN_LANGS.includes(f.original_language))
+    .slice(0, 6);
+
+  list.innerHTML = results.length
+    ? results.map(f => renderReviewRow(f, 'movie')).join('')
+    : '<div style="color:var(--text-muted);padding:20px;">No reviews available</div>';
+}
+
+/* OTT — fetch real posters from TMDb by ID */
+async function loadOttWithPosters(platform) {
+  const grid = document.getElementById('ottGrid');
+  if (!grid) return;
+  grid.innerHTML = '<div class="poster-skeleton"></div>'.repeat(4);
+
+  const films = ottFilms[platform] || [];
+
+  // Fetch posters for each film by TMDb ID
+  const withPosters = await Promise.all(films.map(async f => {
+    try {
+      const data = await TMDB.get(`/movie/${f.tmdbId}`, {});
+      return { f, film: data };
+    } catch {
+      return { f, film: null };
+    }
+  }));
+
+  grid.innerHTML = withPosters.map(({ f, film }) => renderOttCard(f, film)).join('');
+}
+
+/* Coming soon — Indian upcoming */
+async function loadComingSoon() {
+  const grid = document.getElementById('comingGrid');
+  if (!grid) return;
+
+  const data = await TMDB.get('/movie/upcoming', { region: 'IN' });
+  const results = (data?.results || [])
+    .filter(f => INDIAN_LANGS.includes(f.original_language))
+    .slice(0, 4);
+
+  if (!results.length) {
+    // Fallback with global upcoming
+    const fallback = await TMDB.get('/movie/upcoming', {});
+    const filtered = (fallback?.results || []).slice(0, 4);
+    if (filtered.length) {
+      renderComingCards(filtered, grid);
+    } else {
+      grid.innerHTML = '<div style="color:var(--text-muted);grid-column:1/-1;padding:20px;text-align:center;">Upcoming releases loading...</div>';
+    }
+    return;
+  }
+
+  renderComingCards(results, grid);
+}
+
+function renderComingCards(results, grid) {
+  grid.innerHTML = results.map(film => {
+    const posterUrl = film.poster_path ? TMDB.poster(film.poster_path, 'w342') : null;
+    const lang = film.original_language;
+    const langName = langNames[lang] || (lang ? lang.toUpperCase() : '');
+    const rd = film.release_date
+      ? new Date(film.release_date).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'})
+      : 'Coming soon';
+    return `
+      <a href="pages/movie.html?id=${film.id}" class="coming-card">
+        <div class="coming-poster">
+          ${posterUrl ? `<img src="${posterUrl}" alt="${film.title}" loading="lazy" />` : ''}
+          <div class="coming-date-badge">${rd}</div>
+        </div>
+        <div class="coming-info">
+          <div class="coming-title">${film.title||film.name}</div>
+          <div class="coming-meta">${langName}</div>
+        </div>
+      </a>`;
+  }).join('');
+}
+
+/* TV Shows */
+async function loadTV() {
+  const grid = document.getElementById('tvGrid');
+  const list = document.getElementById('tvReviewsList');
+
+  const data = await TMDB.get('/trending/tv/week', {});
+  const indianTV = (data?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language));
+  const allTV = data?.results || [];
+
+  // Mix Indian + global for TV
+  const mixed = [...indianTV, ...allTV.filter(f => !INDIAN_LANGS.includes(f.original_language))]
+    .filter((f,i,arr) => arr.findIndex(x=>x.id===f.id)===i)
+    .slice(0,6);
+
+  if (grid) grid.innerHTML = mixed.map(f => renderCinemaCard(f, 'tv')).join('');
+  if (list) list.innerHTML = mixed.slice(0,4).map(f => renderReviewRow(f,'tv')).join('');
+}
+
+/* Rankings */
 function renderRankRow(f) {
   const rc = f.rank===1?'gold':f.rank===2?'silver':f.rank===3?'bronze':'';
   return `
@@ -178,87 +367,18 @@ function renderRankRow(f) {
     </a>`;
 }
 
-/* ---- TMDb loaders — FIXED: use separate calls not pipe syntax ---- */
-async function loadCinemas() {
-  const grid = document.getElementById('cinemasGrid');
-  if (!grid) return;
-  // Fetch now playing — TMDb supports this endpoint directly
-  const data = await TMDB.get('/movie/now_playing', { region:'IN' });
-  if (!data?.results?.length) {
-    // Fallback: popular Indian films
-    const fallback = await TMDB.get('/trending/movie/week', {});
-    if (fallback?.results) {
-      grid.innerHTML = fallback.results.slice(0,6).map(f=>renderCinemaCard(f,'movie')).join('');
-    }
-    return;
-  }
-  grid.innerHTML = data.results.slice(0,6).map(f=>renderCinemaCard(f,'movie')).join('');
-}
-
-async function loadReviews() {
-  const list = document.getElementById('reviewsList');
-  if (!list) return;
-  // Use trending Indian films as recent reviews
-  const data = await TMDB.get('/trending/movie/week', {});
-  if (!data?.results?.length) { list.innerHTML='<div style="color:var(--text-muted);padding:20px;">No reviews found</div>'; return; }
-  list.innerHTML = data.results.slice(0,6).map(f=>renderReviewRow(f,'movie')).join('');
-}
-
-async function loadTV() {
-  const grid = document.getElementById('tvGrid');
-  const list = document.getElementById('tvReviewsList');
-  if (!grid) return;
-  const data = await TMDB.get('/trending/tv/week', {});
-  if (!data?.results?.length) return;
-  if (grid) grid.innerHTML = data.results.slice(0,6).map(f=>renderCinemaCard(f,'tv')).join('');
-  if (list) list.innerHTML = data.results.slice(0,4).map(f=>renderReviewRow(f,'tv')).join('');
-}
-
-async function loadComingSoon() {
-  const grid = document.getElementById('comingGrid');
-  if (!grid) return;
-  const future = new Date();
-  future.setDate(future.getDate()+7);
-  const data = await TMDB.get('/movie/upcoming', { region:'IN' });
-  if (!data?.results?.length) {
-    grid.innerHTML = '<div style="color:var(--text-muted);padding:20px;grid-column:1/-1;">Coming soon listings not available right now.</div>';
-    return;
-  }
-  grid.innerHTML = data.results.slice(0,4).map(film => {
-    const posterUrl = film.poster_path ? TMDB.poster(film.poster_path,'w342') : null;
-    const lang = film.original_language;
-    const langName = langNames[lang] || (lang?lang.toUpperCase():'');
-    const rd = film.release_date ? new Date(film.release_date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : 'Coming soon';
-    return `
-      <a href="pages/movie.html?id=${film.id}" class="coming-card">
-        <div class="coming-poster">
-          ${posterUrl?`<img src="${posterUrl}" alt="${film.title}" loading="lazy" />`:''}
-          <div class="coming-date-badge">${rd}</div>
-        </div>
-        <div class="coming-info">
-          <div class="coming-title">${film.title}</div>
-          <div class="coming-meta">${langName}</div>
-        </div>
-      </a>`;
-  }).join('');
-}
-
-/* ---- OTT tabs ---- */
+/* ---- Init tabs and interactive elements ---- */
 function initOttTabs() {
-  const grid = document.getElementById('ottGrid');
-  if (!grid) return;
-  const load = p => { grid.innerHTML = (ottFilms[p]||[]).map(renderOttCard).join(''); };
   document.querySelectorAll('.ott-tab').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.ott-tab').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      load(btn.dataset.platform);
+      loadOttWithPosters(btn.dataset.platform);
     });
   });
-  load('netflix');
+  loadOttWithPosters('netflix');
 }
 
-/* ---- Ranking tabs ---- */
 function initRankingTabs() {
   const list = document.getElementById('rankingsList');
   if (!list) return;
@@ -273,42 +393,30 @@ function initRankingTabs() {
   load('top');
 }
 
-/* ---- Top tabs (Movies / TV / News) ---- */
 function initTopTabs() {
   document.querySelectorAll('.top-tab').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.top-tab').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       const tab = btn.dataset.tab;
-      document.getElementById('tab-movies').style.display = tab==='movies' ? 'block' : 'none';
-      document.getElementById('tab-tv').style.display = tab==='tv' ? 'block' : 'none';
-      document.getElementById('tab-news').style.display = tab==='news' ? 'block' : 'none';
+      document.getElementById('tab-movies').style.display = tab==='movies'?'block':'none';
+      document.getElementById('tab-tv').style.display = tab==='tv'?'block':'none';
+      document.getElementById('tab-news').style.display = tab==='news'?'block':'none';
       if (tab==='tv') loadTV();
     });
   });
 }
 
-/* ---- Review sort ---- */
 function initReviewSort() {
   document.querySelectorAll('.rsort-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener('click', () => {
       document.querySelectorAll('.rsort-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      const list = document.getElementById('reviewsList');
-      if (!list) return;
-      list.innerHTML = '<div class="review-skeleton"></div>'.repeat(5);
-      let data;
-      if (btn.dataset.sort==='top') {
-        data = await TMDB.get('/movie/top_rated', { region:'IN' });
-      } else {
-        data = await TMDB.get('/trending/movie/week', {});
-      }
-      if (data?.results) list.innerHTML = data.results.slice(0,6).map(f=>renderReviewRow(f,'movie')).join('');
+      loadReviews(btn.dataset.sort);
     });
   });
 }
 
-/* ---- Search ---- */
 function initSearch() {
   const input = document.getElementById('heroSearch');
   if (!input) return;
@@ -319,14 +427,131 @@ function initSearch() {
   });
 }
 
+/* ---- Fix gap CSS issue inline ---- */
+function fixGaps() {
+  // Remove empty space between sections
+  document.querySelectorAll('.home-section').forEach(s => {
+    s.style.paddingTop = '20px';
+    s.style.paddingBottom = '20px';
+  });
+}
+
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded', () => {
+  fixGaps();
   initTopTabs();
   initOttTabs();
   initRankingTabs();
   initReviewSort();
   initSearch();
   loadCinemas();
-  loadReviews();
+  loadReviews('recent');
   loadComingSoon();
+});
+
+/* ===========================
+   HERO CAROUSEL
+   =========================== */
+
+const carouselFilms = [
+  { title:"Stree 2", year:2024, lang:"Hindi", type:"Film", score:87, verdict:"Rajkummar & Shraddha deliver the horror comedy sequel India deserved.", rasas:["Hasya","Bhayanaka"], backdrop:"https://image.tmdb.org/t/p/w1280/yDEpc8Q7IZFbSFOCthVAiB3NRPP.jpg", id:1100782 },
+  { title:"RRR", year:2022, lang:"Telugu", type:"Film", score:95, verdict:"Pure cinematic adrenaline. S.S. Rajamouli at his most unstoppable.", rasas:["Veera","Raudra"], backdrop:"https://image.tmdb.org/t/p/w1280/yRt7MGBElkLQOYRvLTT1b3B1rcp.jpg", id:759244 },
+  { title:"All We Imagine as Light", year:2024, lang:"Malayalam", type:"Film", score:96, verdict:"Grand Prix at Cannes. India's most quietly beautiful film in decades.", rasas:["Karuna","Shanta"], backdrop:"https://image.tmdb.org/t/p/w1280/5Vber9sPmxfzIBxoSFGxdFH5xqQ.jpg", id:1017336 },
+  { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", type:"Series", score:91, verdict:"India's most gripping series based on true events. Riveting from start to finish.", rasas:["Bhayanaka","Veera"], backdrop:"https://image.tmdb.org/t/p/w1280/9GBhzXMFjgcZ3FdR9w3bqMMRKL5.jpg", id:242074 },
+  { title:"Dangal", year:2016, lang:"Hindi", type:"Film", score:96, verdict:"Aamir Khan and two extraordinary daughters. The greatest Indian sports film ever made.", rasas:["Veera","Karuna"], backdrop:"https://image.tmdb.org/t/p/w1280/wMq9kQXTeQCHUZOG4fAe5cAikde.jpg", id:363676 },
+  { title:"Tumbbad", year:2018, lang:"Hindi", type:"Film", score:94, verdict:"Greed, mythology, and nightmares fused into something completely original.", rasas:["Bhayanaka","Bibhatsa"], backdrop:"https://image.tmdb.org/t/p/w1280/arZn9Cr7gj3t3SuFriKcjrzmYAb.jpg", id:520110 }
+];
+
+let carouselIndex = 0;
+let carouselTimer = null;
+
+function buildCarousel() {
+  const track = document.getElementById('carouselTrack');
+  const dots = document.getElementById('carouselDots');
+  if (!track || !dots) return;
+
+  track.innerHTML = carouselFilms.map((f, i) => {
+    const sc = f.score >= 75 ? 'green' : f.score >= 55 ? 'amber' : 'red';
+    const typeClass = f.type.toLowerCase() === 'series' ? 'series' : 'film';
+    return `
+      <div class="carousel-slide${i===0?' active':''}" data-index="${i}">
+        <div class="carousel-bg" style="background-image:url('${f.backdrop}');"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-content">
+          <div class="carousel-badge">
+            <span class="carousel-badge-dot"></span>
+            ${f.lang} · ${f.year}
+          </div>
+          <div class="carousel-title">${f.title}</div>
+          <div class="carousel-meta">
+            <span class="carousel-type ${typeClass}">${f.type}</span>
+          </div>
+          <div class="carousel-verdict">${f.verdict}</div>
+          <div class="carousel-bottom">
+            <div class="carousel-score ${sc}">
+              <div class="carousel-score-num">${f.score}</div>
+              <div class="carousel-score-lbl">NAVRAS</div>
+            </div>
+            <div class="carousel-rasas">
+              ${f.rasas.map(r=>`<span class="rtag">${r}</span>`).join('')}
+            </div>
+            <a href="pages/movie.html?id=${f.id}" class="carousel-cta">Full review →</a>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  dots.innerHTML = carouselFilms.map((_,i) =>
+    `<button class="carousel-dot${i===0?' active':''}" onclick="carouselGoTo(${i})"></button>`
+  ).join('');
+
+  startCarouselTimer();
+}
+
+function carouselGoTo(index) {
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const slides = document.querySelectorAll('.carousel-slide');
+  if (!track) return;
+
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+
+  carouselIndex = ((index % carouselFilms.length) + carouselFilms.length) % carouselFilms.length;
+  track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+
+  if (slides[carouselIndex]) slides[carouselIndex].classList.add('active');
+  if (dots[carouselIndex]) dots[carouselIndex].classList.add('active');
+}
+
+function carouselMove(dir) {
+  clearCarouselTimer();
+  carouselGoTo(carouselIndex + dir);
+  startCarouselTimer();
+}
+
+function startCarouselTimer() {
+  clearCarouselTimer();
+  carouselTimer = setInterval(() => carouselGoTo(carouselIndex + 1), 5000);
+}
+
+function clearCarouselTimer() {
+  if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
+}
+
+// Pause on hover
+document.addEventListener('DOMContentLoaded', () => {
+  buildCarousel();
+  const carousel = document.getElementById('heroCarousel');
+  if (carousel) {
+    carousel.addEventListener('mouseenter', clearCarouselTimer);
+    carousel.addEventListener('mouseleave', startCarouselTimer);
+    // Touch swipe
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive:true });
+    carousel.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) carouselMove(diff > 0 ? 1 : -1);
+    });
+  }
 });
