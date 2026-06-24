@@ -3,8 +3,8 @@
    Light default + Dark toggle
    =========================== */
 
-/* LIGHT MODE — default */
-:root {
+/* DARK MODE — default */
+body.light-mode {
   --gold: #B8900A;
   --gold-light: #D4A820;
   --gold-dim: #9A7820;
@@ -30,8 +30,8 @@
   --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
 }
 
-/* DARK MODE — toggled */
-body.dark-mode {
+/* LIGHT MODE — toggled */
+:root {
   --gold: #C9A84C;
   --gold-light: #E8C96A;
   --gold-dim: #8A6F2E;

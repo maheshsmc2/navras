@@ -264,27 +264,27 @@ function toggleTheme() {
   const body = document.body;
   const icon = document.getElementById('toggleIcon');
   const label = document.getElementById('toggleLabel');
-  const isDark = body.classList.toggle('dark-mode');
+  const isDark = !body.classList.toggle("light-mode");
 
   if (icon) icon.textContent = isDark ? '🌙' : '☀️';
   if (label) label.textContent = isDark ? 'Dark' : 'Light';
 
-  localStorage.setItem('navras-theme', isDark ? 'dark' : 'light');
+  localStorage.setItem('navras-theme', isDark ? 'dark' : 'light'); body.classList.toggle('light-mode', !isDark);
 }
 
 function initTheme() {
   const saved = localStorage.getItem('navras-theme');
   const icon = document.getElementById('toggleIcon');
   const label = document.getElementById('toggleLabel');
-
-  if (saved === 'dark') {
-    document.body.classList.add('dark-mode');
-    if (icon) icon.textContent = '🌙';
-    if (label) label.textContent = 'Dark';
-  } else {
-    document.body.classList.remove('dark-mode');
+  // Default is dark — light-mode class switches to light
+  if (saved === 'light') {
+    document.body.classList.add('light-mode');
     if (icon) icon.textContent = '☀️';
     if (label) label.textContent = 'Light';
+  } else {
+    document.body.classList.remove('light-mode');
+    if (icon) icon.textContent = '🌙';
+    if (label) label.textContent = 'Dark';
   }
 }
 
