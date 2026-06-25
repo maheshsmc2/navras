@@ -1092,21 +1092,24 @@
 }
 
 .rasa-mini-label {
-  padding: 5px 6px 7px;
+  padding: 8px 6px 10px;
   text-align: center;
   border-top: 0.5px solid var(--ink3);
+  background: var(--ink2);
 }
 
 .rml-name {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text);
-  line-height: 1.2;
+  line-height: 1.3;
+  margin-bottom: 2px;
 }
 
 .rml-mean {
-  font-size: 9px;
-  color: var(--text-muted);
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 500;
   margin-top: 1px;
 }
 
@@ -1118,8 +1121,13 @@
   .rasa-mini-card { border-radius: 8px; }
 }
 
+@media (max-width: 900px) {
+  .navras-face-grid-mini { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .rml-name { font-size: 11px; }
+}
+
 @media (max-width: 500px) {
   .navras-face-grid-mini { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .rml-name { font-size: 9px; }
-  .rml-mean { display: none; }
+  .rml-name { font-size: 10px; }
+  .rml-mean { font-size: 9px; }
 }
