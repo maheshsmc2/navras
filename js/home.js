@@ -825,3 +825,207 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPopularNow();
   initPopularNowToggle();
 });
+
+/* ===========================
+   RANKER-STYLE EXPLORER LISTS
+   Visual cards with collage thumbnails
+   =========================== */
+
+const explorerLists = [
+  {
+    id: 'bollywood50', filter: 'alltime',
+    category: 'All time · Bollywood',
+    title: '50 Greatest Bollywood Films of All Time',
+    count: 50, meta: 'Curated by Navras',
+    tmdbIds: [390043, 19330, 20453, 363676],
+    preview: ['Mughal-E-Azam', 'Dilwale Dulhania Le Jayenge', 'Lagaan', 'Dangal']
+  },
+  {
+    id: 'malayalam35', filter: 'language',
+    category: 'Language · Malayalam',
+    title: '35 Best Malayalam Films of All Time',
+    count: 35, meta: 'Curated by Navras',
+    tmdbIds: [95765, 1017336, 515001, 1186532],
+    preview: ['Drishyam', 'All We Imagine as Light', 'Premam', 'Manjummel Boys']
+  },
+  {
+    id: 'netflix2025', filter: 'ott',
+    category: 'OTT · Netflix',
+    title: 'Best Indian Films on Netflix Right Now',
+    count: 30, meta: 'Updated weekly',
+    tmdbIds: [242074, 1017336, 520110, 759244],
+    preview: ['IC 814', 'All We Imagine as Light', 'Tumbbad', 'RRR']
+  },
+  {
+    id: 'tamil25', filter: 'language',
+    category: 'Language · Tamil',
+    title: '25 Tamil Films Everyone Must Watch',
+    count: 25, meta: 'Curated by Navras',
+    tmdbIds: [95765, 515001, 346364, 1064213],
+    preview: ['Nayakan', '96', 'Vikram', 'Kalki 2898-AD']
+  },
+  {
+    id: 'webseries', filter: 'ott',
+    category: 'OTT · Series',
+    title: 'Best Indian Web Series of All Time',
+    count: 20, meta: 'Curated by Navras',
+    tmdbIds: [113855, 94954, 95557, 125925],
+    preview: ['Scam 1992', 'Panchayat', 'The Family Man', 'Paatal Lok']
+  },
+  {
+    id: 'cannes', filter: 'awards',
+    category: 'Awards · Cannes',
+    title: 'Indian Films That Won at Cannes',
+    count: 15, meta: 'Complete list',
+    tmdbIds: [1017336, 12477, 107254, 17267],
+    preview: ['All We Imagine as Light', 'Pather Panchali', 'Masaan', 'Liar\'s Dice']
+  },
+  {
+    id: 'telugu20', filter: 'language',
+    category: 'Language · Telugu',
+    title: '20 Greatest Telugu Films — The Canon',
+    count: 20, meta: 'Curated by Navras',
+    tmdbIds: [346364, 759244, 399579, 1064213],
+    preview: ['Baahubali 2', 'RRR', 'Arjun Reddy', 'Kalki 2898-AD']
+  },
+  {
+    id: 'horror', filter: 'genre',
+    category: 'Genre · Horror',
+    title: 'Best Indian Horror Films — Ranked',
+    count: 25, meta: 'Curated by Navras',
+    tmdbIds: [520110, 1100782, 429617, 95765],
+    preview: ['Tumbbad', 'Stree 2', 'Stree', 'Drishyam']
+  },
+  {
+    id: 'best2025', filter: 'alltime',
+    category: '2025 · All languages',
+    title: 'Best Indian Films of 2025 — Ranked',
+    count: 25, meta: 'Updated June 2025',
+    tmdbIds: [1100782, 1017336, 1186532, 759244],
+    preview: ['Kantara Ch.1', 'Lokah', 'Saiyaara', 'Dhurandhar']
+  },
+  {
+    id: 'oscars', filter: 'awards',
+    category: 'Awards · Oscars',
+    title: 'Indian Films at the Oscars — Every Entry',
+    count: 10, meta: 'Complete list',
+    tmdbIds: [20453, 19980, 9471, 759244],
+    preview: ['Lagaan', 'Mother India', 'Salaam Bombay', 'RRR']
+  },
+  {
+    id: 'primetop', filter: 'ott',
+    category: 'OTT · Prime Video',
+    title: 'Best Indian Films on Prime Video',
+    count: 25, meta: 'Updated weekly',
+    tmdbIds: [1100782, 363676, 94954, 933131],
+    preview: ['Stree 2', 'Dangal', 'Panchayat', 'Drishyam 2']
+  },
+  {
+    id: 'sports', filter: 'genre',
+    category: 'Genre · Sports',
+    title: 'Best Indian Sports Films — Ranked',
+    count: 15, meta: 'Curated by Navras',
+    tmdbIds: [363676, 20453, 97020, 194662],
+    preview: ['Dangal', 'Lagaan', 'Chak De India', 'MS Dhoni']
+  }
+];
+
+let explorerPosterCache = {};
+let currentExplorerFilter = 'all';
+
+async function fetchPostersForList(list) {
+  if (explorerPosterCache[list.id]) return explorerPosterCache[list.id];
+
+  const posters = await Promise.all(list.tmdbIds.slice(0, 4).map(async id => {
+    try {
+      const data = await TMDB.get(`/movie/${id}`, {});
+      return data?.poster_path ? TMDB.poster(data.poster_path, 'w185') : null;
+    } catch { return null; }
+  }));
+
+  explorerPosterCache[list.id] = posters;
+  return posters;
+}
+
+function renderExplorerCard(list, posters) {
+  const cells = [0,1,2,3].map(i => {
+    const url = posters?.[i];
+    return url
+      ? `<div class="elc-collage-cell"><img src="${url}" alt="" loading="lazy" /></div>`
+      : `<div class="elc-collage-cell" style="background:var(--ink3);"></div>`;
+  }).join('');
+
+  return `
+    <a href="pages/lists.html" class="explorer-list-card" data-filter="${list.filter}">
+      <div class="elc-collage">
+        ${cells}
+        <div class="elc-count">${list.count} films</div>
+      </div>
+      <div class="elc-body">
+        <div class="elc-category">${list.category}</div>
+        <div class="elc-title">${list.title}</div>
+        <div class="elc-preview">
+          ${list.preview.slice(0,2).map((title, i) => `
+            <div class="elc-preview-item">
+              <div class="elc-preview-rank">#${i+1}</div>
+              <div class="elc-preview-title">${title}</div>
+            </div>`).join('')}
+        </div>
+        <div class="elc-footer">
+          <div class="elc-meta">${list.meta}</div>
+          <div class="elc-arrow">→</div>
+        </div>
+      </div>
+    </a>`;
+}
+
+async function loadExplorerLists(filter) {
+  const grid = document.getElementById('explorerListsGrid');
+  if (!grid) return;
+
+  const filtered = filter === 'all'
+    ? explorerLists
+    : explorerLists.filter(l => l.filter === filter);
+
+  // Render immediately with placeholders
+  grid.innerHTML = filtered.map(list => renderExplorerCard(list, null)).join('');
+
+  // Then load real posters progressively
+  for (const list of filtered) {
+    const posters = await fetchPostersForList(list);
+    const card = grid.querySelector(`[data-filter="${list.filter}"] .elc-collage`);
+    // Find the right card by title
+    const allCards = grid.querySelectorAll('.explorer-list-card');
+    for (const card of allCards) {
+      const titleEl = card.querySelector('.elc-title');
+      if (titleEl && titleEl.textContent.trim() === list.title) {
+        const collage = card.querySelector('.elc-collage');
+        if (collage) {
+          const cells = collage.querySelectorAll('.elc-collage-cell');
+          posters.forEach((url, i) => {
+            if (cells[i] && url) {
+              cells[i].innerHTML = `<img src="${url}" alt="" loading="lazy" />`;
+            }
+          });
+        }
+        break;
+      }
+    }
+  }
+}
+
+function initExplorerFilter() {
+  document.querySelectorAll('.eft-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.eft-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentExplorerFilter = btn.dataset.filter;
+      loadExplorerLists(currentExplorerFilter);
+    });
+  });
+  loadExplorerLists('all');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initExplorerFilter();
+});

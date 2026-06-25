@@ -238,9 +238,9 @@
     </section>
   </div>
 
-  <!-- EXPLORER ZONE — for those who want more -->
+  <!-- EXPLORER ZONE -->
   <div class="explorer-divider">
-    <span>For explorers</span>
+    <span>For explorers — discover more</span>
   </div>
 
   <!-- NAVRAS MOOD SEARCH -->
@@ -266,34 +266,25 @@
     </div>
   </section>
 
-  <!-- RANKINGS -->
-  <section class="home-section">
+  <!-- RANKER-STYLE LISTS + RANKINGS -->
+  <section class="explorer-lists-section">
     <div class="home-section-head">
-      <div class="home-section-title">Rankings</div>
-      <div class="ranking-tabs">
-        <button class="rtab active" data-rank="top">All time</button>
-        <button class="rtab" data-rank="bollywood">Bollywood</button>
-        <button class="rtab" data-rank="south">South</button>
-        <button class="rtab" data-rank="ott">OTT series</button>
-      </div>
-    </div>
-    <div class="rankings-list" id="rankingsList"></div>
-    <a href="pages/lists.html" class="see-more-reviews">Full rankings →</a>
-  </section>
-
-  <!-- LISTS -->
-  <section class="home-section lists-teaser-section">
-    <div class="home-section-head">
-      <div class="home-section-title">Navras lists</div>
+      <div class="home-section-title">Navras ranked lists</div>
       <a href="pages/lists.html" class="home-see-all">All lists →</a>
     </div>
-    <div class="lists-strip">
-      <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">50</span><span class="lsc-title">Greatest Bollywood Films of All Time</span><span class="lsc-arrow">→</span></a>
-      <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">35</span><span class="lsc-title">Best Malayalam Films Ever</span><span class="lsc-arrow">→</span></a>
-      <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">30</span><span class="lsc-title">Best Indian Films on Netflix 2025</span><span class="lsc-arrow">→</span></a>
-      <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">25</span><span class="lsc-title">Tamil Films Everyone Must Watch</span><span class="lsc-arrow">→</span></a>
-      <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">20</span><span class="lsc-title">Greatest Telugu Films — The Canon</span><span class="lsc-arrow">→</span></a>
-      <a href="pages/lists.html" class="list-strip-card"><span class="lsc-num">15</span><span class="lsc-title">Indian Films That Won at Cannes</span><span class="lsc-arrow">→</span></a>
+
+    <!-- Category filter -->
+    <div class="explorer-filter-tabs" id="explorerFilterTabs">
+      <button class="eft-btn active" data-filter="all">All</button>
+      <button class="eft-btn" data-filter="alltime">All time greats</button>
+      <button class="eft-btn" data-filter="language">By language</button>
+      <button class="eft-btn" data-filter="ott">OTT picks</button>
+      <button class="eft-btn" data-filter="awards">Awards</button>
+      <button class="eft-btn" data-filter="genre">By genre</button>
+    </div>
+
+    <div class="explorer-lists-grid" id="explorerListsGrid">
+      <!-- Filled by JS with visual cards -->
     </div>
   </section>
 
