@@ -89,67 +89,70 @@
   </div>
 
 
-  <!-- TRENDING THIS WEEK -->
-  <div class="trending-week-section">
-    <div class="trending-week-grid">
-      <!-- Movies column -->
-      <div class="trending-col">
-        <div class="trending-col-title">
-          Popular Movies
-          <a href="pages/browse.html" class="trending-col-viewall">View all</a>
-        </div>
-        <div class="trending-col-tabs">
-          <button class="trending-col-tab active" data-col="movies" data-filter="all">All</button>
-          <button class="trending-col-tab" data-col="movies" data-filter="hi">Hindi</button>
-          <button class="trending-col-tab" data-col="movies" data-filter="ta">Tamil</button>
-          <button class="trending-col-tab" data-col="movies" data-filter="te">Telugu</button>
-          <button class="trending-col-tab" data-col="movies" data-filter="ml">Malayalam</button>
-        </div>
-        <div class="trending-list-items" id="trendingMoviesList">
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-        </div>
-      </div>
-      <!-- TV column -->
-      <div class="trending-col">
-        <div class="trending-col-title">
-          Popular TV Shows
-          <a href="pages/browse.html" class="trending-col-viewall">View all</a>
-        </div>
-        <div class="trending-col-tabs">
-          <button class="trending-col-tab active" data-col="tv" data-filter="all">All</button>
-          <button class="trending-col-tab" data-col="tv" data-filter="hi">Hindi</button>
-          <button class="trending-col-tab" data-col="tv" data-filter="ta">Tamil</button>
-          <button class="trending-col-tab" data-col="tv" data-filter="te">Telugu</button>
-          <button class="trending-col-tab" data-col="tv" data-filter="ml">Malayalam</button>
-        </div>
-        <div class="trending-list-items" id="trendingTVList">
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- MOVIES TAB CONTENT -->
+
+    <!-- MOVIES TAB CONTENT -->
   <div id="tab-movies">
 
-    <!-- IN CINEMAS NOW -->
+    <!-- 1. LATEST RELEASE REVIEWS — top priority -->
+    <section class="home-section">
+      <div class="home-section-head">
+        <div class="home-section-title">
+          <span class="live-dot"></span>Latest release reviews
+        </div>
+        <div class="review-sort">
+          <button class="rsort-btn active" data-sort="recent">This week</button>
+          <button class="rsort-btn" data-sort="top">Top rated</button>
+        </div>
+      </div>
+      <!-- Featured review — top of page, most prominent -->
+      <div class="featured-review-row" id="featuredReview">
+        <div class="review-skeleton" style="height:120px;"></div>
+      </div>
+      <!-- Rest of reviews -->
+      <div class="reviews-list" id="reviewsList">
+        <div class="review-skeleton"></div>
+        <div class="review-skeleton"></div>
+        <div class="review-skeleton"></div>
+        <div class="review-skeleton"></div>
+        <div class="review-skeleton"></div>
+      </div>
+      <a href="pages/browse.html" class="see-more-reviews">See all reviews →</a>
+    </section>
+
+    <!-- 2. POPULAR RIGHT NOW — two column ranking -->
+    <section class="home-section popular-now-section">
+      <div class="home-section-head">
+        <div class="home-section-title">Popular right now</div>
+        <div class="review-sort">
+          <button class="rsort-btn active" data-pop="movies">Movies</button>
+          <button class="rsort-btn" data-pop="tv">TV Shows</button>
+        </div>
+      </div>
+      <div class="popular-now-grid">
+        <div class="trending-list-items" id="popularMoviesList">
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+        </div>
+        <div class="trending-list-items" id="popularTVList">
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. IN CINEMAS NOW -->
     <section class="home-section">
       <div class="home-section-head">
         <div class="home-section-title">
@@ -164,7 +167,7 @@
       </div>
     </section>
 
-    <!-- NEW ON OTT -->
+    <!-- 4. NEW ON OTT -->
     <section class="home-section">
       <div class="home-section-head">
         <div class="home-section-title">New on OTT</div>
@@ -182,24 +185,7 @@
       </div>
     </section>
 
-    <!-- RECENT REVIEWS -->
-    <section class="home-section">
-      <div class="home-section-head">
-        <div class="home-section-title">Recent reviews</div>
-        <div class="review-sort">
-          <button class="rsort-btn active" data-sort="recent">Recent</button>
-          <button class="rsort-btn" data-sort="top">Top rated</button>
-        </div>
-      </div>
-      <div class="reviews-list" id="reviewsList">
-        <div class="review-skeleton"></div><div class="review-skeleton"></div>
-        <div class="review-skeleton"></div><div class="review-skeleton"></div>
-        <div class="review-skeleton"></div>
-      </div>
-      <a href="pages/browse.html" class="see-more-reviews">See all reviews →</a>
-    </section>
-
-    <!-- COMING SOON -->
+    <!-- 5. COMING SOON -->
     <section class="home-section">
       <div class="home-section-head">
         <div class="home-section-title">Coming soon</div>

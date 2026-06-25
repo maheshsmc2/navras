@@ -708,3 +708,120 @@ async function loadRankingWithPosters(key) {
       </a>`;
   }).join('');
 }
+
+/* ===========================
+   FEATURED REVIEW + POPULAR NOW
+   =========================== */
+
+/* Featured review — latest Indian release, shown prominently */
+async function loadFeaturedReview() {
+  const container = document.getElementById('featuredReview');
+  const list = document.getElementById('reviewsList');
+  if (!container) return;
+
+  // Get latest Indian films
+  const data = await TMDB.get('/trending/movie/week', {});
+  const films = (data?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language));
+
+  if (!films.length) {
+    container.innerHTML = '';
+    return;
+  }
+
+  // First film = featured
+  const featured = films[0];
+  const rest = films.slice(1, 7);
+
+  const posterUrl = featured.poster_path ? TMDB.poster(featured.poster_path, 'w185') : null;
+  const score = TMDB.navrasScore(featured.vote_average, featured.vote_count);
+  const sc = scoreClass(score);
+  const lang = featured.original_language;
+  const langName = langNames[lang] || lang?.toUpperCase() || '';
+  const year = (featured.release_date || '').slice(0, 4);
+  const rasas = TMDB.rasaFromGenres((featured.genre_ids || []).map(id => ({ id })));
+
+  // Verdicts for featured films
+  const verdicts = {
+    default: "A film that demands your attention this week."
+  };
+
+  container.innerHTML = `
+    <a href="pages/movie.html?id=${featured.id}" class="featured-review-card">
+      <div class="fr-poster">
+        ${posterUrl ? `<img src="${posterUrl}" alt="${featured.title}" loading="lazy" />` : ''}
+        ${score ? `<div class="fr-score ${sc}"><div>${score}</div><div class="fr-score-lbl">NVS</div></div>` : ''}
+      </div>
+      <div class="fr-content">
+        <div class="fr-badge"><span class="fr-badge-dot"></span>Latest review</div>
+        <div class="fr-title">${featured.title || featured.name}</div>
+        <div class="fr-meta">${langName} · ${year} · ${featured.vote_average?.toFixed(1)} IMDb</div>
+        <div class="fr-verdict">${verdicts[featured.id] || verdicts.default}</div>
+        <div class="fr-bottom">
+          <div class="fr-three-words">
+            ${rasas.map(r => `<span class="fr-word">${r}</span>`).join('')}
+          </div>
+          <div class="fr-rasas">
+            ${rasas.map(r => `<span class="rtag">${r}</span>`).join('')}
+          </div>
+          <span class="fr-platform">Read review →</span>
+        </div>
+      </div>
+    </a>`;
+
+  // Rest as normal rows
+  if (list) {
+    list.innerHTML = rest.map(f => renderReviewRow(f, 'movie')).join('');
+  }
+}
+
+/* Popular right now — two columns, movies + TV, both visible always */
+async function loadPopularNow() {
+  const moviesCol = document.getElementById('popularMoviesList');
+  const tvCol = document.getElementById('popularTVList');
+
+  // Load movies
+  if (moviesCol) {
+    const data = await TMDB.get('/trending/movie/week', {});
+    const films = (data?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language));
+    moviesCol.innerHTML = films.slice(0, 8).map((f, i) => renderTrendingItem(f, i + 1, 'movie')).join('') ||
+      '<div style="color:var(--text-muted);padding:12px;">Loading...</div>';
+  }
+
+  // Load TV
+  if (tvCol) {
+    const data = await TMDB.get('/trending/tv/week', {});
+    const shows = data?.results || [];
+    // Mix Indian + popular global
+    const indian = shows.filter(f => INDIAN_LANGS.includes(f.original_language));
+    const global = shows.filter(f => !INDIAN_LANGS.includes(f.original_language));
+    const mixed = [...indian, ...global].slice(0, 8);
+    tvCol.innerHTML = mixed.map((f, i) => renderTrendingItem(f, i + 1, 'tv')).join('') ||
+      '<div style="color:var(--text-muted);padding:12px;">Loading...</div>';
+  }
+}
+
+/* Popular now toggle — movies vs TV */
+function initPopularNowToggle() {
+  const moviesCol = document.getElementById('popularMoviesList');
+  const tvCol = document.getElementById('popularTVList');
+
+  document.querySelectorAll('[data-pop]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-pop]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.pop;
+      // On mobile — toggle visibility
+      if (window.innerWidth < 700) {
+        if (moviesCol) moviesCol.style.display = tab === 'movies' ? 'flex' : 'none';
+        if (tvCol) tvCol.style.display = tab === 'tv' ? 'flex' : 'none';
+      }
+    });
+  });
+}
+
+// Add to init
+document.addEventListener('DOMContentLoaded', () => {
+  loadFeaturedReview();
+  loadPopularNow();
+  initPopularNowToggle();
+});
