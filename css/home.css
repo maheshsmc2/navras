@@ -308,17 +308,18 @@
 .rankings-list { display: flex; flex-direction: column; margin-bottom: 16px; }
 
 .rank-row {
-  display: flex; align-items: center; gap: 14px;
-  padding: 10px 0; border-bottom: 0.5px solid var(--ink3);
-  text-decoration: none; transition: background 0.15s;
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 10px; border-bottom: 0.5px solid var(--ink3);
+  text-decoration: none; transition: all 0.15s;
+  border-radius: 6px;
 }
 
 .rank-row:last-child { border-bottom: none; }
-.rank-row:hover { background: var(--gold-bg); padding-left: 8px; }
+.rank-row:hover { background: var(--gold-bg); border-bottom-color: transparent; }
 
 .rank-num {
-  font-size: 20px; font-weight: 600; min-width: 32px;
-  color: var(--ink3); font-family: var(--font-display); text-align: center;
+  font-size: 15px; font-weight: 600; min-width: 24px;
+  color: var(--text-dim); text-align: center; flex-shrink: 0;
 }
 
 .rank-num.gold { color: var(--gold); }
@@ -326,41 +327,60 @@
 .rank-num.bronze { color: #CD7F32; }
 
 .rank-poster {
-  width: 38px; height: 52px; border-radius: 5px;
+  width: 34px; height: 48px; border-radius: 5px;
   flex-shrink: 0; object-fit: cover; background: var(--ink3);
 }
 
-.rank-info { flex: 1; }
-.rank-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
-.rank-meta { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
-.rank-rasas { display: flex; gap: 3px; }
+.rank-info { flex: 1; min-width: 0; }
+.rank-title {
+  font-size: 13px; font-weight: 500; color: var(--text);
+  margin-bottom: 2px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.rank-meta { font-size: 10px; color: var(--text-muted); margin-bottom: 3px; }
+.rank-rasas { display: flex; gap: 3px; flex-wrap: wrap; }
 
 .rank-score {
-  font-size: 22px; font-weight: 700; flex-shrink: 0;
-  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700; flex-shrink: 0;
+  min-width: 36px; text-align: right;
 }
 
-/* Lists strip */
+/* Lists strip — cleaner grid layout */
 .lists-strip {
-  display: flex; flex-direction: column; gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
 .list-strip-card {
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: 12px;
   background: var(--ink2); border: 0.5px solid var(--ink3);
-  border-radius: 10px; padding: 14px 18px;
-  transition: border-color 0.15s; text-decoration: none;
+  border-radius: 8px; padding: 12px 14px;
+  transition: border-color 0.15s, background 0.15s;
+  text-decoration: none;
 }
 
-.list-strip-card:hover { border-color: var(--gold-dim); }
+.list-strip-card:hover {
+  border-color: var(--gold-dim);
+  background: var(--gold-bg);
+}
 
 .lsc-num {
-  font-size: 24px; font-weight: 600; color: var(--gold);
-  font-family: var(--font-display); min-width: 40px; line-height: 1;
+  font-size: 20px; font-weight: 700; color: var(--gold);
+  font-family: var(--font-display); min-width: 34px;
+  line-height: 1; flex-shrink: 0;
 }
 
-.lsc-title { flex: 1; font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.3; }
-.lsc-arrow { font-size: 16px; color: var(--gold-dim); }
+.lsc-title {
+  flex: 1; font-size: 12px; font-weight: 500;
+  color: var(--text); line-height: 1.4;
+}
+
+.lsc-arrow { font-size: 14px; color: var(--gold-dim); flex-shrink: 0; }
+
+@media (max-width: 700px) {
+  .lists-strip { grid-template-columns: 1fr; }
+}
 
 /* Skeleton loaders */
 .poster-skeleton {
@@ -651,4 +671,104 @@
   .carousel-title { font-size: 22px; }
   .carousel-verdict { display: none; }
   .carousel-arrow { display: none; }
+}
+
+/* ===========================
+   TRENDING THIS WEEK
+   Two column list — RT style
+   =========================== */
+.trending-week-section {
+  padding: 20px 32px;
+  border-bottom: 0.5px solid var(--ink3);
+}
+
+.trending-week-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.trending-col-title {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  margin-bottom: 4px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.trending-col-viewall {
+  font-size: 12px; font-weight: 500; color: var(--gold);
+  text-decoration: none;
+}
+
+.trending-col-tabs {
+  display: flex; gap: 0; margin-bottom: 12px;
+  border-bottom: 0.5px solid var(--ink3);
+}
+
+.trending-col-tab {
+  font-size: 11px; font-weight: 500; color: var(--text-muted);
+  padding: 6px 12px; border-bottom: 2px solid transparent;
+  margin-bottom: -0.5px; cursor: pointer; background: none;
+  border-top: none; border-left: none; border-right: none;
+  font-family: inherit; transition: all 0.15s; white-space: nowrap;
+}
+
+.trending-col-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+.trending-list-items { display: flex; flex-direction: column; }
+
+.trending-list-item {
+  display: flex; align-items: center;
+  padding: 9px 0; border-bottom: 0.5px solid var(--ink3);
+  text-decoration: none; transition: background 0.12s;
+  border-radius: 4px; gap: 10px;
+}
+
+.trending-list-item:last-child { border-bottom: none; }
+.trending-list-item:hover { background: var(--gold-bg); padding-left: 6px; }
+
+.tli-rank {
+  font-size: 13px; color: var(--text-dim);
+  min-width: 20px; font-variant-numeric: tabular-nums;
+  text-align: center; flex-shrink: 0;
+}
+
+.tli-title {
+  flex: 1; font-size: 13px; font-weight: 500; color: var(--text);
+  line-height: 1.3;
+}
+
+.tli-score {
+  display: flex; align-items: center; gap: 5px;
+  flex-shrink: 0;
+}
+
+.tli-score-icon {
+  width: 16px; height: 16px; border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; flex-shrink: 0;
+}
+
+.tli-score-icon.green { background: #1A7A3C; color: #fff; }
+.tli-score-icon.amber { background: #C47A00; color: #fff; }
+.tli-score-icon.red { background: #C0392B; color: #fff; }
+
+.tli-score-num {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  min-width: 32px; text-align: right;
+}
+
+.tli-lang {
+  font-size: 9px; font-weight: 600; color: var(--text-dim);
+  min-width: 32px; text-align: right; flex-shrink: 0;
+}
+
+.trending-skeleton-item {
+  height: 36px; border-radius: 4px;
+  background: var(--ink3); margin-bottom: 2px;
+  animation: shimmer 1.5s infinite;
+}
+
+@media (max-width: 700px) {
+  .trending-week-grid { grid-template-columns: 1fr; gap: 24px; }
+  .trending-week-section { padding: 20px; }
 }

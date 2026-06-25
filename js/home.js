@@ -382,7 +382,7 @@ function initOttTabs() {
 function initRankingTabs() {
   const list = document.getElementById('rankingsList');
   if (!list) return;
-  const load = k => { list.innerHTML = (rankingsData[k]||[]).map(renderRankRow).join(''); };
+  const load = k => { list.innerHTML = (rankingsData[k]||[]).map(renderRankRow).join(''); loadRankingWithPosters(k); };
   document.querySelectorAll('.rtab').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.rtab').forEach(b=>b.classList.remove('active'));
@@ -555,3 +555,156 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/* ===========================
+   TRENDING THIS WEEK LISTS
+   RT-style clean list
+   =========================== */
+
+let trendingMoviesData = [];
+let trendingTVData = [];
+
+function renderTrendingItem(film, rank, type) {
+  const isTV = type === 'tv';
+  const title = isTV ? (film.name||film.original_name) : (film.title||film.original_title);
+  const score = TMDB.navrasScore(film.vote_average, film.vote_count);
+  const lang = film.original_language;
+  const langName = langNames[lang] || (lang ? lang.toUpperCase() : '');
+  const sc = score >= 75 ? 'green' : score >= 55 ? 'amber' : 'red';
+  const icon = sc === 'green' ? '▲' : sc === 'amber' ? '●' : '▼';
+
+  return `
+    <a href="pages/movie.html?id=${film.id}" class="trending-list-item">
+      <div class="tli-rank">${rank}</div>
+      <div class="tli-title">${title||'Unknown'}</div>
+      <div class="tli-lang">${langName}</div>
+      <div class="tli-score">
+        <div class="tli-score-icon ${sc}">${icon}</div>
+        <div class="tli-score-num">${score ? score+'%' : '—'}</div>
+      </div>
+    </a>`;
+}
+
+async function loadTrendingMovies(langFilter) {
+  const list = document.getElementById('trendingMoviesList');
+  if (!list) return;
+
+  if (!trendingMoviesData.length) {
+    list.innerHTML = '<div class="trending-skeleton-item"></div>'.repeat(10);
+    // Fetch Indian trending movies
+    const [hi, south] = await Promise.all([
+      TMDB.get('/trending/movie/week', {}),
+      TMDB.discover({ with_original_language:'ta,te,ml,kn', sort_by:'popularity.desc', 'vote_count.gte':50 })
+    ]);
+    const hiFilms = (hi?.results||[]).filter(f => INDIAN_LANGS.includes(f.original_language));
+    const southFilms = (south?.results||[]).filter(f => INDIAN_LANGS.includes(f.original_language));
+
+    // Merge and deduplicate
+    trendingMoviesData = [...hiFilms, ...southFilms]
+      .filter((f,i,arr) => arr.findIndex(x=>x.id===f.id)===i)
+      .sort((a,b) => b.popularity - a.popularity);
+  }
+
+  let filtered = langFilter && langFilter !== 'all'
+    ? trendingMoviesData.filter(f => f.original_language === langFilter)
+    : trendingMoviesData;
+
+  // If filtered is empty, show all
+  if (!filtered.length) filtered = trendingMoviesData;
+
+  list.innerHTML = filtered.slice(0,10).map((f,i) => renderTrendingItem(f, i+1, 'movie')).join('') ||
+    '<div style="color:var(--text-muted);padding:12px;">No results</div>';
+}
+
+async function loadTrendingTV(langFilter) {
+  const list = document.getElementById('trendingTVList');
+  if (!list) return;
+
+  if (!trendingTVData.length) {
+    list.innerHTML = '<div class="trending-skeleton-item"></div>'.repeat(10);
+    const data = await TMDB.get('/trending/tv/week', {});
+    trendingTVData = (data?.results||[]);
+  }
+
+  let filtered = langFilter && langFilter !== 'all'
+    ? trendingTVData.filter(f => f.original_language === langFilter)
+    : trendingTVData.filter(f => INDIAN_LANGS.includes(f.original_language));
+
+  // Fallback to global if no Indian TV found
+  if (!filtered.length) filtered = trendingTVData.slice(0,10);
+
+  list.innerHTML = filtered.slice(0,10).map((f,i) => renderTrendingItem(f, i+1, 'tv')).join('') ||
+    '<div style="color:var(--text-muted);padding:12px;">No results</div>';
+}
+
+function initTrendingTabs() {
+  // Movies tabs
+  document.querySelectorAll('.trending-col-tab[data-col="movies"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.trending-col-tab[data-col="movies"]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      loadTrendingMovies(btn.dataset.filter);
+    });
+  });
+
+  // TV tabs
+  document.querySelectorAll('.trending-col-tab[data-col="tv"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.trending-col-tab[data-col="tv"]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      loadTrendingTV(btn.dataset.filter);
+    });
+  });
+
+  // Initial load
+  loadTrendingMovies('all');
+  loadTrendingTV('all');
+}
+
+// Add to DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  initTrendingTabs();
+});
+
+/* ---- Load real posters for rankings ---- */
+const rankingTmdbIds = {
+  top: [390043, 12477, 19330, 95765, 20453],
+  bollywood: [390043, 19330, 20453, 194662, 363676],
+  south: [95765, 95765, 759244, 515001, 346364],
+  ott: [113855, 94954, 95557, 125925, 242074]
+};
+
+async function loadRankingWithPosters(key) {
+  const list = document.getElementById('rankingsList');
+  if (!list) return;
+
+  const films = rankingsData[key] || [];
+  const ids = rankingTmdbIds[key] || [];
+
+  // Fetch posters in parallel
+  const posters = await Promise.all(ids.map(async (id, i) => {
+    try {
+      const data = await TMDB.get(`/movie/${id}`, {});
+      return data?.poster_path ? TMDB.poster(data.poster_path, 'w92') : null;
+    } catch { return null; }
+  }));
+
+  list.innerHTML = films.map((f, i) => {
+    const rc = f.rank===1?'gold':f.rank===2?'silver':f.rank===3?'bronze':'';
+    const posterUrl = posters[i];
+    const sc = scoreColorHex(f.score);
+    return `
+      <a href="pages/movie.html" class="rank-row">
+        <div class="rank-num ${rc}">${f.rank}</div>
+        ${posterUrl
+          ? `<img src="${posterUrl}" class="rank-poster" alt="${f.title}" loading="lazy" onerror="this.style.display='none'" />`
+          : `<div class="rank-poster" style="background:linear-gradient(160deg,${f.color},${f.color}aa);"></div>`}
+        <div class="rank-info">
+          <div class="rank-title">${f.title}</div>
+          <div class="rank-meta">${f.lang} · ${f.year}</div>
+          <div class="rank-rasas">${f.rasas.map(r=>`<span class="rtag">${r}</span>`).join('')}</div>
+        </div>
+        <div class="rank-score" style="color:${sc};">${f.score}</div>
+      </a>`;
+  }).join('');
+}
