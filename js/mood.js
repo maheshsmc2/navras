@@ -116,11 +116,12 @@ function selectRasa(rasa, el) {
   displayedCount = 6;
 
   // Update card states
-  document.querySelectorAll('.rasa-full-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.rasa-face-card, .rasa-full-card').forEach(c => c.classList.remove('active'));
   if (el) el.classList.add('active');
 
-  // Show results, hide grid and philosophy
-  document.getElementById('rasasFullGrid').style.display = 'none';
+  // Hide grid, show results
+  const grid = document.getElementById('rasasFullGrid');
+  if (grid) grid.style.display = 'none';
   document.getElementById('moodResultsPanel').style.display = 'block';
   document.getElementById('rasaPhilosophy').style.display = 'none';
 
@@ -132,14 +133,14 @@ function selectRasa(rasa, el) {
   renderFeatured(currentFilms[0]);
   renderFilms(currentFilms.slice(1, displayedCount + 1));
 
-  // Scroll to results
   document.getElementById('moodResultsPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function clearRasa() {
   currentRasa = null;
-  document.querySelectorAll('.rasa-full-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('rasasFullGrid').style.display = 'grid';
+  document.querySelectorAll('.rasa-face-card, .rasa-full-card').forEach(c => c.classList.remove('active'));
+  const grid = document.getElementById('rasasFullGrid');
+  if (grid) grid.style.display = 'grid';
   document.getElementById('moodResultsPanel').style.display = 'none';
   document.getElementById('rasaPhilosophy').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });

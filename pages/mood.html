@@ -74,87 +74,433 @@
   </div>
 
   <!-- NINE RASAS GRID -->
-  <div class="rasas-full-grid" id="rasasFullGrid">
+  <div class="rasas-face-grid" id="rasasFullGrid">
 
-    <button class="rasa-full-card" data-rasa="shringara" onclick="selectRasa('shringara', this)">
-      <div class="rfc-icon">♡</div>
-      <div class="rfc-name">Shringara</div>
-      <div class="rfc-meaning">Love · Romance · Beauty</div>
-      <div class="rfc-desc">For when you want warmth, longing, and the ache of love — requited or otherwise.</div>
-      <div class="rfc-examples">DDLJ · Jab We Met · OK Kanmani</div>
-      <div class="rfc-count">142 films</div>
+    <!-- SHRINGARA — Bharatanatyam -->
+    <button class="rasa-face-card" data-rasa="shringara" onclick="selectRasa('shringara', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#3a0818"/>
+          <rect x="78" y="196" width="44" height="44" fill="#c4856a"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#8B1A3A"/>
+          <ellipse cx="100" cy="134" rx="60" ry="72" fill="#d4926e"/>
+          <ellipse cx="100" cy="130" rx="50" ry="60" fill="#e8a880"/>
+          <path d="M46 78 Q100 44 154 78" fill="none" stroke="#c9a84c" stroke-width="4"/>
+          <path d="M56 64 Q100 36 144 64" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+          <circle cx="100" cy="40" r="9" fill="#c9a84c"/><circle cx="100" cy="40" r="5" fill="#e84070"/>
+          <circle cx="72" cy="52" r="6" fill="#c9a84c"/><circle cx="128" cy="52" r="6" fill="#c9a84c"/>
+          <circle cx="54" cy="66" r="4" fill="#e84070"/><circle cx="146" cy="66" r="4" fill="#e84070"/>
+          <ellipse cx="100" cy="126" rx="46" ry="56" fill="#f5e8d0"/>
+          <ellipse cx="70" cy="144" rx="14" ry="9" fill="#e87090" opacity="0.3"/>
+          <ellipse cx="130" cy="144" rx="14" ry="9" fill="#e87090" opacity="0.3"/>
+          <ellipse cx="100" cy="96" rx="5" ry="6" fill="#c0395f"/><ellipse cx="100" cy="95" rx="2.5" ry="3" fill="#ff8aaa"/>
+          <ellipse cx="78" cy="120" rx="16" ry="9" fill="#fff8f0"/><ellipse cx="122" cy="120" rx="16" ry="9" fill="#fff8f0"/>
+          <ellipse cx="78" cy="121" rx="11" ry="7" fill="#2a1008"/><ellipse cx="122" cy="121" rx="11" ry="7" fill="#2a1008"/>
+          <ellipse cx="78" cy="121" rx="6" ry="5" fill="#080402"/><ellipse cx="122" cy="121" rx="6" ry="5" fill="#080402"/>
+          <ellipse cx="80" cy="119" rx="2" ry="2" fill="#fff"/><ellipse cx="124" cy="119" rx="2" ry="2" fill="#fff"/>
+          <path d="M62 118 Q78 112 94 118" fill="#c89060" stroke="none"/>
+          <path d="M106 118 Q122 112 138 118" fill="#c89060" stroke="none"/>
+          <path d="M62 120 L56 116" stroke="#1a0808" stroke-width="2" stroke-linecap="round"/>
+          <path d="M138 120 L144 116" stroke="#1a0808" stroke-width="2" stroke-linecap="round"/>
+          <path d="M62 108 Q78 100 94 106" fill="none" stroke="#2a1008" stroke-width="3" stroke-linecap="round"/>
+          <path d="M106 106 Q122 100 138 108" fill="none" stroke="#2a1008" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="100" cy="140" rx="7" ry="6" fill="#c88060"/>
+          <circle cx="107" cy="139" r="3" fill="#c9a84c"/>
+          <path d="M80 160 Q100 172 120 160" fill="#8B1A3A"/>
+          <path d="M82 160 Q100 165 118 160" fill="#d04070"/>
+          <circle cx="44" cy="130" r="10" fill="#8B1A3A"/><circle cx="44" cy="130" r="5" fill="#c9a84c"/>
+          <line x1="44" y1="140" x2="44" y2="162" stroke="#c9a84c" stroke-width="2"/><circle cx="44" cy="164" r="5" fill="#c9a84c"/>
+          <circle cx="156" cy="130" r="10" fill="#8B1A3A"/><circle cx="156" cy="130" r="5" fill="#c9a84c"/>
+          <line x1="156" y1="140" x2="156" y2="162" stroke="#c9a84c" stroke-width="2"/><circle cx="156" cy="164" r="5" fill="#c9a84c"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Bharatanatyam</div>
+        <div class="rfc-face-name">Shringara</div>
+        <div class="rfc-face-meaning">Love · Romance</div>
+        <div class="rfc-face-count">142 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="hasya" onclick="selectRasa('hasya', this)">
-      <div class="rfc-icon">☺</div>
-      <div class="rfc-name">Hasya</div>
-      <div class="rfc-meaning">Joy · Laughter · Comedy</div>
-      <div class="rfc-desc">For when you need to laugh until it hurts and forget everything else.</div>
-      <div class="rfc-examples">3 Idiots · Stree 2 · Golmaal</div>
-      <div class="rfc-count">218 films</div>
+    <!-- HASYA — Yakshagana -->
+    <button class="rasa-face-card" data-rasa="hasya" onclick="selectRasa('hasya', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#1a0e00"/>
+          <rect x="78" y="196" width="44" height="44" fill="#c4856a"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#c47a00"/>
+          <ellipse cx="100" cy="136" rx="62" ry="74" fill="#d4926e"/>
+          <ellipse cx="100" cy="130" rx="52" ry="62" fill="#f2e8cc"/>
+          <circle cx="70" cy="152" r="22" fill="#FF9933" opacity="0.7"/>
+          <circle cx="130" cy="152" r="22" fill="#FF9933" opacity="0.7"/>
+          <rect x="44" y="74" width="112" height="22" rx="4" fill="#c9a84c"/>
+          <rect x="50" y="60" width="100" height="18" rx="3" fill="#e8b830"/>
+          <polygon points="100,12 108,54 92,54" fill="#c9a84c"/>
+          <polygon points="76,22 84,56 68,56" fill="#e8b830"/>
+          <polygon points="124,22 132,56 116,56" fill="#e8b830"/>
+          <circle cx="100" cy="14" r="7" fill="#e84040"/>
+          <circle cx="76" cy="26" r="5" fill="#40a0e0"/><circle cx="124" cy="26" r="5" fill="#40e080"/>
+          <ellipse cx="100" cy="88" rx="5" ry="7" fill="#FF9933"/><ellipse cx="100" cy="87" rx="3" ry="4" fill="#fff"/>
+          <ellipse cx="80" cy="118" rx="18" ry="13" fill="#fff8e8"/><ellipse cx="120" cy="118" rx="18" ry="13" fill="#fff8e8"/>
+          <ellipse cx="80" cy="119" rx="12" ry="9" fill="#2a1a08"/><ellipse cx="120" cy="119" rx="12" ry="9" fill="#2a1a08"/>
+          <ellipse cx="80" cy="119" rx="6" ry="6" fill="#080402"/><ellipse cx="120" cy="119" rx="6" ry="6" fill="#080402"/>
+          <ellipse cx="82" cy="117" rx="2.5" ry="2" fill="#fff"/><ellipse cx="122" cy="117" rx="2.5" ry="2" fill="#fff"/>
+          <path d="M62 114 Q80 108 98 114" fill="#d4a060" stroke="none"/>
+          <path d="M102 114 Q120 108 138 114" fill="#d4a060" stroke="none"/>
+          <path d="M60 124 Q66 132 72 130" fill="none" stroke="#b07840" stroke-width="1.2" opacity="0.5"/>
+          <path d="M128 130 Q134 132 140 124" fill="none" stroke="#b07840" stroke-width="1.2" opacity="0.5"/>
+          <path d="M60 100 Q80 88 100 98" fill="#1a0800" stroke="none"/>
+          <path d="M100 98 Q120 88 140 100" fill="#1a0800" stroke="none"/>
+          <path d="M62 120 L56 114" stroke="#1a0800" stroke-width="2" stroke-linecap="round"/>
+          <path d="M138 120 L144 114" stroke="#1a0800" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="100" cy="144" rx="8" ry="7" fill="#c07848"/>
+          <path d="M78 164 Q100 158 110 164" fill="#1a0800"/>
+          <path d="M110 164 Q120 158 142 164" fill="#1a0800"/>
+          <path d="M68 178 Q100 210 132 178" fill="#6a1020"/>
+          <path d="M70 178 Q100 196 130 178" fill="#c04060"/>
+          <rect x="78" y="178" width="44" height="12" rx="3" fill="#f8f0e0"/>
+          <rect x="78" y="178" width="44" height="4" rx="2" fill="#e87080"/>
+          <rect x="82" y="190" width="36" height="7" rx="2" fill="#f0e8d8"/>
+          <ellipse cx="100" cy="200" rx="16" ry="8" fill="#d04060"/>
+          <circle cx="38" cy="140" r="11" fill="#8B1A3A"/><circle cx="38" cy="140" r="6" fill="#c9a84c"/><circle cx="38" cy="140" r="3" fill="#e84040"/>
+          <circle cx="162" cy="140" r="11" fill="#8B1A3A"/><circle cx="162" cy="140" r="6" fill="#c9a84c"/><circle cx="162" cy="140" r="3" fill="#e84040"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Yakshagana</div>
+        <div class="rfc-face-name">Hasya</div>
+        <div class="rfc-face-meaning">Joy · Laughter</div>
+        <div class="rfc-face-count">218 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="karuna" onclick="selectRasa('karuna', this)">
-      <div class="rfc-icon">◇</div>
-      <div class="rfc-name">Karuna</div>
-      <div class="rfc-meaning">Sorrow · Compassion · Pathos</div>
-      <div class="rfc-desc">For when you want to feel deeply, cry it out, and emerge lighter.</div>
-      <div class="rfc-examples">Taare Zameen Par · Masaan · Drishyam</div>
-      <div class="rfc-count">196 films</div>
+    <!-- KARUNA — Odissi -->
+    <button class="rasa-face-card" data-rasa="karuna" onclick="selectRasa('karuna', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#020814"/>
+          <rect x="78" y="196" width="44" height="44" fill="#c4856a"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#0C447C"/>
+          <ellipse cx="100" cy="134" rx="58" ry="70" fill="#d4926e"/>
+          <ellipse cx="100" cy="130" rx="48" ry="58" fill="#e8b890"/>
+          <path d="M48 80 Q100 46 152 80" fill="none" stroke="#c8d8e8" stroke-width="5"/>
+          <path d="M54 70 Q100 52 146 70" fill="none" stroke="#c8d8e8" stroke-width="3"/>
+          <circle cx="100" cy="48" r="11" fill="#185FA5"/><circle cx="100" cy="48" r="6" fill="#a0c8f0"/><circle cx="100" cy="48" r="3" fill="#fff"/>
+          <circle cx="70" cy="60" r="7" fill="#185FA5"/><circle cx="130" cy="60" r="7" fill="#185FA5"/>
+          <circle cx="70" cy="60" r="4" fill="#a0c8f0"/><circle cx="130" cy="60" r="4" fill="#a0c8f0"/>
+          <ellipse cx="100" cy="94" rx="4" ry="6" fill="#0C447C"/><ellipse cx="100" cy="93" rx="2" ry="3" fill="#a0c8f0"/>
+          <ellipse cx="78" cy="120" rx="16" ry="10" fill="#fff8f0"/><ellipse cx="122" cy="120" rx="16" ry="10" fill="#fff8f0"/>
+          <ellipse cx="78" cy="122" rx="11" ry="7" fill="#1a0808"/><ellipse cx="122" cy="122" rx="11" ry="7" fill="#1a0808"/>
+          <ellipse cx="78" cy="122" rx="6" ry="5" fill="#050202"/><ellipse cx="122" cy="122" rx="6" ry="5" fill="#050202"/>
+          <path d="M62 116 Q78 110 94 116" fill="#b08060" stroke="none"/>
+          <path d="M106 116 Q122 110 138 116" fill="#b08060" stroke="none"/>
+          <path d="M70 128 Q68 144 70 158" fill="none" stroke="#a0c0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M130 128 Q132 144 130 158" fill="none" stroke="#a0c0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+          <ellipse cx="70" cy="128" rx="3" ry="5" fill="#a0c8f0" opacity="0.7"/>
+          <ellipse cx="130" cy="128" rx="3" ry="5" fill="#a0c8f0" opacity="0.7"/>
+          <path d="M62 104 Q78 108 92 105" fill="none" stroke="#2a1008" stroke-width="3" stroke-linecap="round"/>
+          <path d="M108 105 Q122 108 138 104" fill="none" stroke="#2a1008" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="100" cy="142" rx="7" ry="6" fill="#b07050"/>
+          <circle cx="107" cy="141" r="2.5" fill="#185FA5"/>
+          <path d="M80 162 Q100 156 120 162" fill="none" stroke="#8B3020" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M82 162 Q100 168 118 162" fill="#9a4030"/>
+          <circle cx="42" cy="128" r="11" fill="#185FA5"/><circle cx="42" cy="128" r="6" fill="#a0c8f0"/><circle cx="42" cy="128" r="3" fill="#fff"/>
+          <circle cx="158" cy="128" r="11" fill="#185FA5"/><circle cx="158" cy="128" r="6" fill="#a0c8f0"/><circle cx="158" cy="128" r="3" fill="#fff"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Odissi</div>
+        <div class="rfc-face-name">Karuna</div>
+        <div class="rfc-face-meaning">Sorrow · Compassion</div>
+        <div class="rfc-face-count">196 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="veera" onclick="selectRasa('veera', this)">
-      <div class="rfc-icon">◈</div>
-      <div class="rfc-name">Veera</div>
-      <div class="rfc-meaning">Courage · Heroism · Pride</div>
-      <div class="rfc-desc">For when you need to feel inspired, pumped up, and ready to take on the world.</div>
-      <div class="rfc-examples">Dangal · RRR · Lagaan</div>
-      <div class="rfc-count">184 films</div>
+    <!-- VEERA — Kathakali -->
+    <button class="rasa-face-card" data-rasa="veera" onclick="selectRasa('veera', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#061404"/>
+          <rect x="78" y="196" width="44" height="44" fill="#3a8a28"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#27500A"/>
+          <ellipse cx="100" cy="134" rx="62" ry="74" fill="#2a7a1a"/>
+          <ellipse cx="100" cy="134" rx="62" ry="74" fill="none" stroke="#f0f0d8" stroke-width="10"/>
+          <ellipse cx="100" cy="128" rx="50" ry="60" fill="#3a9a2a"/>
+          <ellipse cx="100" cy="90" rx="46" ry="18" fill="#f0f0d8"/>
+          <rect x="56" y="84" width="88" height="8" fill="#c0392b"/>
+          <path d="M44 76 L52 30 L70 56 L100 16 L130 56 L148 30 L156 76 Z" fill="#c9a84c"/>
+          <circle cx="100" cy="18" r="9" fill="#e8a000"/><circle cx="100" cy="18" r="5" fill="#fff"/>
+          <circle cx="70" cy="30" r="6" fill="#e84040"/><circle cx="130" cy="30" r="6" fill="#40e080"/>
+          <ellipse cx="78" cy="114" rx="20" ry="15" fill="#f0f0d8"/><ellipse cx="122" cy="114" rx="20" ry="15" fill="#f0f0d8"/>
+          <ellipse cx="78" cy="115" rx="14" ry="11" fill="#1a0500"/><ellipse cx="122" cy="115" rx="14" ry="11" fill="#1a0500"/>
+          <ellipse cx="78" cy="115" rx="8" ry="8" fill="#060100"/><ellipse cx="122" cy="115" rx="8" ry="8" fill="#060100"/>
+          <ellipse cx="80" cy="113" rx="3" ry="3" fill="#fff"/><ellipse cx="124" cy="113" rx="3" ry="3" fill="#fff"/>
+          <path d="M58 114 L64 114" stroke="#c0392b" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M136 114 L142 114" stroke="#c0392b" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M58 96 Q78 82 98 92" fill="#0a0500" stroke="none"/>
+          <path d="M102 92 Q122 82 142 96" fill="#0a0500" stroke="none"/>
+          <ellipse cx="100" cy="136" rx="9" ry="8" fill="#3a9a2a"/><ellipse cx="100" cy="134" rx="5" ry="4" fill="#f0f0d8"/>
+          <path d="M78 150 Q100 144 110 150" fill="#0a0500"/>
+          <path d="M110 150 Q120 144 142 150" fill="#0a0500"/>
+          <path d="M76 164 Q100 158 124 164" fill="#0a0500"/>
+          <path d="M78 164 Q100 170 122 164" fill="#c0392b"/>
+          <ellipse cx="56" cy="144" rx="12" ry="7" fill="#c0392b" opacity="0.5"/>
+          <ellipse cx="144" cy="144" rx="12" ry="7" fill="#c0392b" opacity="0.5"/>
+          <circle cx="38" cy="130" r="11" fill="#c9a84c"/><circle cx="38" cy="130" r="6" fill="#e8a000"/><circle cx="38" cy="130" r="3" fill="#fff"/>
+          <circle cx="162" cy="130" r="11" fill="#c9a84c"/><circle cx="162" cy="130" r="6" fill="#e8a000"/><circle cx="162" cy="130" r="3" fill="#fff"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Kathakali</div>
+        <div class="rfc-face-name">Veera</div>
+        <div class="rfc-face-meaning">Courage · Heroism</div>
+        <div class="rfc-face-count">184 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="bhayanaka" onclick="selectRasa('bhayanaka', this)">
-      <div class="rfc-icon">◉</div>
-      <div class="rfc-name">Bhayanaka</div>
-      <div class="rfc-meaning">Fear · Suspense · Dread</div>
-      <div class="rfc-desc">For when you want to be on the edge of your seat, heart racing, lights on.</div>
-      <div class="rfc-examples">Tumbbad · Drishyam 2 · IC 814</div>
-      <div class="rfc-count">127 films</div>
+    <!-- BHAYANAKA — Chhau -->
+    <button class="rasa-face-card" data-rasa="bhayanaka" onclick="selectRasa('bhayanaka', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#06030e"/>
+          <rect x="78" y="196" width="44" height="44" fill="#2a1840"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#26215C"/>
+          <ellipse cx="100" cy="134" rx="60" ry="72" fill="#1a0a30"/>
+          <ellipse cx="100" cy="128" rx="48" ry="58" fill="#28103a"/>
+          <path d="M44 78 L54 30 L68 58 L100 18 L132 58 L146 30 L156 78" fill="none" stroke="#534AB7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="100" cy="20" r="8" fill="#7F77DD"/>
+          <circle cx="68" cy="36" r="5" fill="#534AB7"/><circle cx="132" cy="36" r="5" fill="#534AB7"/>
+          <ellipse cx="100" cy="128" rx="48" ry="58" fill="none" stroke="#534AB7" stroke-width="3"/>
+          <ellipse cx="78" cy="114" rx="22" ry="18" fill="#e8e0ff"/>
+          <ellipse cx="122" cy="114" rx="22" ry="18" fill="#e8e0ff"/>
+          <ellipse cx="78" cy="115" rx="16" ry="13" fill="#1a0040"/>
+          <ellipse cx="122" cy="115" rx="16" ry="13" fill="#1a0040"/>
+          <ellipse cx="78" cy="115" rx="9" ry="9" fill="#060010"/>
+          <ellipse cx="122" cy="115" rx="9" ry="9" fill="#060010"/>
+          <ellipse cx="78" cy="114" rx="12" ry="11" fill="none" stroke="#7F77DD" stroke-width="2" opacity="0.4"/>
+          <ellipse cx="122" cy="114" rx="12" ry="11" fill="none" stroke="#7F77DD" stroke-width="2" opacity="0.4"/>
+          <ellipse cx="80" cy="112" rx="3" ry="3" fill="#fff"/>
+          <ellipse cx="124" cy="112" rx="3" ry="3" fill="#fff"/>
+          <ellipse cx="78" cy="130" rx="20" ry="7" fill="#1a0840" opacity="0.8"/>
+          <ellipse cx="122" cy="130" rx="20" ry="7" fill="#1a0840" opacity="0.8"/>
+          <path d="M56 96 L78 108 L98 94" fill="none" stroke="#534AB7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M102 94 L122 108 L144 96" fill="none" stroke="#534AB7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M96 138 Q100 146 104 138" fill="none" stroke="#7F77DD" stroke-width="2"/>
+          <ellipse cx="100" cy="164" rx="20" ry="14" fill="#0a0020"/>
+          <ellipse cx="100" cy="162" rx="14" ry="8" fill="#06000e"/>
+          <ellipse cx="56" cy="106" rx="3" ry="6" fill="#7F77DD" opacity="0.5"/>
+          <ellipse cx="144" cy="100" rx="3" ry="6" fill="#7F77DD" opacity="0.5"/>
+          <circle cx="40" cy="128" r="10" fill="#26215C"/><circle cx="40" cy="128" r="5" fill="#534AB7"/>
+          <circle cx="160" cy="128" r="10" fill="#26215C"/><circle cx="160" cy="128" r="5" fill="#534AB7"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Chhau</div>
+        <div class="rfc-face-name">Bhayanaka</div>
+        <div class="rfc-face-meaning">Fear · Suspense</div>
+        <div class="rfc-face-count">127 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="adbhuta" onclick="selectRasa('adbhuta', this)">
-      <div class="rfc-icon">✦</div>
-      <div class="rfc-name">Adbhuta</div>
-      <div class="rfc-meaning">Wonder · Fantasy · Amazement</div>
-      <div class="rfc-desc">For when you want your mind completely blown by something you have never seen before.</div>
-      <div class="rfc-examples">Baahubali · Kalki 2898-AD · Enthiran</div>
-      <div class="rfc-count">98 films</div>
+    <!-- ADBHUTA — Manipuri -->
+    <button class="rasa-face-card" data-rasa="adbhuta" onclick="selectRasa('adbhuta', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#021410"/>
+          <rect x="78" y="196" width="44" height="44" fill="#c4926a"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#085041"/>
+          <ellipse cx="100" cy="134" rx="58" ry="70" fill="#d4a070"/>
+          <ellipse cx="100" cy="128" rx="48" ry="58" fill="#f0d8a8"/>
+          <path d="M100 18 L58 74 L142 74 Z" fill="#1D9E75"/>
+          <path d="M100 22 L64 72 L136 72 Z" fill="#0F6E56"/>
+          <circle cx="100" cy="26" r="7" fill="#5DCAA5"/><circle cx="100" cy="26" r="3" fill="#fff"/>
+          <path d="M68 56 Q100 48 132 56" fill="none" stroke="#5DCAA5" stroke-width="2"/>
+          <circle cx="80" cy="62" r="4" fill="#5DCAA5"/><circle cx="100" cy="58" r="4" fill="#5DCAA5"/><circle cx="120" cy="62" r="4" fill="#5DCAA5"/>
+          <circle cx="52" cy="86" r="8" fill="#fff"/><circle cx="52" cy="86" r="4" fill="#1D9E75"/>
+          <circle cx="148" cy="86" r="8" fill="#fff"/><circle cx="148" cy="86" r="4" fill="#1D9E75"/>
+          <path d="M58 96 Q78 80 98 90" fill="#2a1008" stroke="none"/>
+          <path d="M102 90 Q122 80 142 96" fill="#2a1008" stroke="none"/>
+          <ellipse cx="78" cy="116" rx="20" ry="17" fill="#fff8f0"/>
+          <ellipse cx="122" cy="116" rx="20" ry="17" fill="#fff8f0"/>
+          <ellipse cx="78" cy="116" rx="14" ry="13" fill="#0a2a20"/>
+          <ellipse cx="122" cy="116" rx="14" ry="13" fill="#0a2a20"/>
+          <ellipse cx="78" cy="116" rx="10" ry="9" fill="#1D9E75" opacity="0.3"/>
+          <ellipse cx="122" cy="116" rx="10" ry="9" fill="#1D9E75" opacity="0.3"/>
+          <ellipse cx="78" cy="116" rx="8" ry="8" fill="#040e0a"/>
+          <ellipse cx="122" cy="116" rx="8" ry="8" fill="#040e0a"/>
+          <ellipse cx="82" cy="112" rx="4" ry="3" fill="#fff"/>
+          <ellipse cx="126" cy="112" rx="4" ry="3" fill="#fff"/>
+          <ellipse cx="75" cy="118" rx="1.5" ry="1.5" fill="#fff" opacity="0.5"/>
+          <ellipse cx="119" cy="118" rx="1.5" ry="1.5" fill="#fff" opacity="0.5"/>
+          <path d="M58 116 Q78 104 98 116" fill="none" stroke="#2a1008" stroke-width="1.5"/>
+          <path d="M102 116 Q122 104 142 116" fill="none" stroke="#2a1008" stroke-width="1.5"/>
+          <path d="M58 116 L52 110" stroke="#1a0808" stroke-width="2" stroke-linecap="round"/>
+          <path d="M142 116 L148 110" stroke="#1a0808" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="100" cy="96" r="5" fill="#0F6E56"/><circle cx="100" cy="96" r="2.5" fill="#5DCAA5"/>
+          <ellipse cx="100" cy="140" rx="7" ry="6" fill="#b07848"/>
+          <ellipse cx="100" cy="163" rx="16" ry="13" fill="#6a2010"/>
+          <ellipse cx="100" cy="161" rx="11" ry="8" fill="#e06040"/>
+          <ellipse cx="100" cy="160" rx="7" ry="5" fill="#1a0808"/>
+          <text x="38" y="104" font-size="12" fill="#5DCAA5" opacity="0.7">✦</text>
+          <text x="152" y="104" font-size="12" fill="#5DCAA5" opacity="0.7">✦</text>
+          <text x="44" y="130" font-size="8" fill="#5DCAA5" opacity="0.5">✦</text>
+          <text x="148" y="125" font-size="8" fill="#5DCAA5" opacity="0.5">✦</text>
+          <circle cx="40" cy="128" r="10" fill="#085041"/><circle cx="40" cy="128" r="5" fill="#1D9E75"/><circle cx="40" cy="128" r="2.5" fill="#fff"/>
+          <circle cx="160" cy="128" r="10" fill="#085041"/><circle cx="160" cy="128" r="5" fill="#1D9E75"/><circle cx="160" cy="128" r="2.5" fill="#fff"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Manipuri</div>
+        <div class="rfc-face-name">Adbhuta</div>
+        <div class="rfc-face-meaning">Wonder · Fantasy</div>
+        <div class="rfc-face-count">98 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="raudra" onclick="selectRasa('raudra', this)">
-      <div class="rfc-icon">△</div>
-      <div class="rfc-name">Raudra</div>
-      <div class="rfc-meaning">Anger · Fury · Intensity</div>
-      <div class="rfc-desc">For when you want raw, unfiltered, morally complex storytelling that pulls no punches.</div>
-      <div class="rfc-examples">Gangs of Wasseypur · Vikram · Article 15</div>
-      <div class="rfc-count">153 films</div>
+    <!-- RAUDRA — Theyyam -->
+    <button class="rasa-face-card" data-rasa="raudra" onclick="selectRasa('raudra', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#140200"/>
+          <rect x="78" y="196" width="44" height="44" fill="#c4856a"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#6a1010"/>
+          <ellipse cx="100" cy="134" rx="62" ry="74" fill="#c0392b"/>
+          <ellipse cx="100" cy="128" rx="50" ry="62" fill="#e04030"/>
+          <ellipse cx="100" cy="124" rx="42" ry="52" fill="#f0e8d0"/>
+          <path d="M40 78 L50 22 L68 52 L84 10 L100 46 L116 10 L132 52 L150 22 L160 78 Z" fill="#c9a84c"/>
+          <circle cx="100" cy="12" r="9" fill="#e8a000"/><circle cx="100" cy="12" r="5" fill="#fff"/>
+          <circle cx="68" cy="18" r="7" fill="#c0392b"/><circle cx="132" cy="18" r="7" fill="#c0392b"/>
+          <ellipse cx="100" cy="124" rx="42" ry="52" fill="none" stroke="#c0392b" stroke-width="6"/>
+          <ellipse cx="78" cy="114" rx="18" ry="13" fill="#fff8d8"/><ellipse cx="122" cy="114" rx="18" ry="13" fill="#fff8d8"/>
+          <ellipse cx="78" cy="115" rx="12" ry="9" fill="#1a0500"/><ellipse cx="122" cy="115" rx="12" ry="9" fill="#1a0500"/>
+          <ellipse cx="78" cy="115" rx="7" ry="7" fill="#060100"/><ellipse cx="122" cy="115" rx="7" ry="7" fill="#060100"/>
+          <ellipse cx="78" cy="114" rx="5" ry="5" fill="#c0392b" opacity="0.4"/>
+          <ellipse cx="122" cy="114" rx="5" ry="5" fill="#c0392b" opacity="0.4"/>
+          <ellipse cx="80" cy="112" rx="2.5" ry="2" fill="#fff"/><ellipse cx="124" cy="112" rx="2.5" ry="2" fill="#fff"/>
+          <path d="M60 114 L66 114" stroke="#f0e8d0" stroke-width="3" stroke-linecap="round"/>
+          <path d="M134 114 L140 114" stroke="#f0e8d0" stroke-width="3" stroke-linecap="round"/>
+          <path d="M58 96 L80 108 L98 92" fill="#0a0400" stroke="none"/>
+          <path d="M102 92 L120 108 L142 96" fill="#0a0400" stroke="none"/>
+          <line x1="100" y1="80" x2="100" y2="96" stroke="#f0e8d0" stroke-width="2"/>
+          <line x1="62" y1="138" x2="74" y2="150" stroke="#f0e8d0" stroke-width="1.5"/>
+          <line x1="138" y1="138" x2="126" y2="150" stroke="#f0e8d0" stroke-width="1.5"/>
+          <ellipse cx="100" cy="136" rx="9" ry="8" fill="#e04030"/><ellipse cx="100" cy="134" rx="5" ry="4" fill="#f0e8d0"/>
+          <path d="M76 150 Q100 144 110 150" fill="#0a0400"/>
+          <path d="M110 150 Q120 144 144 150" fill="#0a0400"/>
+          <path d="M72 166 Q100 158 128 166" fill="#0a0400"/>
+          <path d="M74 166 Q100 178 126 166" fill="#8B0000"/>
+          <rect x="80" y="166" width="40" height="10" rx="3" fill="#f0e8d0"/>
+          <ellipse cx="56" cy="140" rx="12" ry="7" fill="#c0392b" opacity="0.6"/>
+          <ellipse cx="144" cy="140" rx="12" ry="7" fill="#c0392b" opacity="0.6"/>
+          <circle cx="38" cy="128" r="12" fill="#8B0000"/><circle cx="38" cy="128" r="7" fill="#c9a84c"/><circle cx="38" cy="128" r="3" fill="#e84040"/>
+          <circle cx="162" cy="128" r="12" fill="#8B0000"/><circle cx="162" cy="128" r="7" fill="#c9a84c"/><circle cx="162" cy="128" r="3" fill="#e84040"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Theyyam</div>
+        <div class="rfc-face-name">Raudra</div>
+        <div class="rfc-face-meaning">Anger · Fury</div>
+        <div class="rfc-face-count">153 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="shanta" onclick="selectRasa('shanta', this)">
-      <div class="rfc-icon">〇</div>
-      <div class="rfc-name">Shanta</div>
-      <div class="rfc-meaning">Peace · Serenity · Contemplation</div>
-      <div class="rfc-desc">For when you want to breathe, slow down, and let a film wash gently over you.</div>
-      <div class="rfc-examples">Piku · Masaan · All We Imagine as Light</div>
-      <div class="rfc-count">89 films</div>
+    <!-- SHANTA — Kuchipudi -->
+    <button class="rasa-face-card" data-rasa="shanta" onclick="selectRasa('shanta', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#100800"/>
+          <rect x="78" y="196" width="44" height="44" fill="#c4926a"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#633806"/>
+          <ellipse cx="100" cy="134" rx="58" ry="70" fill="#d4a070"/>
+          <ellipse cx="100" cy="128" rx="48" ry="58" fill="#f0d0a0"/>
+          <path d="M52 78 Q100 50 148 78" fill="none" stroke="#c9a84c" stroke-width="5"/>
+          <path d="M58 66 Q100 44 142 66" fill="none" stroke="#c9a84c" stroke-width="3"/>
+          <circle cx="100" cy="46" r="10" fill="#c9a84c"/><circle cx="100" cy="46" r="6" fill="#e8c060"/><circle cx="100" cy="46" r="3" fill="#fff8c0"/>
+          <circle cx="72" cy="58" r="7" fill="#c9a84c"/><circle cx="128" cy="58" r="7" fill="#c9a84c"/>
+          <circle cx="72" cy="58" r="3.5" fill="#e8c060"/><circle cx="128" cy="58" r="3.5" fill="#e8c060"/>
+          <path d="M60 116 Q78 124 96 116" fill="#b08060" stroke="none"/>
+          <path d="M104 116 Q122 124 140 116" fill="#b08060" stroke="none"/>
+          <line x1="64" y1="117" x2="62" y2="126" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="70" y1="119" x2="69" y2="128" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="78" y1="121" x2="78" y2="130" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="86" y1="119" x2="87" y2="128" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="92" y1="117" x2="94" y2="126" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="108" y1="117" x2="106" y2="126" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="114" y1="119" x2="113" y2="128" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="122" y1="121" x2="122" y2="130" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="130" y1="119" x2="131" y2="128" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="136" y1="117" x2="138" y2="126" stroke="#2a1008" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M60 102 Q78 96 96 100" fill="none" stroke="#2a1008" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M104 100 Q122 96 140 102" fill="none" stroke="#2a1008" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="100" cy="90" r="6" fill="#854F0B"/><circle cx="100" cy="90" r="3" fill="#e8a000"/>
+          <ellipse cx="100" cy="140" rx="7" ry="6" fill="#b07848"/>
+          <circle cx="107" cy="139" r="2.5" fill="#c9a84c"/>
+          <path d="M80 160 Q100 174 120 160" fill="#854F0B"/>
+          <path d="M82 160 Q100 168 118 160" fill="#c07040"/>
+          <circle cx="42" cy="128" r="9" fill="#854F0B"/><circle cx="42" cy="128" r="5" fill="#e8a000"/><circle cx="42" cy="128" r="2.5" fill="#fff8c0"/>
+          <line x1="42" y1="137" x2="42" y2="154" stroke="#c9a84c" stroke-width="2"/><circle cx="42" cy="156" r="4" fill="#c9a84c"/>
+          <circle cx="158" cy="128" r="9" fill="#854F0B"/><circle cx="158" cy="128" r="5" fill="#e8a000"/><circle cx="158" cy="128" r="2.5" fill="#fff8c0"/>
+          <line x1="158" y1="137" x2="158" y2="154" stroke="#c9a84c" stroke-width="2"/><circle cx="158" cy="156" r="4" fill="#c9a84c"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Kuchipudi</div>
+        <div class="rfc-face-name">Shanta</div>
+        <div class="rfc-face-meaning">Peace · Serenity</div>
+        <div class="rfc-face-count">89 films</div>
+      </div>
     </button>
 
-    <button class="rasa-full-card" data-rasa="bibhatsa" onclick="selectRasa('bibhatsa', this)">
-      <div class="rfc-icon">▣</div>
-      <div class="rfc-name">Bibhatsa</div>
-      <div class="rfc-meaning">Dark · Gritty · Unsettling</div>
-      <div class="rfc-desc">For when you want something dark, gritty and real — cinema that doesn't look away.</div>
-      <div class="rfc-examples">Ugly · Tumbbad · Andhadhun</div>
-      <div class="rfc-count">74 films</div>
+    <!-- BIBHATSA — Purulia Chhau -->
+    <button class="rasa-face-card" data-rasa="bibhatsa" onclick="selectRasa('bibhatsa', this)">
+      <div class="rfc-face-wrap">
+        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="rfc-svg">
+          <rect width="200" height="240" fill="#040404"/>
+          <rect x="78" y="196" width="44" height="44" fill="#2a2a26"/>
+          <rect x="58" y="216" width="84" height="24" rx="3" fill="#2C2C2A"/>
+          <ellipse cx="100" cy="134" rx="60" ry="72" fill="#1a1a18"/>
+          <ellipse cx="100" cy="128" rx="50" ry="60" fill="#2a2a26"/>
+          <path d="M50 90 Q72 80 100 128 Q72 176 50 168 Z" fill="#0a0a08" opacity="0.7"/>
+          <rect x="50" y="60" width="100" height="18" rx="2" fill="#2C2C2A"/>
+          <rect x="58" y="44" width="84" height="18" rx="2" fill="#444441"/>
+          <rect x="70" y="28" width="60" height="18" rx="2" fill="#5F5E5A"/>
+          <rect x="84" y="14" width="32" height="16" rx="1" fill="#888780"/>
+          <ellipse cx="76" cy="112" rx="20" ry="16" fill="#0a0a08"/>
+          <ellipse cx="122" cy="114" rx="16" ry="12" fill="#1a1a15"/>
+          <ellipse cx="76" cy="113" rx="13" ry="11" fill="#060606"/>
+          <ellipse cx="122" cy="115" rx="10" ry="8" fill="#0e0e0c"/>
+          <ellipse cx="76" cy="113" rx="7" ry="7" fill="#020202"/>
+          <ellipse cx="122" cy="115" rx="6" ry="6" fill="#040404"/>
+          <ellipse cx="78" cy="110" rx="2" ry="2" fill="#888780" opacity="0.4"/>
+          <ellipse cx="124" cy="112" rx="1.5" ry="1.5" fill="#888780" opacity="0.3"/>
+          <ellipse cx="76" cy="126" rx="22" ry="9" fill="#040402" opacity="0.9"/>
+          <ellipse cx="122" cy="126" rx="18" ry="7" fill="#040402" opacity="0.8"/>
+          <path d="M54 94 L78 104 L96 90" fill="none" stroke="#444441" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M106 94 L120 102 L142 94" fill="none" stroke="#5F5E5A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="100" y1="74" x2="100" y2="88" stroke="#888780" stroke-width="2" opacity="0.5"/>
+          <line x1="54" y1="140" x2="68" y2="154" stroke="#5F5E5A" stroke-width="1.5" opacity="0.6"/>
+          <path d="M92 138 L100 150 L108 138" fill="none" stroke="#444441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M74 164 Q88 158 100 164 Q112 158 126 164" fill="none" stroke="#5F5E5A" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M76 166 Q100 174 124 166" fill="#1a1a15"/>
+          <rect x="30" y="124" width="10" height="14" rx="2" fill="#2C2C2A"/>
+          <rect x="160" y="124" width="10" height="14" rx="2" fill="#2C2C2A"/>
+        </svg>
+        <div class="rfc-active-overlay">✓</div>
+      </div>
+      <div class="rfc-face-label">
+        <div class="rfc-art-form">Purulia Chhau</div>
+        <div class="rfc-face-name">Bibhatsa</div>
+        <div class="rfc-face-meaning">Dark · Gritty</div>
+        <div class="rfc-face-count">74 films</div>
+      </div>
     </button>
 
   </div>
