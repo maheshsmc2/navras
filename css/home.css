@@ -1045,3 +1045,81 @@
 @media (max-width: 400px) {
   .explorer-lists-grid { grid-template-columns: 1fr; }
 }
+
+/* ===========================
+   NAVRAS MINI FACE GRID
+   Homepage mood section
+   =========================== */
+.navras-section {
+  background: var(--ink2);
+  border-top: 0.5px solid var(--ink3);
+  padding: 28px 32px;
+}
+
+.navras-section { background: var(--ink2) !important; }
+
+.navras-section-top {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+}
+
+.navras-face-grid-mini {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 10px;
+}
+
+.rasa-mini-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid var(--ink3);
+  text-decoration: none;
+  transition: transform 0.2s, border-color 0.2s;
+  display: block;
+  background: var(--ink);
+}
+
+.rasa-mini-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+.rasa-mini-svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.rasa-mini-label {
+  padding: 5px 6px 7px;
+  text-align: center;
+  border-top: 0.5px solid var(--ink3);
+}
+
+.rml-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.rml-mean {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+@media (max-width: 900px) {
+  .navras-face-grid-mini {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .rasa-mini-card { border-radius: 8px; }
+}
+
+@media (max-width: 500px) {
+  .navras-face-grid-mini { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .rml-name { font-size: 9px; }
+  .rml-mean { display: none; }
+}
