@@ -455,28 +455,44 @@ document.addEventListener('DOMContentLoaded', () => {
    =========================== */
 
 const carouselFilms = [
-  { title:"Stree 2", year:2024, lang:"Hindi", type:"Film", score:87, verdict:"Rajkummar & Shraddha deliver the horror comedy sequel India deserved.", rasas:["Hasya","Bhayanaka"], backdrop:"https://image.tmdb.org/t/p/w1280/yDEpc8Q7IZFbSFOCthVAiB3NRPP.jpg", id:1100782 },
-  { title:"RRR", year:2022, lang:"Telugu", type:"Film", score:95, verdict:"Pure cinematic adrenaline. S.S. Rajamouli at his most unstoppable.", rasas:["Veera","Raudra"], backdrop:"https://image.tmdb.org/t/p/w1280/yRt7MGBElkLQOYRvLTT1b3B1rcp.jpg", id:759244 },
-  { title:"All We Imagine as Light", year:2024, lang:"Malayalam", type:"Film", score:96, verdict:"Grand Prix at Cannes. India's most quietly beautiful film in decades.", rasas:["Karuna","Shanta"], backdrop:"https://image.tmdb.org/t/p/w1280/5Vber9sPmxfzIBxoSFGxdFH5xqQ.jpg", id:1017336 },
-  { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", type:"Series", score:91, verdict:"India's most gripping series based on true events. Riveting from start to finish.", rasas:["Bhayanaka","Veera"], backdrop:"https://image.tmdb.org/t/p/w1280/9GBhzXMFjgcZ3FdR9w3bqMMRKL5.jpg", id:242074 },
-  { title:"Dangal", year:2016, lang:"Hindi", type:"Film", score:96, verdict:"Aamir Khan and two extraordinary daughters. The greatest Indian sports film ever made.", rasas:["Veera","Karuna"], backdrop:"https://image.tmdb.org/t/p/w1280/wMq9kQXTeQCHUZOG4fAe5cAikde.jpg", id:363676 },
-  { title:"Tumbbad", year:2018, lang:"Hindi", type:"Film", score:94, verdict:"Greed, mythology, and nightmares fused into something completely original.", rasas:["Bhayanaka","Bibhatsa"], backdrop:"https://image.tmdb.org/t/p/w1280/arZn9Cr7gj3t3SuFriKcjrzmYAb.jpg", id:520110 }
+  { title:"Stree 2", year:2024, lang:"Hindi", type:"Film", score:87, verdict:"Rajkummar & Shraddha deliver the horror comedy sequel India deserved.", rasas:["Hasya","Bhayanaka"], id:1100782 },
+  { title:"RRR", year:2022, lang:"Telugu", type:"Film", score:95, verdict:"Pure cinematic adrenaline. S.S. Rajamouli at his most unstoppable.", rasas:["Veera","Raudra"], id:759244 },
+  { title:"All We Imagine as Light", year:2024, lang:"Malayalam", type:"Film", score:96, verdict:"Grand Prix at Cannes. India's most quietly beautiful film in decades.", rasas:["Karuna","Shanta"], id:1017336 },
+  { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", type:"Series", score:91, verdict:"India's most gripping series based on true events.", rasas:["Bhayanaka","Veera"], id:242074 },
+  { title:"Dangal", year:2016, lang:"Hindi", type:"Film", score:96, verdict:"Aamir Khan and two extraordinary daughters. The greatest Indian sports film ever made.", rasas:["Veera","Karuna"], id:363676 },
+  { title:"Tumbbad", year:2018, lang:"Hindi", type:"Film", score:94, verdict:"Greed, mythology, and nightmares fused into something completely original.", rasas:["Bhayanaka","Bibhatsa"], id:520110 }
 ];
 
-let carouselIndex = 0;
-let carouselTimer = null;
 
-function buildCarousel() {
+async function buildCarousel() {
   const track = document.getElementById('carouselTrack');
   const dots = document.getElementById('carouselDots');
   if (!track || !dots) return;
 
-  track.innerHTML = carouselFilms.map((f, i) => {
+  // Fetch real backdrops from TMDb for each film
+  const withBackdrops = await Promise.all(carouselFilms.map(async f => {
+    try {
+      const endpoint = f.type === 'Series' ? `/tv/${f.id}` : `/movie/${f.id}`;
+      const data = await TMDB.get(endpoint, {});
+      const backdropPath = data?.backdrop_path || data?.poster_path;
+      const backdrop = backdropPath
+        ? `https://image.tmdb.org/t/p/w1280${backdropPath}`
+        : null;
+      return { ...f, backdrop };
+    } catch {
+      return { ...f, backdrop: null };
+    }
+  }));
+
+  track.innerHTML = withBackdrops.map((f, i) => {
     const sc = f.score >= 75 ? 'green' : f.score >= 55 ? 'amber' : 'red';
     const typeClass = f.type.toLowerCase() === 'series' ? 'series' : 'film';
+    const bgStyle = f.backdrop
+      ? `background-image:url('${f.backdrop}'); background-size:cover; background-position:center;`
+      : `background:linear-gradient(135deg, #1a1a2e, #2a1a3e);`;
     return `
       <div class="carousel-slide${i===0?' active':''}" data-index="${i}">
-        <div class="carousel-bg" style="background-image:url('${f.backdrop}');"></div>
+        <div class="carousel-bg" style="${bgStyle}"></div>
         <div class="carousel-overlay"></div>
         <div class="carousel-content">
           <div class="carousel-badge">
@@ -502,9 +518,13 @@ function buildCarousel() {
       </div>`;
   }).join('');
 
-  dots.innerHTML = carouselFilms.map((_,i) =>
+  dots.innerHTML = withBackdrops.map((_,i) =>
     `<button class="carousel-dot${i===0?' active':''}" onclick="carouselGoTo(${i})"></button>`
   ).join('');
+
+  // Activate first slide
+  const firstSlide = track.querySelector('.carousel-slide');
+  if (firstSlide) firstSlide.classList.add('active');
 
   startCarouselTimer();
 }
