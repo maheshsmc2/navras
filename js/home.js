@@ -775,29 +775,33 @@ async function loadFeaturedReview() {
   }
 }
 
-/* Popular right now — two columns, movies + TV, both visible always */
+/* Popular right now — two columns always loaded simultaneously */
 async function loadPopularNow() {
   const moviesCol = document.getElementById('popularMoviesList');
   const tvCol = document.getElementById('popularTVList');
 
-  // Load movies
+  // Load both in parallel
+  const [movieData, tvData] = await Promise.all([
+    TMDB.get('/trending/movie/week', {}),
+    TMDB.get('/trending/tv/week', {})
+  ]);
+
+  // Movies — Indian films first, then fill with global if needed
   if (moviesCol) {
-    const data = await TMDB.get('/trending/movie/week', {});
-    const films = (data?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language));
-    moviesCol.innerHTML = films.slice(0, 8).map((f, i) => renderTrendingItem(f, i + 1, 'movie')).join('') ||
-      '<div style="color:var(--text-muted);padding:12px;">Loading...</div>';
+    const all = movieData?.results || [];
+    const indian = all.filter(f => INDIAN_LANGS.includes(f.original_language));
+    const global = all.filter(f => !INDIAN_LANGS.includes(f.original_language));
+    const films = [...indian, ...global].slice(0, 10);
+    moviesCol.innerHTML = films.map((f, i) => renderTrendingItem(f, i + 1, 'movie')).join('');
   }
 
-  // Load TV
+  // TV Shows — mix Indian + global popular
   if (tvCol) {
-    const data = await TMDB.get('/trending/tv/week', {});
-    const shows = data?.results || [];
-    // Mix Indian + popular global
-    const indian = shows.filter(f => INDIAN_LANGS.includes(f.original_language));
-    const global = shows.filter(f => !INDIAN_LANGS.includes(f.original_language));
-    const mixed = [...indian, ...global].slice(0, 8);
-    tvCol.innerHTML = mixed.map((f, i) => renderTrendingItem(f, i + 1, 'tv')).join('') ||
-      '<div style="color:var(--text-muted);padding:12px;">Loading...</div>';
+    const all = tvData?.results || [];
+    const indian = all.filter(f => INDIAN_LANGS.includes(f.original_language));
+    const global = all.filter(f => !INDIAN_LANGS.includes(f.original_language));
+    const shows = [...indian, ...global].slice(0, 10);
+    tvCol.innerHTML = shows.map((f, i) => renderTrendingItem(f, i + 1, 'tv')).join('');
   }
 }
 

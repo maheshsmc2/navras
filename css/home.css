@@ -1209,3 +1209,73 @@
   .rms-sub-head { gap: 6px; }
   .rms-sub-head .ott-platform-tabs { overflow-x: auto; }
 }
+
+/* ===========================
+   FIX OTT TABS — horizontal row
+   FIX POPULAR NOW — two columns always
+   =========================== */
+
+/* OTT tabs must always be horizontal */
+.rms-sub-head {
+  flex-wrap: nowrap !important;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 10px;
+}
+
+.rms-sub-head::-webkit-scrollbar { display: none; }
+
+.rms-sub-head .ott-platform-tabs {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 4px;
+  flex-wrap: nowrap;
+  margin-left: 0;
+}
+
+.rms-sub-head .ott-tab {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Popular now — always two columns, both filled */
+.popular-now-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.popular-col { display: flex; flex-direction: column; }
+
+.popular-col-head {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.popular-col-label {
+  font-size: 12px; font-weight: 600;
+  color: var(--text); text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Trending list items must fill full column */
+.popular-col .trending-list-items {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.popular-col .trending-skeleton-item {
+  height: 38px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  background: var(--ink3);
+  animation: shimmer 1.5s infinite;
+}
+
+@media (max-width: 700px) {
+  .popular-now-grid { grid-template-columns: 1fr; gap: 20px; }
+  .rms-sub-head { flex-wrap: wrap !important; }
+}

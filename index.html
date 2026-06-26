@@ -138,32 +138,7 @@
 
     </section>
 
-    <!-- POPULAR RIGHT NOW -->
-    <section class="home-section popular-now-section">
-      <div class="home-section-head">
-        <div class="home-section-title">Popular right now</div>
-        <div class="review-sort">
-          <button class="rsort-btn active" data-pop="movies">Movies</button>
-          <button class="rsort-btn" data-pop="tv">TV Shows</button>
-        </div>
-      </div>
-      <div class="popular-now-grid">
-        <div class="trending-list-items" id="popularMoviesList">
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-        </div>
-        <div class="trending-list-items" id="popularTVList">
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMING SOON -->
+    <!-- COMING SOON — moved above popular -->
     <section class="home-section">
       <div class="home-section-head">
         <div class="home-section-title">Coming soon</div>
@@ -172,6 +147,37 @@
       <div class="coming-grid" id="comingGrid">
         <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
         <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+      </div>
+    </section>
+
+    <!-- POPULAR RIGHT NOW — two columns both always visible -->
+    <section class="home-section popular-now-section">
+      <div class="home-section-head">
+        <div class="home-section-title">Popular right now</div>
+      </div>
+      <div class="popular-now-grid">
+        <div class="popular-col">
+          <div class="popular-col-head">
+            <span class="popular-col-label">Movies</span>
+          </div>
+          <div class="trending-list-items" id="popularMoviesList">
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          </div>
+        </div>
+        <div class="popular-col">
+          <div class="popular-col-head">
+            <span class="popular-col-label">TV Shows &amp; Series</span>
+          </div>
+          <div class="trending-list-items" id="popularTVList">
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          </div>
+        </div>
       </div>
     </section>
 
