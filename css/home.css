@@ -1131,3 +1131,81 @@
   .rml-name { font-size: 10px; }
   .rml-mean { font-size: 9px; }
 }
+
+/* ===========================
+   REVIEWS MEGA SECTION
+   Unified — no patchiness
+   =========================== */
+.reviews-mega-section {
+  padding: 24px 32px 28px;
+  border-bottom: 0.5px solid var(--ink3);
+}
+
+.rms-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 14px;
+}
+
+.rms-title {
+  font-size: 20px; font-weight: 600; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+  flex: 1; font-family: var(--font-display);
+}
+
+/* Sub-sections inside the mega section */
+.rms-sub-section {
+  margin-bottom: 24px;
+}
+
+.rms-sub-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px; flex-wrap: wrap;
+}
+
+.rms-sub-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.rms-sub-link {
+  font-size: 12px; color: var(--gold);
+  margin-left: auto;
+}
+
+/* Gold divider between sub-sections */
+.rms-divider {
+  height: 0.5px;
+  background: var(--ink3);
+  margin: 20px 0;
+  position: relative;
+}
+
+.rms-divider::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 40px; height: 2px;
+  background: var(--gold);
+  transform: translateY(-50%);
+}
+
+/* OTT tabs inside sub-head */
+.rms-sub-head .ott-platform-tabs {
+  margin-left: 8px;
+}
+
+/* Make OTT grid same as cinemas grid */
+#ottGrid {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+@media (max-width: 700px) {
+  .reviews-mega-section { padding: 16px 16px 20px; }
+  .rms-title { font-size: 17px; }
+  .rms-sub-head { gap: 6px; }
+  .rms-sub-head .ott-platform-tabs { overflow-x: auto; }
+}

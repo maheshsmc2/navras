@@ -438,15 +438,16 @@ function fixGaps() {
 
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded', () => {
-  fixGaps();
   initTopTabs();
   initOttTabs();
   initRankingTabs();
-  initReviewSort();
   initSearch();
   loadCinemas();
-  loadReviews('recent');
   loadComingSoon();
+  loadPopularNow();
+  initPopularNowToggle();
+  initExplorerFilter();
+  loadFeaturedReview();
 });
 
 /* ===========================

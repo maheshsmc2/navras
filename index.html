@@ -93,33 +93,52 @@
     <!-- MOVIES TAB CONTENT -->
   <div id="tab-movies">
 
-    <!-- 1. LATEST RELEASE REVIEWS — top priority -->
-    <section class="home-section">
-      <div class="home-section-head">
-        <div class="home-section-title">
-          <span class="live-dot"></span>Latest release reviews
+    <!-- REVIEWS MEGA SECTION — unified -->
+    <section class="reviews-mega-section">
+
+      <div class="rms-header">
+        <div class="rms-title"><span class="live-dot"></span>Reviews</div>
+        <a href="pages/browse.html" class="home-see-all">See all →</a>
+      </div>
+
+      <!-- IN CINEMAS NOW -->
+      <div class="rms-sub-section">
+        <div class="rms-sub-head">
+          <span class="live-dot" style="width:6px;height:6px;"></span>
+          <span class="rms-sub-title">In cinemas now</span>
+          <a href="pages/browse.html" class="rms-sub-link">See all →</a>
         </div>
-        <div class="review-sort">
-          <button class="rsort-btn active" data-sort="recent">This week</button>
-          <button class="rsort-btn" data-sort="top">Top rated</button>
+        <div class="cinemas-grid" id="cinemasGrid">
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
         </div>
       </div>
-      <!-- Featured review — top of page, most prominent -->
-      <div class="featured-review-row" id="featuredReview">
-        <div class="review-skeleton" style="height:120px;"></div>
+
+      <div class="rms-divider"></div>
+
+      <!-- NEW ON OTT -->
+      <div class="rms-sub-section">
+        <div class="rms-sub-head">
+          <span class="rms-sub-title">New on OTT</span>
+          <div class="ott-platform-tabs" id="ottPlatformTabs">
+            <button class="ott-tab active" data-platform="netflix">Netflix</button>
+            <button class="ott-tab" data-platform="prime">Prime Video</button>
+            <button class="ott-tab" data-platform="hotstar">Hotstar</button>
+            <button class="ott-tab" data-platform="sony">SonyLIV</button>
+            <button class="ott-tab" data-platform="zee5">ZEE5</button>
+          </div>
+        </div>
+        <div class="cinemas-grid" id="ottGrid">
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        </div>
       </div>
-      <!-- Rest of reviews -->
-      <div class="reviews-list" id="reviewsList">
-        <div class="review-skeleton"></div>
-        <div class="review-skeleton"></div>
-        <div class="review-skeleton"></div>
-        <div class="review-skeleton"></div>
-        <div class="review-skeleton"></div>
-      </div>
-      <a href="pages/browse.html" class="see-more-reviews">See all reviews →</a>
+
     </section>
 
-    <!-- 2. POPULAR RIGHT NOW — two column ranking -->
+    <!-- POPULAR RIGHT NOW -->
     <section class="home-section popular-now-section">
       <div class="home-section-head">
         <div class="home-section-title">Popular right now</div>
@@ -130,62 +149,21 @@
       </div>
       <div class="popular-now-grid">
         <div class="trending-list-items" id="popularMoviesList">
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
         </div>
         <div class="trending-list-items" id="popularTVList">
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
-          <div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
+          <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
         </div>
       </div>
     </section>
 
-    <!-- 3. IN CINEMAS NOW -->
-    <section class="home-section">
-      <div class="home-section-head">
-        <div class="home-section-title">
-          <span class="live-dot"></span>In cinemas now
-        </div>
-        <a href="pages/browse.html" class="home-see-all">See all →</a>
-      </div>
-      <div class="cinemas-grid" id="cinemasGrid">
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-      </div>
-    </section>
-
-    <!-- 4. NEW ON OTT -->
-    <section class="home-section">
-      <div class="home-section-head">
-        <div class="home-section-title">New on OTT</div>
-        <div class="ott-platform-tabs" id="ottPlatformTabs">
-          <button class="ott-tab active" data-platform="netflix">Netflix</button>
-          <button class="ott-tab" data-platform="prime">Prime Video</button>
-          <button class="ott-tab" data-platform="hotstar">Hotstar</button>
-          <button class="ott-tab" data-platform="sony">SonyLIV</button>
-          <button class="ott-tab" data-platform="zee5">ZEE5</button>
-        </div>
-      </div>
-      <div class="ott-grid" id="ottGrid">
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-      </div>
-    </section>
-
-    <!-- 5. COMING SOON -->
+    <!-- COMING SOON -->
     <section class="home-section">
       <div class="home-section-head">
         <div class="home-section-title">Coming soon</div>
