@@ -49,9 +49,10 @@ function renderOttCard(f, film) {
   const posterUrl = film && film.poster_path ? TMDB.poster(film.poster_path, 'w342') : null;
   const score = f.score;
   const sc = scoreClass(score);
+  const movieLink = f.tmdbId ? `pages/movie.html?id=${f.tmdbId}` : 'pages/movie.html';
 
   return `
-    <a href="pages/movie.html" class="cinema-card">
+    <a href="${movieLink}" class="cinema-card">
       <div class="cinema-poster" style="${!posterUrl ? `background:linear-gradient(160deg,${f.color},${f.color}cc)` : ''}">
         ${posterUrl
           ? `<img src="${posterUrl}" alt="${f.title}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(160deg,${f.color},${f.color}cc)';this.remove()" />`
@@ -113,7 +114,7 @@ const ottFilms = {
     { title:"All We Imagine as Light", year:2024, lang:"Malayalam", score:96, color:"#0d2e1a", rasas:["Karuna","Shanta"], platform:"Netflix", tmdbId:1017336 },
     { title:"Tumbbad", year:2018, lang:"Hindi", score:94, color:"#2e0d0d", rasas:["Bhayanaka","Bibhatsa"], platform:"Netflix", tmdbId:520110 },
     { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix", tmdbId:759244 },
-    { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Netflix", tmdbId:363676 },
+    { title:"Squid Game S2", year:2024, lang:"Korean", score:92, color:"#0d1a2e", rasas:["Bhayanaka","Raudra"], platform:"Netflix", tmdbId:93405 },
     { title:"3 Idiots", year:2009, lang:"Hindi", score:95, color:"#1a2e0d", rasas:["Hasya","Veera"], platform:"Netflix", tmdbId:20453 }
   ],
   prime: [
