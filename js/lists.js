@@ -278,25 +278,71 @@ const allLists = {
   ]
 };
 
-/* ---- Render list cards ---- */
+/* ---- Render list cards with visual collage ---- */
 function renderListCard(list) {
+  // Generate collage cells from top films
+  const collageCells = (list.films || []).slice(0, 4).map((f, i) => {
+    const colors = ['#1a1a2e','#0d2e1a','#2e0d0d','#1a2e0d'];
+    return `<div class="lc-collage-cell" id="lc-cell-${list.id}-${i}"
+      style="background:linear-gradient(135deg,${f.color||colors[i]},${f.color||colors[i]}88);">
+    </div>`;
+  }).join('');
+
   return `
-    <div class="list-card ${list.badge === 'hot' ? 'hot' : ''}" onclick="openList('${list.id}')">
-      <div class="lc-top">
-        <div class="lc-count">${list.count}</div>
-        <div class="lc-badge ${list.badge}">${list.badgeText}</div>
+    <div class="list-card" onclick="openList('${list.id}')">
+      <!-- Visual collage top -->
+      <div class="lc-collage">
+        ${collageCells}
+        <div class="lc-collage-overlay">
+          <div class="lc-count-badge">${list.count} films</div>
+        </div>
+        <div class="lc-badge-wrap">
+          <span class="lc-badge ${list.badge}">${list.badgeText}</span>
+        </div>
       </div>
-      <div class="lc-title">${list.title}</div>
-      <div class="lc-desc">${list.desc}</div>
-      <div class="lc-films-preview">
-        ${list.topFilms.map(f => `<span class="lc-film-chip">${f}</span>`).join('')}
-      </div>
-      <div class="lc-bottom">
-        <div class="lc-meta">${list.meta}</div>
-        <div class="lc-arrow">→</div>
+      <!-- Card body -->
+      <div class="lc-body">
+        <div class="lc-tag">${list.tag}</div>
+        <div class="lc-title">${list.title}</div>
+        <div class="lc-desc">${list.desc}</div>
+        <div class="lc-films-preview">
+          ${list.topFilms.map(f => `<span class="lc-film-chip">${f}</span>`).join('')}
+        </div>
+        <div class="lc-bottom">
+          <div class="lc-meta">${list.meta}</div>
+          <div class="lc-arrow">→</div>
+        </div>
       </div>
     </div>
   `;
+}
+
+/* ---- Load real posters into list card collages ---- */
+async function loadListCardPosters() {
+  const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+  const lists = Object.values(allLists).flat();
+
+  for (const list of lists) {
+    const films = (list.films || []).slice(0, 4);
+    for (let i = 0; i < films.length; i++) {
+      const f = films[i];
+      const cellId = `lc-cell-${list.id}-${i}`;
+      const cell = document.getElementById(cellId);
+      if (!cell) continue;
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(f.title)}&year=${f.year}`
+        );
+        const data = await res.json();
+        const movie = data?.results?.[0];
+        if (movie?.poster_path) {
+          cell.style.backgroundImage = `url('https://image.tmdb.org/t/p/w185${movie.poster_path}')`;
+          cell.style.backgroundSize = 'cover';
+          cell.style.backgroundPosition = 'center';
+        }
+      } catch(e) {}
+    }
+  }
 }
 
 function renderAllLists() {
@@ -305,10 +351,12 @@ function renderAllLists() {
   document.getElementById('trendingGrid').innerHTML = allLists.trending.map(renderListCard).join('');
   document.getElementById('languageGrid').innerHTML = allLists.language.map(renderListCard).join('');
   document.getElementById('awardsGrid').innerHTML = allLists.awards.map(renderListCard).join('');
+  // Load real posters into collages
+  loadListCardPosters();
 }
 
 /* ---- Open full list modal ---- */
-function openList(id) {
+async function openList(id) {
   const list = Object.values(allLists).flat().find(l => l.id === id);
   if (!list) return;
 
@@ -316,18 +364,28 @@ function openList(id) {
   document.getElementById('lmTitle').textContent = list.title;
   document.getElementById('lmMeta').textContent = list.meta;
   document.getElementById('lmIntro').textContent = list.intro;
+  document.getElementById('listOverlay').style.display = 'block';
+  document.getElementById('listOverlay').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
 
-  const filmsHTML = list.films.map(f => {
+  // Render immediately with colour blocks
+  const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+  
+  document.getElementById('lmFilms').innerHTML = list.films.map(f => {
     const rankClass = f.rank === 1 ? 'gold' : f.rank === 2 ? 'silver' : f.rank === 3 ? 'bronze' : '';
-    const scoreColor = f.score >= 90 ? '#2ECC71' : f.score >= 75 ? '#F39C12' : '#E74C3C';
+    const scoreColor = f.score >= 85 ? '#2ECC71' : f.score >= 65 ? '#F39C12' : '#E74C3C';
+    const scoreBg = f.score >= 85 ? '#1A7A3C' : f.score >= 65 ? '#C47A00' : '#C0392B';
     return `
-      <div class="lm-film-row">
+      <div class="lm-film-row" id="lm-row-${f.rank}">
         <div class="lm-rank ${rankClass}">${f.rank}</div>
-        <div class="lm-poster" style="background:linear-gradient(160deg,${f.color},${f.color}88);"></div>
+        <div class="lm-poster" id="lm-poster-${f.rank}"
+          style="background:linear-gradient(160deg,${f.color},${f.color}88);">
+          <div class="lm-poster-score" style="background:${scoreBg}">${f.score}</div>
+        </div>
         <div class="lm-info">
           <div class="lm-film-title">${f.title}</div>
           <div class="lm-film-meta">${f.lang} · ${f.year} · Dir. ${f.director}</div>
-          <div class="lm-film-verdict">${f.verdict}</div>
+          <div class="lm-film-verdict">"${f.verdict}"</div>
           <div class="lm-rasas">${f.rasas.map(r=>`<span class="rtag">${r}</span>`).join('')}</div>
         </div>
         <div class="lm-score">
@@ -338,10 +396,34 @@ function openList(id) {
     `;
   }).join('');
 
-  document.getElementById('lmFilms').innerHTML = filmsHTML;
-  document.getElementById('listOverlay').style.display = 'block';
-  document.getElementById('listOverlay').scrollTop = 0;
-  document.body.style.overflow = 'hidden';
+  // Load ALL posters in parallel — much faster
+  await Promise.all(list.films.map(async f => {
+    try {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(f.title)}&year=${f.year}&language=en-US`
+      );
+      const data = await res.json();
+      // Try first result, then try without year filter if no poster
+      let movie = data?.results?.[0];
+      if (!movie?.poster_path && data?.results?.length > 1) {
+        movie = data.results.find(r => r.poster_path) || movie;
+      }
+      if (movie?.poster_path) {
+        const posterEl = document.getElementById(`lm-poster-${f.rank}`);
+        if (posterEl) {
+          const img = document.createElement('img');
+          img.src = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+          img.alt = f.title;
+          img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;';
+          img.loading = 'lazy';
+          img.onerror = () => img.remove();
+          posterEl.style.position = 'relative';
+          posterEl.style.overflow = 'hidden';
+          posterEl.prepend(img);
+        }
+      }
+    } catch(e) {}
+  }));
 }
 
 function closeList() {
@@ -394,4 +476,61 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   }
+});
+
+/* ---- Load featured banner posters ---- */
+async function loadFeaturedBannerPosters() {
+  const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+
+  // Films for featured Bollywood list preview
+  const featuredFilms = [
+    { id: 1, query: 'Mughal-E-Azam', year: 1960, tmdbId: 390043 },
+    { id: 2, query: 'Dilwale Dulhania Le Jayenge', year: 1995, tmdbId: 19330 },
+    { id: 3, query: 'Lagaan', year: 2001, tmdbId: 20453 },
+    { id: 4, query: 'Dangal', year: 2016, tmdbId: 363676 },
+    { id: 5, query: '3 Idiots', year: 2009, tmdbId: 20266 }
+  ];
+
+  // Background collage TMDb IDs
+  const bgIds = [19330, 363676, 20266, 520110, 759244, 194662];
+
+  // Load preview posters and background collage in parallel
+  await Promise.all([
+    // Preview list posters
+    ...featuredFilms.map(async f => {
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${f.tmdbId}?api_key=${TMDB_KEY}`);
+        const data = await res.json();
+        if (data?.poster_path) {
+          const el = document.getElementById(`flb-p-${f.id}`);
+          if (el) {
+            el.style.backgroundImage = `url('https://image.tmdb.org/t/p/w185${data.poster_path}')`;
+            el.style.backgroundSize = 'cover';
+            el.style.backgroundPosition = 'center';
+          }
+        }
+      } catch(e) {}
+    }),
+    // Background collage
+    ...bgIds.map(async (id, i) => {
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}`);
+        const data = await res.json();
+        const path = data?.backdrop_path || data?.poster_path;
+        if (path) {
+          const el = document.getElementById(`flb-bg-${i+1}`);
+          if (el) {
+            el.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500${path}')`;
+            el.style.backgroundSize = 'cover';
+            el.style.backgroundPosition = 'center';
+          }
+        }
+      } catch(e) {}
+    })
+  ]);
+}
+
+// Call on load
+document.addEventListener('DOMContentLoaded', () => {
+  loadFeaturedBannerPosters();
 });
