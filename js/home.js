@@ -114,15 +114,15 @@ const ottFilms = {
     { title:"Tumbbad", year:2018, lang:"Hindi", score:94, color:"#2e0d0d", rasas:["Bhayanaka","Bibhatsa"], platform:"Netflix", tmdbId:520110 },
     { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix", tmdbId:759244 },
     { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Netflix", tmdbId:363676 },
-    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Netflix", tmdbId:933131 }
+    { title:"3 Idiots", year:2009, lang:"Hindi", score:95, color:"#1a2e0d", rasas:["Hasya","Veera"], platform:"Netflix", tmdbId:20453 }
   ],
   prime: [
     { title:"Stree 2", year:2024, lang:"Hindi", score:87, color:"#1a0d2e", rasas:["Hasya","Bhayanaka"], platform:"Prime Video", tmdbId:1100782 },
     { title:"Panchayat S3", year:2024, lang:"Hindi", score:93, color:"#1a2e0d", rasas:["Hasya","Shanta"], platform:"Prime Video", tmdbId:94954 },
-    { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Prime Video", tmdbId:363676 },
+    { title:"Andhadhun", year:2018, lang:"Hindi", score:94, color:"#1a1a1a", rasas:["Bhayanaka","Hasya"], platform:"Prime Video", tmdbId:578987 },
     { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Prime Video", tmdbId:933131 },
-    { title:"Mirzapur S3", year:2024, lang:"Hindi", score:88, color:"#2e1a0d", rasas:["Raudra","Bhayanaka"], platform:"Prime Video", tmdbId:99966 },
-    { title:"The Family Man", year:2019, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"Prime Video", tmdbId:95557 }
+    { title:"Manjummel Boys", year:2024, lang:"Malayalam", score:91, color:"#0d2e2e", rasas:["Veera","Bhayanaka"], platform:"Prime Video", tmdbId:1186532 },
+    { title:"Jawan", year:2023, lang:"Hindi", score:82, color:"#2e1a0d", rasas:["Veera","Raudra"], platform:"Prime Video", tmdbId:1086747 }
   ],
   hotstar: [
     { title:"Kalki 2898-AD", year:2024, lang:"Telugu", score:74, color:"#1a1a0d", rasas:["Adbhuta","Veera"], platform:"Hotstar", tmdbId:1064213 },
