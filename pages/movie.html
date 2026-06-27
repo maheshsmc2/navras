@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stree 2 (2024) — Navras</title>
-  <meta name="description" content="Stree 2 review, Navras score, Desi Score breakdown, cast, crew and where to watch. Rated by emotion." />
+  <title>Film — Navras</title>
+  <meta name="description" content="Film review, Navras score, Desi Score breakdown, cast, crew and where to watch." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
@@ -16,11 +16,10 @@
 
   <div class="tricolour"><span></span><span></span><span></span></div>
 
-  <!-- Nav -->
   <nav class="nav">
     <a href="../index.html" class="nav-logo">
       <div class="logo-mark">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
       </div>
       <div>
         <div class="logo-text">Navras</div>
@@ -28,483 +27,281 @@
       </div>
     </a>
     <div class="nav-links">
-      <a href="#" class="nav-link active">Films</a>
-      <a href="#" class="nav-link">Series</a>
-      <a href="#" class="nav-link">Music</a>
-      <a href="#" class="nav-link">Awards</a>
-      <a href="#" class="nav-link">Critics</a>
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="browse.html" class="nav-link">Browse</a>
+      <a href="mood.html" class="nav-link">Mood Search</a>
+      <a href="lists.html" class="nav-link">Lists</a>
     </div>
     <div class="nav-right">
-      <div class="lang-switcher">
-        <button class="lang-btn active">EN</button>
-        <button class="lang-btn">हि</button>
-        <button class="lang-btn">த</button>
-        <button class="lang-btn">తె</button>
-        <button class="lang-btn">বা</button>
-      </div>
-      <div class="nav-search">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <span>Search...</span>
-      </div>
-    </div>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch theme">
-        <span class="toggle-icon" id="toggleIcon">☀️</span>
-        <span class="toggle-label" id="toggleLabel">Light</span>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <span class="toggle-icon" id="toggleIcon">🌙</span>
+        <span class="toggle-label" id="toggleLabel">Dark</span>
       </button>
+    </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </nav>
 
-  <!-- Breadcrumb -->
-  <div class="breadcrumb">
-    <a href="../index.html">Home</a>
-    <span>›</span>
-    <a href="#">Films</a>
-    <span>›</span>
-    <a href="#">Bollywood</a>
-    <span>›</span>
-    <span>Stree 2</span>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../index.html" class="mobile-link">Home</a>
+    <a href="browse.html" class="mobile-link">Browse</a>
+    <a href="mood.html" class="mobile-link">Mood Search</a>
+    <a href="lists.html" class="mobile-link">Lists</a>
   </div>
 
-  <!-- HERO BANNER -->
-  <div class="movie-hero">
-    <div class="movie-hero-bg" style="background: linear-gradient(135deg, #0d0820 0%, #1a1040 40%, #2a1060 70%, #1a0830 100%);"></div>
-    <div class="movie-hero-overlay"></div>
-    <div class="movie-hero-content">
-      <div class="movie-poster-wrap">
-        <div class="movie-poster-img" style="background: linear-gradient(160deg, #1a0d2e, #3a1060, #c0392b);">
-          <div class="poster-play">▶</div>
-        </div>
-        <div class="poster-actions">
-          <button class="poster-action-btn" id="watchlistBtn" onclick="toggleWatchlist()">+ Watchlist</button>
-          <button class="poster-action-btn secondary" onclick="shareFilm()">Share</button>
-        </div>
-      </div>
-
-      <div class="movie-hero-info">
-        <div class="movie-lang-badge">Hindi · Bollywood</div>
-        <h1 class="movie-title-main">Stree 2</h1>
-        <div class="movie-subtitle">Sarkate Ka Aatank</div>
-
-        <div class="movie-meta-row">
-          <span>2024</span>
-          <span class="dot">·</span>
-          <span>Horror Comedy</span>
-          <span class="dot">·</span>
-          <span>2h 22m</span>
-          <span class="dot">·</span>
-          <span>UA</span>
-        </div>
-
-        <div class="movie-director">
-          Directed by <strong>Amar Kaushik</strong>
-        </div>
-
-        <!-- Navras /100 Score -->
-        <div class="navras100-wrap">
-          <div class="navras100-main">
-            <div class="navras100-num">87</div>
-            <div class="navras100-denom">/100</div>
-            <div class="navras100-label">Navras Score</div>
-            <div class="navras100-cert">✦ Certified Hit</div>
-          </div>
-          <div class="navras100-breakdown">
-            <div class="n100-row">
-              <div class="n100-label">Critics</div>
-              <div class="n100-bar-bg"><div class="n100-bar-fill" style="width:88%;"></div></div>
-              <div class="n100-val">35<span>/40</span></div>
-            </div>
-            <div class="n100-row">
-              <div class="n100-label">Audience</div>
-              <div class="n100-bar-bg"><div class="n100-bar-fill" style="width:80%;"></div></div>
-              <div class="n100-val">32<span>/40</span></div>
-            </div>
-            <div class="n100-row">
-              <div class="n100-label">Desi Score</div>
-              <div class="n100-bar-bg"><div class="n100-bar-fill gold-bar" style="width:100%;"></div></div>
-              <div class="n100-val">20<span>/20</span></div>
-            </div>
-            <div class="n100-external">
-              <span class="ext-score">RT <strong>88%</strong></span>
-              <span class="ext-score">IMDb <strong>7.9</strong></span>
-              <span class="ext-score">Meta <strong>74</strong></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Rasa Tags -->
-        <div class="rasa-tags-row">
-          <span class="rasa-tag-lg">♡ Shringara · Love</span>
-          <span class="rasa-tag-lg">☺ Hasya · Joy</span>
-          <span class="rasa-tag-lg">◉ Bhayanaka · Fear</span>
-        </div>
-
-        <!-- Verdict -->
-        <div class="verdict-strip">
-          <div class="verdict-quote">"</div>
-          <div class="verdict-text">Rajkummar & Shraddha carry this sequel to new heights — funnier, scarier, and smarter than the original.</div>
-        </div>
-
-        <!-- Three words -->
-        <div class="three-words-row">
-          <span class="word-chip">Funny</span>
-          <span class="word-chip">Scary</span>
-          <span class="word-chip">Rewatchable</span>
-        </div>
-      </div>
+  <!-- LOADING STATE -->
+  <div id="movieLoadingState" class="movie-loading">
+    <div class="movie-loading-inner">
+      <div class="movie-loading-spinner"></div>
+      <div class="movie-loading-text">Loading film...</div>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="movie-body">
+  <!-- FULL MOVIE PAGE — hidden until data loads -->
+  <div id="movieContent" style="display:none;">
 
-    <!-- Left column -->
-    <div class="movie-main">
-
-      <!-- Watch Where -->
-      <section class="movie-section">
-        <div class="msection-title"><span class="title-bar"></span>Watch it where?</div>
-        <div class="watch-grid">
-          <div class="watch-card good">
-            <div class="watch-icon">🎬</div>
-            <div class="watch-label">Theatre</div>
-            <div class="watch-verdict">Must watch</div>
-          </div>
-          <div class="watch-card good">
-            <div class="watch-icon">📺</div>
-            <div class="watch-label">Prime Video</div>
-            <div class="watch-verdict">Streaming now</div>
-          </div>
-          <div class="watch-card ok">
-            <div class="watch-icon">👨‍👩‍👧</div>
-            <div class="watch-label">With family</div>
-            <div class="watch-verdict">Older kids ok</div>
-          </div>
-          <div class="watch-card ok">
-            <div class="watch-icon">📱</div>
-            <div class="watch-label">On phone</div>
-            <div class="watch-verdict">Fine, not ideal</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Desi Score -->
-      <section class="movie-section">
-        <div class="msection-title"><span class="title-bar"></span>Desi Score™ breakdown</div>
-        <div class="desi-sub">Our unique Indian-context rating — what really matters for this film</div>
-        <div class="desi-bars">
-          <div class="desi-row">
-            <div class="desi-label">Cultural resonance</div>
-            <div class="desi-bar-wrap">
-              <div class="desi-bar-bg">
-                <div class="desi-bar-fill" style="width:92%; background: var(--gold);"></div>
-              </div>
-            </div>
-            <div class="desi-val">9.2</div>
-          </div>
-          <div class="desi-row">
-            <div class="desi-label">Music & songs</div>
-            <div class="desi-bar-wrap">
-              <div class="desi-bar-bg">
-                <div class="desi-bar-fill" style="width:91%; background: var(--gold);"></div>
-              </div>
-            </div>
-            <div class="desi-val">9.1</div>
-          </div>
-          <div class="desi-row">
-            <div class="desi-label">Performances</div>
-            <div class="desi-bar-wrap">
-              <div class="desi-bar-bg">
-                <div class="desi-bar-fill" style="width:85%; background: #2ECC71;"></div>
-              </div>
-            </div>
-            <div class="desi-val">8.5</div>
-          </div>
-          <div class="desi-row">
-            <div class="desi-label">Direction & craft</div>
-            <div class="desi-bar-wrap">
-              <div class="desi-bar-bg">
-                <div class="desi-bar-fill" style="width:78%; background: #2ECC71;"></div>
-              </div>
-            </div>
-            <div class="desi-val">7.8</div>
-          </div>
-          <div class="desi-row">
-            <div class="desi-label">Family viewability</div>
-            <div class="desi-bar-wrap">
-              <div class="desi-bar-bg">
-                <div class="desi-bar-fill" style="width:64%; background: #A89880;"></div>
-              </div>
-            </div>
-            <div class="desi-val">6.4</div>
-          </div>
-          <div class="desi-row">
-            <div class="desi-label">Rewatch value</div>
-            <div class="desi-bar-wrap">
-              <div class="desi-bar-bg">
-                <div class="desi-bar-fill" style="width:80%; background: #2ECC71;"></div>
-              </div>
-            </div>
-            <div class="desi-val">8.0</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Reviews -->
-      <section class="movie-section">
-        <div class="msection-title"><span class="title-bar"></span>Critic reviews</div>
-        <div class="reviews-list">
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar" style="background:#1a2e4a;">AC</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Anupama Chopra</div>
-                <div class="reviewer-pub">Film Companion</div>
-              </div>
-              <div class="review-stars">★★★★</div>
-            </div>
-            <div class="review-verdict">Funny. Scary. Rewatchable.</div>
-            <div class="review-text">Amar Kaushik has delivered something genuinely scary and funny — a tough balance that Stree 2 pulls off with real confidence.</div>
-          </div>
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar" style="background:#2e1a4a;">BR</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Baradwaj Rangan</div>
-                <div class="reviewer-pub">Galatta Plus</div>
-              </div>
-              <div class="review-stars">★★★★</div>
-            </div>
-            <div class="review-verdict">Crowd-pleasing and surprisingly sharp.</div>
-            <div class="review-text">The genius is in how it uses horror tropes to say something real about gender dynamics, while never losing the comedy.</div>
-          </div>
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar" style="background:#1a3a2a;">SK</div>
-              <div class="reviewer-info">
-                <div class="reviewer-name">Saibal Chatterjee</div>
-                <div class="reviewer-pub">NDTV</div>
-              </div>
-              <div class="review-stars">★★★½</div>
-            </div>
-            <div class="review-verdict">More fun than the first. Less fresh.</div>
-            <div class="review-text">The sequel is bigger and bolder, though it occasionally strains under its own ambitions. Shraddha Kapoor is a revelation.</div>
-          </div>
-        </div>
-        <button class="see-more-btn">See all 48 reviews →</button>
-      </section>
-
-      <!-- Rate This Film -->
-      <section class="movie-section rate-section">
-        <div class="msection-title"><span class="title-bar"></span>Rate this film</div>
-        <div class="rate-sub">Pick your rasa — how did this film make you feel?</div>
-        <div class="rate-rasa-grid" id="rateRasaGrid">
-          <button class="rate-rasa-btn" data-rasa="shringara">♡<br><span>Shringara</span></button>
-          <button class="rate-rasa-btn" data-rasa="hasya">☺<br><span>Hasya</span></button>
-          <button class="rate-rasa-btn" data-rasa="karuna">◇<br><span>Karuna</span></button>
-          <button class="rate-rasa-btn" data-rasa="veera">◈<br><span>Veera</span></button>
-          <button class="rate-rasa-btn" data-rasa="bhayanaka">◉<br><span>Bhayanaka</span></button>
-          <button class="rate-rasa-btn" data-rasa="adbhuta">✦<br><span>Adbhuta</span></button>
-          <button class="rate-rasa-btn" data-rasa="raudra">△<br><span>Raudra</span></button>
-          <button class="rate-rasa-btn" data-rasa="shanta">〇<br><span>Shanta</span></button>
-          <button class="rate-rasa-btn" data-rasa="bibhatsa">▣<br><span>Bibhatsa</span></button>
-        </div>
-        <div class="star-rating-wrap" id="starRatingWrap" style="display:none;">
-          <div class="star-rating-label" id="starRatingLabel">Now rate it — tap a star</div>
-          <div class="star-row" id="starRow">
-            <button class="star-btn" data-val="1">★</button>
-            <button class="star-btn" data-val="2">★</button>
-            <button class="star-btn" data-val="3">★</button>
-            <button class="star-btn" data-val="4">★</button>
-            <button class="star-btn" data-val="5">★</button>
-          </div>
-          <button class="submit-rating-btn" id="submitRatingBtn" style="display:none;" onclick="submitRating()">Submit my rating →</button>
-        </div>
-        <div class="rating-success" id="ratingSuccess" style="display:none;">
-          <div class="rating-success-icon">✓</div>
-          <div class="rating-success-text">Rating submitted. Thank you!</div>
-        </div>
-      </section>
-
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <span id="breadcrumbIndustry">Films</span>
+      <span>›</span>
+      <span id="breadcrumbFilm">Loading...</span>
     </div>
 
-    <!-- Right sidebar -->
-    <aside class="movie-sidebar">
+    <!-- HERO BANNER -->
+    <div class="movie-hero">
+      <div class="movie-hero-bg" id="heroBg"></div>
+      <div class="movie-hero-overlay"></div>
+      <div class="movie-hero-content">
 
-      <!-- Film facts -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">Film details</div>
-        <div class="fact-list">
-          <div class="fact-row"><div class="fact-label">Language</div><div class="fact-val">Hindi</div></div>
-          <div class="fact-row"><div class="fact-label">Industry</div><div class="fact-val">Bollywood</div></div>
-          <div class="fact-row"><div class="fact-label">Release</div><div class="fact-val">15 Aug 2024</div></div>
-          <div class="fact-row"><div class="fact-label">Runtime</div><div class="fact-val">2h 22m</div></div>
-          <div class="fact-row"><div class="fact-label">Certificate</div><div class="fact-val">UA</div></div>
-          <div class="fact-row"><div class="fact-label">Box office</div><div class="fact-val">₹627 crore</div></div>
-          <div class="fact-row"><div class="fact-label">Studio</div><div class="fact-val">Maddock Films</div></div>
+        <!-- LEFT: Poster -->
+        <div class="movie-poster-wrap">
+          <div class="movie-poster-img" id="moviePoster">
+            <div class="poster-shimmer"></div>
+          </div>
+          <button class="poster-play" id="posterPlay" style="display:none;" aria-label="Watch trailer">▶</button>
+          <div class="poster-actions">
+            <button class="poster-action-btn gold" id="watchlistBtn" onclick="toggleWatchlist()">+ Watchlist</button>
+            <button class="poster-action-btn secondary" onclick="shareFilm()">Share ↗</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Info -->
+        <div class="movie-info">
+
+          <!-- Language / Industry -->
+          <div class="movie-industry-row">
+            <span class="movie-lang-badge" id="movieLangBadge">Hindi</span>
+            <span class="movie-industry-badge" id="movieIndustryBadge">Bollywood</span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="movie-title" id="movieTitle">Loading...</h1>
+          <div class="movie-tagline" id="movieTagline"></div>
+          <div class="movie-meta-line" id="movieMetaLine"></div>
+          <div class="movie-director" id="movieDirector"></div>
+
+          <!-- NAVRAS SCORE -->
+          <div class="score-block">
+            <div class="navras-score-big green" id="navrasScoreBadge">
+              <div class="nsb-num" id="navrasScoreNum">—</div>
+              <div class="nsb-label">NAVRAS /100</div>
+            </div>
+            <div class="score-bars">
+              <div class="score-bar-row">
+                <div class="score-bar-label">Critics</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill green" id="criticBar" style="width:0%"></div>
+                </div>
+                <div class="score-bar-num" id="criticNum">—</div>
+              </div>
+              <div class="score-bar-row">
+                <div class="score-bar-label">Audience</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill green" id="audienceBar" style="width:0%"></div>
+                </div>
+                <div class="score-bar-num" id="audienceNum">—</div>
+              </div>
+              <div class="score-bar-row">
+                <div class="score-bar-label">Desi Score</div>
+                <div class="score-bar-track">
+                  <div class="score-bar-fill gold" id="desiBar" style="width:0%"></div>
+                </div>
+                <div class="score-bar-num" id="desiNum">—</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- External scores + certified hit -->
+          <div class="external-scores-row">
+            <div id="certifiedHit" class="certified-hit" style="display:none;">✦ Certified Hit</div>
+            <a href="#" id="imdbLink" target="_blank" class="ext-score-badge">
+              IMDb <strong id="imdbScore">—</strong>
+            </a>
+          </div>
+
+          <!-- Rasa tags -->
+          <div class="movie-rasas-row" id="movieRasas"></div>
+
         </div>
       </div>
+    </div>
 
-      <!-- Cast -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">Cast</div>
-        <div class="cast-list">
-          <div class="cast-item">
-            <div class="cast-avatar" style="background:#1a2e4a;">RK</div>
-            <div class="cast-info">
-              <div class="cast-name">Rajkummar Rao</div>
-              <div class="cast-role">Vicky</div>
-            </div>
+    <!-- BODY -->
+    <div class="movie-body">
+
+      <!-- LEFT COLUMN -->
+      <div class="movie-left">
+
+        <!-- Cast -->
+        <div class="movie-section">
+          <div class="movie-section-title">Cast</div>
+          <div class="cast-grid" id="castGrid">
+            <!-- Loaded by JS -->
           </div>
-          <div class="cast-item">
-            <div class="cast-avatar" style="background:#2e1a4a;">SK</div>
-            <div class="cast-info">
-              <div class="cast-name">Shraddha Kapoor</div>
-              <div class="cast-role">Stree</div>
-            </div>
+        </div>
+
+        <!-- Desi Score breakdown -->
+        <div class="movie-section">
+          <div class="movie-section-title">
+            Desi Score™ breakdown
+            <span class="desi-score-sub">Our unique Indian-context rating</span>
           </div>
-          <div class="cast-item">
-            <div class="cast-avatar" style="background:#1a3a2a;">AS</div>
-            <div class="cast-info">
-              <div class="cast-name">Aparshakti Khurana</div>
-              <div class="cast-role">Bittu</div>
+          <div class="desi-bars">
+            <div class="desi-bar-row">
+              <div class="desi-bar-label">Cultural resonance</div>
+              <div class="desi-bar-track"><div class="desi-bar-fill" data-width="85%" style="width:0%"></div></div>
+              <div class="desi-bar-val">8.5</div>
             </div>
-          </div>
-          <div class="cast-item">
-            <div class="cast-avatar" style="background:#3a2a1a;">PB</div>
-            <div class="cast-info">
-              <div class="cast-name">Pankaj Tripathi</div>
-              <div class="cast-role">Rudra</div>
+            <div class="desi-bar-row">
+              <div class="desi-bar-label">Music &amp; songs</div>
+              <div class="desi-bar-track"><div class="desi-bar-fill gold" data-width="92%" style="width:0%"></div></div>
+              <div class="desi-bar-val">9.2</div>
             </div>
-          </div>
-          <div class="cast-item">
-            <div class="cast-avatar" style="background:#2a1a3a;">TV</div>
-            <div class="cast-info">
-              <div class="cast-name">Tamannaah Bhatia</div>
-              <div class="cast-role">Special appearance</div>
+            <div class="desi-bar-row">
+              <div class="desi-bar-label">Performances</div>
+              <div class="desi-bar-track"><div class="desi-bar-fill" data-width="80%" style="width:0%"></div></div>
+              <div class="desi-bar-val">8.0</div>
+            </div>
+            <div class="desi-bar-row">
+              <div class="desi-bar-label">Direction &amp; craft</div>
+              <div class="desi-bar-track"><div class="desi-bar-fill" data-width="75%" style="width:0%"></div></div>
+              <div class="desi-bar-val">7.5</div>
+            </div>
+            <div class="desi-bar-row">
+              <div class="desi-bar-label">Family viewability</div>
+              <div class="desi-bar-track"><div class="desi-bar-fill" data-width="65%" style="width:0%"></div></div>
+              <div class="desi-bar-val">6.5</div>
+            </div>
+            <div class="desi-bar-row">
+              <div class="desi-bar-label">Rewatch value</div>
+              <div class="desi-bar-track"><div class="desi-bar-fill" data-width="80%" style="width:0%"></div></div>
+              <div class="desi-bar-val">8.0</div>
             </div>
           </div>
         </div>
+
+        <!-- Rate this film -->
+        <div class="movie-section rate-section">
+          <div class="movie-section-title">Rate this film</div>
+          <div class="rate-label">How did it make you feel?</div>
+          <div class="rate-rasa-grid" id="rateRasaGrid">
+            <button class="rate-rasa-btn" data-rasa="Shringara">♡ Love</button>
+            <button class="rate-rasa-btn" data-rasa="Hasya">☺ Joy</button>
+            <button class="rate-rasa-btn" data-rasa="Karuna">◇ Sorrow</button>
+            <button class="rate-rasa-btn" data-rasa="Veera">◈ Courage</button>
+            <button class="rate-rasa-btn" data-rasa="Bhayanaka">◉ Fear</button>
+            <button class="rate-rasa-btn" data-rasa="Adbhuta">✦ Wonder</button>
+            <button class="rate-rasa-btn" data-rasa="Raudra">△ Anger</button>
+            <button class="rate-rasa-btn" data-rasa="Shanta">〇 Peace</button>
+            <button class="rate-rasa-btn" data-rasa="Bibhatsa">▣ Dark</button>
+          </div>
+          <div id="starRatingWrap" style="display:none;">
+            <div class="star-rating-label" id="starRatingLabel"></div>
+            <div class="star-row" id="starRow">
+              <button class="star-btn" data-val="1">★</button>
+              <button class="star-btn" data-val="2">★</button>
+              <button class="star-btn" data-val="3">★</button>
+              <button class="star-btn" data-val="4">★</button>
+              <button class="star-btn" data-val="5">★</button>
+            </div>
+            <button class="submit-rating-btn" id="submitRatingBtn" style="display:none;" onclick="submitRating()">Submit rating</button>
+          </div>
+          <div id="ratingSuccess" class="rating-success" style="display:none;">
+            ✓ Thank you for rating! Your Navras score has been recorded.
+          </div>
+        </div>
+
+        <!-- Similar films -->
+        <div class="movie-section">
+          <div class="movie-section-title">Similar films</div>
+          <div class="similar-grid" id="similarGrid"></div>
+        </div>
+
       </div>
 
-      <!-- Crew -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">Crew</div>
-        <div class="fact-list">
-          <div class="fact-row"><div class="fact-label">Director</div><div class="fact-val">Amar Kaushik</div></div>
-          <div class="fact-row"><div class="fact-label">Writer</div><div class="fact-val">Niren Bhatt</div></div>
-          <div class="fact-row"><div class="fact-label">Producer</div><div class="fact-val">Dinesh Vijan</div></div>
-          <div class="fact-row"><div class="fact-label">Music</div><div class="fact-val">Sachin-Jigar</div></div>
-          <div class="fact-row"><div class="fact-label">Cinematography</div><div class="fact-val">Soumyananda Sahi</div></div>
-        </div>
-      </div>
+      <!-- RIGHT SIDEBAR -->
+      <div class="movie-right">
 
-      <!-- Community rating -->
-      <div class="sidebar-card">
-        <div class="sidebar-title">Community</div>
-        <div class="community-stats">
-          <div class="comm-stat">
-            <div class="comm-num">48K</div>
-            <div class="comm-label">Ratings</div>
-          </div>
-          <div class="comm-stat">
-            <div class="comm-num">2.1K</div>
-            <div class="comm-label">Reviews</div>
-          </div>
-          <div class="comm-stat">
-            <div class="comm-num">12K</div>
-            <div class="comm-label">Watchlists</div>
+        <!-- Film details -->
+        <div class="detail-card">
+          <div class="detail-card-title">Film details</div>
+          <div class="detail-rows">
+            <div class="detail-row"><span class="detail-key">Language</span><span class="detail-val" id="detailLanguage">—</span></div>
+            <div class="detail-row"><span class="detail-key">Industry</span><span class="detail-val" id="detailIndustry">—</span></div>
+            <div class="detail-row"><span class="detail-key">Release</span><span class="detail-val" id="detailRelease">—</span></div>
+            <div class="detail-row"><span class="detail-key">Runtime</span><span class="detail-val" id="detailRuntime">—</span></div>
+            <div class="detail-row"><span class="detail-key">Certificate</span><span class="detail-val" id="detailCert">—</span></div>
+            <div class="detail-row"><span class="detail-key">Budget</span><span class="detail-val" id="detailBudget">—</span></div>
+            <div class="detail-row"><span class="detail-key">Box office</span><span class="detail-val" id="detailRevenue">—</span></div>
+            <div class="detail-row"><span class="detail-key">Studio</span><span class="detail-val" id="detailStudio">—</span></div>
           </div>
         </div>
-        <div class="rasa-breakdown">
-          <div class="sidebar-title" style="font-size:11px; margin-bottom:8px;">How people felt</div>
-          <div class="rasa-bar-row"><span>Hasya</span><div class="rb-bg"><div class="rb-fill" style="width:68%;"></div></div><span>68%</span></div>
-          <div class="rasa-bar-row"><span>Bhayanaka</span><div class="rb-bg"><div class="rb-fill" style="width:54%;"></div></div><span>54%</span></div>
-          <div class="rasa-bar-row"><span>Shringara</span><div class="rb-bg"><div class="rb-fill" style="width:38%;"></div></div><span>38%</span></div>
-          <div class="rasa-bar-row"><span>Veera</span><div class="rb-bg"><div class="rb-fill" style="width:22%;"></div></div><span>22%</span></div>
-        </div>
-      </div>
 
-    </aside>
+        <!-- Crew -->
+        <div class="detail-card">
+          <div class="detail-card-title">Crew</div>
+          <div class="detail-rows">
+            <div class="detail-row"><span class="detail-key">Director</span><span class="detail-val" id="crewDirector">—</span></div>
+            <div class="detail-row"><span class="detail-key">Writers</span><span class="detail-val" id="crewWriters">—</span></div>
+            <div class="detail-row"><span class="detail-key">Cinematography</span><span class="detail-val" id="crewDOP">—</span></div>
+            <div class="detail-row"><span class="detail-key">Editor</span><span class="detail-val" id="crewEditor">—</span></div>
+            <div class="detail-row"><span class="detail-key">Music</span><span class="detail-val" id="crewMusic">—</span></div>
+          </div>
+        </div>
+
+        <!-- Mood search CTA -->
+        <div class="detail-card mood-cta-card">
+          <div class="detail-card-title">Discover more like this</div>
+          <div class="mood-cta-rasas" id="moodCtaRasas"></div>
+          <a href="mood.html" class="mood-cta-btn">Try mood search →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end movieContent -->
+
+  <!-- TRAILER MODAL -->
+  <div class="trailer-modal" id="trailerModal" style="display:none;" onclick="if(event.target===this)closeTrailer()">
+    <div class="trailer-modal-inner">
+      <button class="trailer-close" onclick="closeTrailer()">✕</button>
+      <iframe id="trailerIframe" width="100%" height="100%"
+        frameborder="0" allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
   </div>
 
-  <!-- More like this -->
-  <section class="more-section">
-    <div class="section-head" style="padding: 0 32px; margin-bottom: 16px;">
-      <div class="section-title"><span class="title-bar"></span>More like this</div>
-      <a href="#" class="see-all">See all →</a>
-    </div>
-    <div class="more-grid">
-      <a href="movie.html" class="film-card">
-        <div class="film-poster" style="background:linear-gradient(160deg,#1a0820,#2a1050);">
-          <span class="film-lang">Hindi</span>
-          <span class="film-score-badge"><span class="sdot green"></span>9.3</span>
-        </div>
-        <div class="film-info">
-          <div class="film-title">Stree (2018)</div>
-          <div class="film-meta">Horror Comedy</div>
-          <div class="film-rasatags"><span class="rtag">Hasya</span><span class="rtag">Bhayanaka</span></div>
-        </div>
-      </a>
-      <a href="movie.html" class="film-card">
-        <div class="film-poster" style="background:linear-gradient(160deg,#200a0a,#501010);">
-          <span class="film-lang">Hindi</span>
-          <span class="film-score-badge"><span class="sdot green"></span>9.4</span>
-        </div>
-        <div class="film-info">
-          <div class="film-title">Tumbbad</div>
-          <div class="film-meta">Horror</div>
-          <div class="film-rasatags"><span class="rtag">Bhayanaka</span><span class="rtag">Bibhatsa</span></div>
-        </div>
-      </a>
-      <a href="movie.html" class="film-card">
-        <div class="film-poster" style="background:linear-gradient(160deg,#0a1020,#102040);">
-          <span class="film-lang">Hindi</span>
-          <span class="film-score-badge"><span class="sdot green"></span>8.8</span>
-        </div>
-        <div class="film-info">
-          <div class="film-title">Roohi</div>
-          <div class="film-meta">Horror Comedy</div>
-          <div class="film-rasatags"><span class="rtag">Hasya</span><span class="rtag">Bhayanaka</span></div>
-        </div>
-      </a>
-      <a href="movie.html" class="film-card">
-        <div class="film-poster" style="background:linear-gradient(160deg,#1a0d10,#3a1530);">
-          <span class="film-lang">Hindi</span>
-          <span class="film-score-badge"><span class="sdot amber"></span>7.6</span>
-        </div>
-        <div class="film-info">
-          <div class="film-title">Bhediya</div>
-          <div class="film-meta">Horror Comedy</div>
-          <div class="film-rasatags"><span class="rtag">Hasya</span><span class="rtag">Adbhuta</span></div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">Navras</div>
         <div class="footer-tagline">All art forms. All languages. All emotions.</div>
       </div>
-      <div class="footer-links-grid">
-        <div class="footer-col">
-          <div class="footer-col-title">Discover</div>
-          <a href="#">Films</a><a href="#">Series</a><a href="#">Music</a><a href="#">Awards</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Community</div>
-          <a href="#">Write a review</a><a href="#">Top critics</a><a href="#">Contribute data</a>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Navras</div>
-          <a href="#">About</a><a href="#">API</a><a href="#">Careers</a><a href="#">Contact</a>
-        </div>
-      </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Navras. Built with love for Indian cinema.</span>
+      <span>© 2025 Navras. Film data from TMDb.</span>
       <span>Privacy · Terms</span>
     </div>
   </footer>

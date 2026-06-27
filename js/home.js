@@ -112,31 +112,41 @@ const ottFilms = {
     { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", score:91, color:"#1a1a2e", rasas:["Bhayanaka","Veera"], platform:"Netflix", tmdbId:242074 },
     { title:"All We Imagine as Light", year:2024, lang:"Malayalam", score:96, color:"#0d2e1a", rasas:["Karuna","Shanta"], platform:"Netflix", tmdbId:1017336 },
     { title:"Tumbbad", year:2018, lang:"Hindi", score:94, color:"#2e0d0d", rasas:["Bhayanaka","Bibhatsa"], platform:"Netflix", tmdbId:520110 },
-    { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix", tmdbId:759244 }
+    { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix", tmdbId:759244 },
+    { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Netflix", tmdbId:363676 },
+    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Netflix", tmdbId:933131 }
   ],
   prime: [
     { title:"Stree 2", year:2024, lang:"Hindi", score:87, color:"#1a0d2e", rasas:["Hasya","Bhayanaka"], platform:"Prime Video", tmdbId:1100782 },
     { title:"Panchayat S3", year:2024, lang:"Hindi", score:93, color:"#1a2e0d", rasas:["Hasya","Shanta"], platform:"Prime Video", tmdbId:94954 },
     { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#1a2e0d", rasas:["Veera","Karuna"], platform:"Prime Video", tmdbId:363676 },
-    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Prime Video", tmdbId:933131 }
+    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Prime Video", tmdbId:933131 },
+    { title:"Mirzapur S3", year:2024, lang:"Hindi", score:88, color:"#2e1a0d", rasas:["Raudra","Bhayanaka"], platform:"Prime Video", tmdbId:99966 },
+    { title:"The Family Man", year:2019, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"Prime Video", tmdbId:95557 }
   ],
   hotstar: [
     { title:"Kalki 2898-AD", year:2024, lang:"Telugu", score:74, color:"#1a1a0d", rasas:["Adbhuta","Veera"], platform:"Hotstar", tmdbId:1064213 },
     { title:"Manjummel Boys", year:2024, lang:"Malayalam", score:91, color:"#0d2e2e", rasas:["Veera","Bhayanaka"], platform:"Hotstar", tmdbId:1186532 },
     { title:"Kanguva", year:2024, lang:"Tamil", score:79, color:"#1a0d2e", rasas:["Veera","Adbhuta"], platform:"Hotstar", tmdbId:1245492 },
-    { title:"Shaitaan", year:2024, lang:"Hindi", score:77, color:"#1a0d0d", rasas:["Bhayanaka","Raudra"], platform:"Hotstar", tmdbId:1172034 }
+    { title:"Shaitaan", year:2024, lang:"Hindi", score:77, color:"#1a0d0d", rasas:["Bhayanaka","Raudra"], platform:"Hotstar", tmdbId:1172034 },
+    { title:"Devara", year:2024, lang:"Telugu", score:72, color:"#2e2e0d", rasas:["Veera","Raudra"], platform:"Hotstar", tmdbId:1087822 },
+    { title:"Singham Returns", year:2024, lang:"Hindi", score:68, color:"#2e1a0d", rasas:["Veera","Hasya"], platform:"Hotstar", tmdbId:1186532 }
   ],
   sony: [
     { title:"Scam 1992", year:2020, lang:"Hindi", score:97, color:"#2e2e0d", rasas:["Adbhuta","Raudra"], platform:"SonyLIV", tmdbId:113855 },
     { title:"The Family Man S2", year:2021, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"SonyLIV", tmdbId:95557 },
     { title:"Aspirants S2", year:2023, lang:"Hindi", score:89, color:"#1a2e1a", rasas:["Veera","Karuna"], platform:"SonyLIV", tmdbId:112130 },
-    { title:"Rocket Boys S2", year:2023, lang:"Hindi", score:87, color:"#0d0d2e", rasas:["Veera","Adbhuta"], platform:"SonyLIV", tmdbId:120168 }
+    { title:"Rocket Boys S2", year:2023, lang:"Hindi", score:87, color:"#0d0d2e", rasas:["Veera","Adbhuta"], platform:"SonyLIV", tmdbId:120168 },
+    { title:"Farzi", year:2023, lang:"Hindi", score:86, color:"#2e0d1a", rasas:["Raudra","Adbhuta"], platform:"SonyLIV", tmdbId:209764 },
+    { title:"Jubilee", year:2023, lang:"Hindi", score:88, color:"#2e2e1a", rasas:["Shringara","Karuna"], platform:"SonyLIV", tmdbId:209764 }
   ],
   zee5: [
     { title:"Kaala Paani", year:2023, lang:"Hindi", score:85, color:"#0d1a2e", rasas:["Bhayanaka","Veera"], platform:"ZEE5", tmdbId:229268 },
     { title:"Bhakshak", year:2024, lang:"Hindi", score:86, color:"#0d0d1a", rasas:["Raudra","Karuna"], platform:"ZEE5", tmdbId:1156452 },
     { title:"Murder in Mahim", year:2024, lang:"Hindi", score:80, color:"#1a0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5", tmdbId:245786 },
-    { title:"Dhoom Dhaam", year:2025, lang:"Hindi", score:72, color:"#1a2e0d", rasas:["Hasya","Shringara"], platform:"ZEE5", tmdbId:1299065 }
+    { title:"Dhoom Dhaam", year:2025, lang:"Hindi", score:72, color:"#1a2e0d", rasas:["Hasya","Shringara"], platform:"ZEE5", tmdbId:1299065 },
+    { title:"Raktanchal S2", year:2022, lang:"Hindi", score:83, color:"#2e0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5", tmdbId:108978 },
+    { title:"Escaype Live", year:2022, lang:"Hindi", score:79, color:"#0d1a2e", rasas:["Adbhuta","Bhayanaka"], platform:"ZEE5", tmdbId:209764 }
   ]
 };
 
@@ -210,7 +220,7 @@ async function loadCinemas() {
     .filter(f => INDIAN_LANGS.includes(f.original_language))
     .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
     .sort((a,b) => b.popularity - a.popularity)
-    .slice(0, 6);
+    .slice(0, 10);
 
   if (!results.length) {
     // Final fallback — trending Indian films
@@ -271,7 +281,7 @@ async function loadOttWithPosters(platform) {
   if (!grid) return;
   grid.innerHTML = '<div class="poster-skeleton"></div>'.repeat(4);
 
-  const films = ottFilms[platform] || [];
+  const films = (ottFilms[platform] || []).slice(0, 6);
 
   // Fetch posters for each film by TMDb ID
   const withPosters = await Promise.all(films.map(async f => {
@@ -294,7 +304,7 @@ async function loadComingSoon() {
   const data = await TMDB.get('/movie/upcoming', { region: 'IN' });
   const results = (data?.results || [])
     .filter(f => INDIAN_LANGS.includes(f.original_language))
-    .slice(0, 4);
+    .slice(0, 6);
 
   if (!results.length) {
     // Fallback with global upcoming
