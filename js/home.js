@@ -1122,3 +1122,155 @@ function initExplorerFilter() {
 document.addEventListener('DOMContentLoaded', () => {
   initExplorerFilter();
 });
+
+/* ===========================
+   EDITORIAL STRIP
+   Featured story + trending list
+   =========================== */
+
+const editorialStories = [
+  {
+    category: 'New Review',
+    title: 'Saiyaara Review — Ahaan Panday announces himself in 2025\'s biggest romantic debut',
+    meta: 'Navras 72/100 · Hindi · 2025',
+    score: 72, scoreClass: 'amber',
+    tmdbId: 1356901, type: 'movie',
+    link: 'pages/article.html'
+  },
+  {
+    category: 'In Cinemas',
+    title: 'Dhurandhar: The Revenge — Is Ranveer Singh\'s action epic worth the ticket price?',
+    meta: 'Navras 78/100 · Hindi · 2026',
+    score: 78, scoreClass: 'amber',
+    tmdbId: 1299065, type: 'movie',
+    link: 'pages/article.html'
+  },
+  {
+    category: 'Best of List',
+    title: '50 Greatest Bollywood Films of All Time — The Navras Canon',
+    meta: 'Curated list · Updated 2025',
+    score: null,
+    tmdbId: 363676, type: 'movie',
+    link: 'pages/lists.html'
+  },
+  {
+    category: 'OTT Pick',
+    title: 'All We Imagine as Light is the best Indian film on Netflix right now',
+    meta: 'Navras 96/100 · Malayalam · On Netflix',
+    score: 96, scoreClass: 'green',
+    tmdbId: 1017336, type: 'movie',
+    link: 'pages/article.html'
+  },
+  {
+    category: 'Mood Search',
+    title: 'Feeling tense? These 10 Indian thrillers will keep you up all night',
+    meta: 'Bhayanaka rasa · 10 films',
+    score: null,
+    tmdbId: 520110, type: 'movie',
+    link: 'pages/mood.html'
+  },
+  {
+    category: 'Coming Soon',
+    title: 'Nagabandham, Dhamaal 4, Idhayam Murali — July 2026\'s biggest releases',
+    meta: 'Telugu · Hindi · Tamil · July 2026',
+    score: null,
+    tmdbId: 1299065, type: 'movie',
+    link: 'pages/article.html'
+  },
+  {
+    category: 'New Review',
+    title: 'IC 814: The Kandahar Hijack — Still the best Indian series you can watch',
+    meta: 'Navras 91/100 · Hindi · Netflix',
+    score: 91, scoreClass: 'green',
+    tmdbId: 242074, type: 'tv',
+    link: 'pages/article.html'
+  },
+  {
+    category: 'Best of List',
+    title: 'Best Malayalam Films of 2025 — Ranked by Navras',
+    meta: 'Curated list · 8 films · Malayalam',
+    score: null,
+    tmdbId: 1017336, type: 'movie',
+    link: 'pages/article.html'
+  }
+];
+
+async function buildEditorialStrip() {
+  const featured = editorialStories[0];
+  const stories = editorialStories.slice(1);
+
+  // Load featured poster/backdrop
+  try {
+    const data = await TMDB.get(`/${featured.type}/${featured.tmdbId}`, {});
+    if (data?.backdrop_path || data?.poster_path) {
+      const imgPath = data.backdrop_path || data.poster_path;
+      const imgUrl = `https://image.tmdb.org/t/p/w1280${imgPath}`;
+      const efImg = document.getElementById('efImg');
+      if (efImg) efImg.style.backgroundImage = `url('${imgUrl}')`;
+    }
+  } catch(e) {}
+
+  // Set featured content
+  const efCat = document.getElementById('efCategory');
+  const efTitle = document.getElementById('efTitle');
+  const efMeta = document.getElementById('efMeta');
+
+  if (efCat) efCat.innerHTML = `<span class="ef-cat-dot"></span>${featured.category}`;
+  if (efTitle) efTitle.textContent = featured.title;
+  if (efMeta) efMeta.innerHTML = `
+    ${featured.score ? `<span class="ef-score ${featured.scoreClass}">${featured.score} Navras</span>` : ''}
+    <span>${featured.meta}</span>
+  `;
+
+  // Make featured clickable
+  const featuredEl = document.getElementById('editorialFeatured');
+  if (featuredEl) featuredEl.onclick = () => window.location.href = featured.link;
+
+  // Build story list
+  const esList = document.getElementById('esList');
+  if (!esList) return;
+
+  esList.innerHTML = stories.map(s => `
+    <a href="${s.link}" class="es-story">
+      <div class="es-story-img" id="es-img-${s.tmdbId}">
+        <div style="width:100%;height:100%;background:var(--ink3);"></div>
+      </div>
+      <div class="es-story-info">
+        <div class="es-story-cat">${s.category}</div>
+        <div class="es-story-title">${s.title}</div>
+        <div class="es-story-meta">
+          ${s.score ? `<span style="color:${s.scoreClass==='green'?'#2ECC71':'#F39C12'};font-weight:600;">${s.score}</span> · ` : ''}
+          ${s.meta}
+        </div>
+      </div>
+    </a>
+  `).join('');
+
+  // Load story thumbnails progressively
+  for (const s of stories) {
+    try {
+      const data = await TMDB.get(`/${s.type}/${s.tmdbId}`, {});
+      const path = data?.poster_path || data?.backdrop_path;
+      if (path) {
+        const el = document.getElementById(`es-img-${s.tmdbId}`);
+        if (el) el.innerHTML = `<img src="https://image.tmdb.org/t/p/w185${path}" alt="" loading="lazy" />`;
+      }
+    } catch(e) {}
+  }
+}
+
+// Search
+function initSearchCompact() {
+  const input = document.getElementById('heroSearch');
+  if (!input) return;
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && input.value.trim()) {
+      window.location.href = `pages/browse.html?q=${encodeURIComponent(input.value.trim())}`;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildEditorialStrip();
+  initSearchCompact();
+});
