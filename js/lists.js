@@ -319,7 +319,7 @@ function renderListCard(list) {
 
 /* ---- Load real posters into list card collages ---- */
 async function loadListCardPosters() {
-  const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+  const TMDB_KEY = (window.NAVRAS_CONFIG && window.NAVRAS_CONFIG.TMDB_KEY) || '';
   const lists = Object.values(allLists).flat();
 
   for (const list of lists) {
@@ -369,7 +369,7 @@ async function openList(id) {
   document.body.style.overflow = 'hidden';
 
   // Render immediately with colour blocks
-  const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+  const TMDB_KEY = (window.NAVRAS_CONFIG && window.NAVRAS_CONFIG.TMDB_KEY) || '';
   
   document.getElementById('lmFilms').innerHTML = list.films.map(f => {
     const rankClass = f.rank === 1 ? 'gold' : f.rank === 2 ? 'silver' : f.rank === 3 ? 'bronze' : '';
@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ---- Load featured banner posters ---- */
 async function loadFeaturedBannerPosters() {
-  const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+  const TMDB_KEY = (window.NAVRAS_CONFIG && window.NAVRAS_CONFIG.TMDB_KEY) || '';
 
   // Films for featured Bollywood list preview
   const featuredFilms = [

@@ -4,7 +4,7 @@
    =========================== */
 
 const TMDB = {
-  key: '8d1f8757e50b58da6831c4d97093eea0',
+  get key() { return (window.NAVRAS_CONFIG && window.NAVRAS_CONFIG.TMDB_KEY) || ''; },
   base: 'https://api.themoviedb.org/3',
   img: 'https://image.tmdb.org/t/p/',
 

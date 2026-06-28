@@ -3,7 +3,7 @@
    Fully dynamic — loads from TMDb
    =========================== */
 
-const TMDB_KEY = '8d1f8757e50b58da6831c4d97093eea0';
+const TMDB_KEY = (window.NAVRAS_CONFIG && window.NAVRAS_CONFIG.TMDB_KEY) || '';
 const TMDB_BASE = 'https://api.themoviedb.org/3';
 const IMG_BASE = 'https://image.tmdb.org/t/p/';
 
