@@ -227,7 +227,7 @@ async function loadCinemas() {
     .filter(f => INDIAN_LANGS.includes(f.original_language))
     .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
     .sort((a,b) => b.popularity - a.popularity)
-    .slice(0, 10);
+    .slice(0, 5);
 
   if (!results.length) {
     // Final fallback — trending Indian films
@@ -325,7 +325,7 @@ async function loadComingSoon() {
   ]
   .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
   .sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
-  .slice(0, 10);
+  .slice(0, 5);
 
   if (!results.length) {
     grid.innerHTML = '<div style="color:var(--text-muted);padding:12px;">No upcoming releases found</div>';
@@ -851,9 +851,9 @@ async function loadPopularNow() {
     let allIndian = [...trendingIndian, ...hiFilms, ...southFilms]
       .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
       .sort((a, b) => b.popularity - a.popularity)
-      .slice(0, 10);
+      .slice(0, 5);
 
-    moviesCol.innerHTML = allIndian.map((f, i) =>
+    moviesCol.innerHTML = allIndian.slice(0,5).map((f, i) =>
       renderTrendingItem(f, i + 1, 'movie')
     ).join('');
   }
@@ -882,9 +882,9 @@ async function loadPopularNow() {
     const allTV = [...trendingTV, ...indianSeries, ...topIndianSeries]
       .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
       .sort((a, b) => b.popularity - a.popularity)
-      .slice(0, 10);
+      .slice(0, 5);
 
-    tvCol.innerHTML = allTV.map((f, i) =>
+    tvCol.innerHTML = allTV.slice(0,5).map((f, i) =>
       renderTrendingItem(f, i + 1, 'tv')
     ).join('');
   }
