@@ -1275,13 +1275,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearchCompact();
 });
 
-/* Popular side column tab switching */
-function initPopularSideTabs() {
-  document.querySelectorAll('.pop-side-tab').forEach(btn => {
+/* Popular RT-style tab switching */
+function initPopularRTTabs() {
+  document.querySelectorAll('.prt-platform').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.pop-side-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.prt-platform').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const tab = btn.dataset.poptab;
+      const tab = btn.dataset.prt;
       const moviesList = document.getElementById('popularMoviesList');
       const tvList = document.getElementById('popularTVList');
       if (moviesList) moviesList.style.display = tab === 'movies' ? 'flex' : 'none';
@@ -1291,5 +1291,5 @@ function initPopularSideTabs() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initPopularSideTabs();
+  initPopularRTTabs();
 });
