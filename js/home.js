@@ -114,8 +114,10 @@ const ottFilms = {
     { title:"All We Imagine as Light", year:2024, lang:"Malayalam", score:96, color:"#0d2e1a", rasas:["Karuna","Shanta"], platform:"Netflix", tmdbId:1017336 },
     { title:"Tumbbad", year:2018, lang:"Hindi", score:94, color:"#2e0d0d", rasas:["Bhayanaka","Bibhatsa"], platform:"Netflix", tmdbId:520110 },
     { title:"RRR", year:2022, lang:"Telugu", score:95, color:"#2e0d1a", rasas:["Veera","Raudra"], platform:"Netflix", tmdbId:759244 },
-    { title:"Squid Game S2", year:2024, lang:"Korean", score:92, color:"#0d1a2e", rasas:["Bhayanaka","Raudra"], platform:"Netflix", tmdbId:93405 },
-    { title:"3 Idiots", year:2009, lang:"Hindi", score:95, color:"#1a2e0d", rasas:["Hasya","Veera"], platform:"Netflix", tmdbId:20453 }
+    { title:"3 Idiots", year:2009, lang:"Hindi", score:95, color:"#1a2e0d", rasas:["Hasya","Veera"], platform:"Netflix", tmdbId:20453 },
+    { title:"Dangal", year:2016, lang:"Hindi", score:96, color:"#0a2010", rasas:["Veera","Karuna"], platform:"Netflix", tmdbId:363676 },
+    { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Netflix", tmdbId:933131 },
+    { title:"Squid Game S2", year:2024, lang:"Korean", score:92, color:"#0a0a1e", rasas:["Bhayanaka","Raudra"], platform:"Netflix", tmdbId:93405 }
   ],
   prime: [
     { title:"Stree 2", year:2024, lang:"Hindi", score:87, color:"#1a0d2e", rasas:["Hasya","Bhayanaka"], platform:"Prime Video", tmdbId:1100782 },
@@ -123,31 +125,39 @@ const ottFilms = {
     { title:"Andhadhun", year:2018, lang:"Hindi", score:94, color:"#1a1a1a", rasas:["Bhayanaka","Hasya"], platform:"Prime Video", tmdbId:578987 },
     { title:"Drishyam 2", year:2021, lang:"Malayalam", score:91, color:"#0d1a2e", rasas:["Bhayanaka","Karuna"], platform:"Prime Video", tmdbId:933131 },
     { title:"Manjummel Boys", year:2024, lang:"Malayalam", score:91, color:"#0d2e2e", rasas:["Veera","Bhayanaka"], platform:"Prime Video", tmdbId:1186532 },
-    { title:"Jawan", year:2023, lang:"Hindi", score:82, color:"#2e1a0d", rasas:["Veera","Raudra"], platform:"Prime Video", tmdbId:1086747 }
+    { title:"Jawan", year:2023, lang:"Hindi", score:82, color:"#2e1a0d", rasas:["Veera","Raudra"], platform:"Prime Video", tmdbId:1086747 },
+    { title:"Mirzapur S3", year:2024, lang:"Hindi", score:88, color:"#2e1a0a", rasas:["Raudra","Bhayanaka"], platform:"Prime Video", tmdbId:99966 },
+    { title:"KGF Chapter 2", year:2022, lang:"Kannada", score:89, color:"#2e2a0a", rasas:["Veera","Raudra"], platform:"Prime Video", tmdbId:763215 }
   ],
   hotstar: [
     { title:"Kalki 2898-AD", year:2024, lang:"Telugu", score:74, color:"#1a1a0d", rasas:["Adbhuta","Veera"], platform:"Hotstar", tmdbId:1064213 },
     { title:"Manjummel Boys", year:2024, lang:"Malayalam", score:91, color:"#0d2e2e", rasas:["Veera","Bhayanaka"], platform:"Hotstar", tmdbId:1186532 },
-    { title:"Kanguva", year:2024, lang:"Tamil", score:79, color:"#1a0d2e", rasas:["Veera","Adbhuta"], platform:"Hotstar", tmdbId:1245492 },
     { title:"Shaitaan", year:2024, lang:"Hindi", score:77, color:"#1a0d0d", rasas:["Bhayanaka","Raudra"], platform:"Hotstar", tmdbId:1172034 },
     { title:"Devara", year:2024, lang:"Telugu", score:72, color:"#2e2e0d", rasas:["Veera","Raudra"], platform:"Hotstar", tmdbId:1087822 },
-    { title:"Singham Returns", year:2024, lang:"Hindi", score:68, color:"#2e1a0d", rasas:["Veera","Hasya"], platform:"Hotstar", tmdbId:1186532 }
+    { title:"Baahubali 2", year:2017, lang:"Telugu", score:92, color:"#2e1a0a", rasas:["Adbhuta","Veera"], platform:"Hotstar", tmdbId:346364 },
+    { title:"Vikram", year:2022, lang:"Tamil", score:88, color:"#0a1a2e", rasas:["Veera","Raudra"], platform:"Hotstar", tmdbId:824055 },
+    { title:"Pushpa 2", year:2024, lang:"Telugu", score:85, color:"#2e1a00", rasas:["Veera","Raudra"], platform:"Hotstar", tmdbId:1241982 },
+    { title:"Article 370", year:2024, lang:"Hindi", score:83, color:"#1a2e2e", rasas:["Raudra","Veera"], platform:"Hotstar", tmdbId:1172613 }
   ],
   sony: [
     { title:"Scam 1992", year:2020, lang:"Hindi", score:97, color:"#2e2e0d", rasas:["Adbhuta","Raudra"], platform:"SonyLIV", tmdbId:113855 },
-    { title:"The Family Man S2", year:2021, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"SonyLIV", tmdbId:95557 },
-    { title:"Aspirants S2", year:2023, lang:"Hindi", score:89, color:"#1a2e1a", rasas:["Veera","Karuna"], platform:"SonyLIV", tmdbId:112130 },
-    { title:"Rocket Boys S2", year:2023, lang:"Hindi", score:87, color:"#0d0d2e", rasas:["Veera","Adbhuta"], platform:"SonyLIV", tmdbId:120168 },
+    { title:"The Family Man", year:2019, lang:"Hindi", score:94, color:"#0d1a1a", rasas:["Bhayanaka","Hasya"], platform:"SonyLIV", tmdbId:95557 },
+    { title:"Aspirants", year:2021, lang:"Hindi", score:89, color:"#1a2e1a", rasas:["Veera","Karuna"], platform:"SonyLIV", tmdbId:112130 },
+    { title:"Rocket Boys", year:2022, lang:"Hindi", score:87, color:"#0d0d2e", rasas:["Veera","Adbhuta"], platform:"SonyLIV", tmdbId:120168 },
     { title:"Farzi", year:2023, lang:"Hindi", score:86, color:"#2e0d1a", rasas:["Raudra","Adbhuta"], platform:"SonyLIV", tmdbId:209764 },
-    { title:"Jubilee", year:2023, lang:"Hindi", score:88, color:"#2e2e1a", rasas:["Shringara","Karuna"], platform:"SonyLIV", tmdbId:209764 }
+    { title:"Paatal Lok", year:2020, lang:"Hindi", score:93, color:"#1a0d2e", rasas:["Raudra","Bibhatsa"], platform:"SonyLIV", tmdbId:125925 },
+    { title:"Undekhi", year:2020, lang:"Hindi", score:84, color:"#2e1a0a", rasas:["Raudra","Bhayanaka"], platform:"SonyLIV", tmdbId:113988 },
+    { title:"Tabbar", year:2021, lang:"Hindi", score:88, color:"#0a1a0a", rasas:["Raudra","Karuna"], platform:"SonyLIV", tmdbId:173560 }
   ],
   zee5: [
     { title:"Kaala Paani", year:2023, lang:"Hindi", score:85, color:"#0d1a2e", rasas:["Bhayanaka","Veera"], platform:"ZEE5", tmdbId:229268 },
     { title:"Bhakshak", year:2024, lang:"Hindi", score:86, color:"#0d0d1a", rasas:["Raudra","Karuna"], platform:"ZEE5", tmdbId:1156452 },
     { title:"Murder in Mahim", year:2024, lang:"Hindi", score:80, color:"#1a0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5", tmdbId:245786 },
     { title:"Dhoom Dhaam", year:2025, lang:"Hindi", score:72, color:"#1a2e0d", rasas:["Hasya","Shringara"], platform:"ZEE5", tmdbId:1299065 },
-    { title:"Raktanchal S2", year:2022, lang:"Hindi", score:83, color:"#2e0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5", tmdbId:108978 },
-    { title:"Escaype Live", year:2022, lang:"Hindi", score:79, color:"#0d1a2e", rasas:["Adbhuta","Bhayanaka"], platform:"ZEE5", tmdbId:209764 }
+    { title:"Raktanchal", year:2020, lang:"Hindi", score:83, color:"#2e0d0d", rasas:["Raudra","Bhayanaka"], platform:"ZEE5", tmdbId:108978 },
+    { title:"Gullak", year:2019, lang:"Hindi", score:91, color:"#2e2a0d", rasas:["Hasya","Shanta"], platform:"ZEE5", tmdbId:91649 },
+    { title:"Sunflower", year:2021, lang:"Hindi", score:82, color:"#2e2e0a", rasas:["Hasya","Bhayanaka"], platform:"ZEE5", tmdbId:130393 },
+    { title:"Grahan", year:2021, lang:"Hindi", score:85, color:"#0a0a1a", rasas:["Karuna","Raudra"], platform:"ZEE5", tmdbId:136680 }
   ]
 };
 
@@ -806,33 +816,80 @@ async function loadFeaturedReview() {
   }
 }
 
-/* Popular right now — two columns always loaded simultaneously */
+/* Popular right now — Indian films only */
 async function loadPopularNow() {
   const moviesCol = document.getElementById('popularMoviesList');
   const tvCol = document.getElementById('popularTVList');
 
-  // Load both in parallel
-  const [movieData, tvData] = await Promise.all([
+  // Fetch Indian trending from multiple language sources
+  const [trending, hiMovies, southMovies, indianTV] = await Promise.all([
     TMDB.get('/trending/movie/week', {}),
-    TMDB.get('/trending/tv/week', {})
+    TMDB.get('/discover/movie', {
+      with_original_language: 'hi',
+      sort_by: 'popularity.desc',
+      'vote_count.gte': 100
+    }),
+    TMDB.get('/discover/movie', {
+      with_original_language: 'ta,te,ml,kn',
+      sort_by: 'popularity.desc',
+      'vote_count.gte': 50
+    }),
+    TMDB.get('/discover/tv', {
+      with_original_language: 'hi',
+      sort_by: 'popularity.desc',
+      'vote_count.gte': 50
+    })
   ]);
 
-  // Movies — Indian films first, then fill with global if needed
+  // Movies — Indian films only, sorted by popularity
   if (moviesCol) {
-    const all = movieData?.results || [];
-    const indian = all.filter(f => INDIAN_LANGS.includes(f.original_language));
-    const global = all.filter(f => !INDIAN_LANGS.includes(f.original_language));
-    const films = [...indian, ...global].slice(0, 10);
-    moviesCol.innerHTML = films.map((f, i) => renderTrendingItem(f, i + 1, 'movie')).join('');
+    const trendingIndian = (trending?.results || [])
+      .filter(f => INDIAN_LANGS.includes(f.original_language));
+    const hiFilms = (hiMovies?.results || [])
+      .filter(f => f.original_language === 'hi');
+    const southFilms = (southMovies?.results || [])
+      .filter(f => INDIAN_LANGS.includes(f.original_language));
+
+    // Merge all Indian films, deduplicate, sort by popularity
+    let allIndian = [...trendingIndian, ...hiFilms, ...southFilms]
+      .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
+      .sort((a, b) => b.popularity - a.popularity)
+      .slice(0, 10);
+
+    moviesCol.innerHTML = allIndian.map((f, i) =>
+      renderTrendingItem(f, i + 1, 'movie')
+    ).join('');
   }
 
-  // TV Shows — mix Indian + global popular
+  // TV — Indian series only
   if (tvCol) {
-    const all = tvData?.results || [];
-    const indian = all.filter(f => INDIAN_LANGS.includes(f.original_language));
-    const global = all.filter(f => !INDIAN_LANGS.includes(f.original_language));
-    const shows = [...indian, ...global].slice(0, 10);
-    tvCol.innerHTML = shows.map((f, i) => renderTrendingItem(f, i + 1, 'tv')).join('');
+    const trendingTV = (trending?.results || [])
+      .filter(f => INDIAN_LANGS.includes(f.original_language));
+    const indianSeries = (indianTV?.results || [])
+      .filter(f => f.original_language === 'hi');
+
+    // Hardcode top Indian series since TMDb TV data for Indian is limited
+    const topIndianSeries = [
+      { id: 113855, name: 'Scam 1992', original_language: 'hi', vote_average: 9.2, vote_count: 85000, popularity: 900 },
+      { id: 94954, name: 'Panchayat', original_language: 'hi', vote_average: 9.0, vote_count: 45000, popularity: 850 },
+      { id: 95557, name: 'The Family Man', original_language: 'hi', vote_average: 8.7, vote_count: 52000, popularity: 800 },
+      { id: 125925, name: 'Paatal Lok', original_language: 'hi', vote_average: 8.4, vote_count: 28000, popularity: 750 },
+      { id: 209764, name: 'Farzi', original_language: 'hi', vote_average: 8.2, vote_count: 22000, popularity: 700 },
+      { id: 112130, name: 'Aspirants', original_language: 'hi', vote_average: 8.9, vote_count: 18000, popularity: 650 },
+      { id: 120168, name: 'Rocket Boys', original_language: 'hi', vote_average: 8.5, vote_count: 15000, popularity: 600 },
+      { id: 242074, name: 'IC 814: The Kandahar Hijack', original_language: 'hi', vote_average: 8.4, vote_count: 32000, popularity: 880 },
+      { id: 99966, name: 'Mirzapur', original_language: 'hi', vote_average: 8.5, vote_count: 65000, popularity: 820 },
+      { id: 108978, name: 'Raktanchal', original_language: 'hi', vote_average: 8.1, vote_count: 12000, popularity: 550 }
+    ];
+
+    const allTV = [...trendingTV, ...indianSeries, ...topIndianSeries]
+      .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
+      .sort((a, b) => b.popularity - a.popularity)
+      .slice(0, 10);
+
+    tvCol.innerHTML = allTV.map((f, i) =>
+      renderTrendingItem(f, i + 1, 'tv')
+    ).join('');
   }
 }
 

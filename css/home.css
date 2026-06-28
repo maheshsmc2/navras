@@ -1280,3 +1280,123 @@
   .popular-now-grid { grid-template-columns: 1fr; gap: 20px; }
   .rms-sub-head { flex-wrap: wrap !important; }
 }
+
+/* ===========================
+   SECTION HIERARCHY FIX
+   Clear visual structure
+   =========================== */
+
+/* Reviews mega section — stronger header */
+.rms-header {
+  padding-bottom: 16px !important;
+  margin-bottom: 24px !important;
+  border-bottom: 2px solid var(--gold) !important;
+}
+
+.rms-title {
+  font-size: 22px !important;
+  font-family: var(--font-display) !important;
+}
+
+/* Sub-section titles cleaner */
+.rms-sub-title {
+  font-size: 12px !important;
+  color: var(--text) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* Divider between sub-sections */
+.rms-divider {
+  margin: 24px 0 !important;
+  height: 1px !important;
+  background: var(--ink3) !important;
+}
+
+/* Coming soon section — tighter */
+.coming-grid {
+  gap: 10px;
+}
+
+.coming-card {
+  border-radius: 10px;
+}
+
+/* Popular right now — cleaner column labels */
+.popular-col-head {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popular-col-label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Trending items cleaner */
+.trending-list-item {
+  padding: 10px 8px !important;
+  border-radius: 6px;
+}
+
+.trending-list-item:hover {
+  background: var(--gold-bg);
+}
+
+.tli-rank {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+  min-width: 24px !important;
+}
+
+.tli-title {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.tli-score-num {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+}
+
+/* Explorer divider — more prominent */
+.explorer-divider {
+  padding: 32px 32px 0 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+  letter-spacing: 0.12em !important;
+}
+
+.explorer-divider::before,
+.explorer-divider::after {
+  background: var(--gold) !important;
+  opacity: 0.3;
+}
+
+/* Section spacing consistency */
+.home-section {
+  padding: 24px 32px !important;
+}
+
+.reviews-mega-section {
+  padding: 24px 32px 28px !important;
+}
+
+/* Popular now section — tighter */
+.popular-now-section {
+  padding-top: 24px !important;
+}
+
+.popular-now-grid {
+  gap: 32px !important;
+}
