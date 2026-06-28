@@ -1696,10 +1696,19 @@
   align-items: start;
 }
 
-/* Coming soon left */
+/* Limit coming soon poster height */
+.coming-col .coming-poster {
+  max-height: 180px;
+}
+
+.coming-col .coming-card {
+  font-size: 12px;
+}
+
+/* Coming soon left — 3 columns, proper size */
 .coming-col .coming-grid {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 
 /* OTT poster grid - 6 across */
