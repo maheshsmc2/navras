@@ -64,27 +64,35 @@
   </div>
 
 
-  <!-- HERO CAROUSEL -->
-  <div class="hero-carousel" id="heroCarousel">
-    <div class="carousel-track" id="carouselTrack"></div>
-    <button class="carousel-arrow prev" onclick="carouselMove(-1)">&#8249;</button>
-    <button class="carousel-arrow next" onclick="carouselMove(1)">&#8250;</button>
-    <div class="carousel-dots" id="carouselDots"></div>
-  </div>
-  <!-- SEARCH -->
-  <div class="home-search-section">
-    <div class="home-searchbar">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="heroSearch" placeholder="Search any film, series, director or actor..." autocomplete="off" />
-      <a href="pages/browse.html" class="search-browse-btn">Browse all →</a>
+  <!-- EDITORIAL STRIP -->
+  <div class="editorial-strip">
+    <!-- LEFT: Featured big story -->
+    <div class="editorial-featured" id="editorialFeatured">
+      <div class="ef-img-wrap">
+        <div class="ef-img" id="efImg"></div>
+        <div class="ef-overlay"></div>
+        <div class="ef-content">
+          <div class="ef-category" id="efCategory">Featured</div>
+          <div class="ef-title" id="efTitle">Loading...</div>
+          <div class="ef-meta" id="efMeta"></div>
+        </div>
+      </div>
     </div>
-    <div class="search-hints">
-      <span>Try:</span>
-      <a href="pages/browse.html?q=RRR">RRR</a>
-      <a href="pages/browse.html?q=Dangal">Dangal</a>
-      <a href="pages/browse.html?q=Drishyam">Drishyam</a>
-      <a href="pages/browse.html?q=Stree 2">Stree 2</a>
-      <a href="pages/browse.html?q=3 Idiots">3 Idiots</a>
+    <!-- RIGHT: Scrolling story cards -->
+    <div class="editorial-stories">
+      <div class="es-header">
+        <div class="es-title">Trending on Navras</div>
+      </div>
+      <div class="es-list" id="esList"></div>
+    </div>
+  </div>
+
+  <!-- COMPACT SEARCH -->
+  <div class="home-search-compact">
+    <div class="home-searchbar-compact">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="heroSearch" placeholder="Search any film, director or actor..." autocomplete="off" />
+      <a href="pages/browse.html" class="search-browse-btn-compact">Browse all →</a>
     </div>
   </div>
 
