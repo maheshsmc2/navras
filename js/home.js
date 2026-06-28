@@ -1274,3 +1274,22 @@ document.addEventListener('DOMContentLoaded', () => {
   buildEditorialStrip();
   initSearchCompact();
 });
+
+/* Popular side column tab switching */
+function initPopularSideTabs() {
+  document.querySelectorAll('.pop-side-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pop-side-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.poptab;
+      const moviesList = document.getElementById('popularMoviesList');
+      const tvList = document.getElementById('popularTVList');
+      if (moviesList) moviesList.style.display = tab === 'movies' ? 'flex' : 'none';
+      if (tvList) tvList.style.display = tab === 'tv' ? 'flex' : 'none';
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initPopularSideTabs();
+});

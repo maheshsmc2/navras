@@ -125,69 +125,76 @@
 
       <div class="rms-divider"></div>
 
-      <!-- NEW ON OTT -->
+      <!-- NEW ON OTT + POPULAR — side by side -->
+      <div class="ott-popular-row">
+
+        <!-- LEFT: OTT posters -->
+        <div class="ott-col">
+          <div class="rms-sub-head">
+            <span class="rms-sub-title">New on OTT</span>
+            <div class="ott-platform-tabs" id="ottPlatformTabs">
+              <button class="ott-tab active" data-platform="netflix">Netflix</button>
+              <button class="ott-tab" data-platform="prime">Prime</button>
+              <button class="ott-tab" data-platform="hotstar">Hotstar</button>
+              <button class="ott-tab" data-platform="sony">SonyLIV</button>
+              <button class="ott-tab" data-platform="zee5">ZEE5</button>
+            </div>
+          </div>
+          <div class="ott-poster-grid" id="ottGrid">
+            <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+            <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+            <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Popular list -->
+        <div class="popular-side-col">
+          <div class="popular-side-head">
+            <span class="rms-sub-title">Popular right now</span>
+            <div class="pop-side-tabs">
+              <button class="pop-side-tab active" data-poptab="movies">Movies</button>
+              <button class="pop-side-tab" data-poptab="tv">TV</button>
+            </div>
+          </div>
+          <div class="popular-side-list" id="popularMoviesList">
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+          </div>
+          <div class="popular-side-list" id="popularTVList" style="display:none;">
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+            <div class="trending-skeleton-item"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="rms-divider"></div>
+
+      <!-- COMING SOON inside Reviews section -->
       <div class="rms-sub-section">
         <div class="rms-sub-head">
-          <span class="rms-sub-title">New on OTT</span>
-          <div class="ott-platform-tabs" id="ottPlatformTabs">
-            <button class="ott-tab active" data-platform="netflix">Netflix</button>
-            <button class="ott-tab" data-platform="prime">Prime Video</button>
-            <button class="ott-tab" data-platform="hotstar">Hotstar</button>
-            <button class="ott-tab" data-platform="sony">SonyLIV</button>
-            <button class="ott-tab" data-platform="zee5">ZEE5</button>
-          </div>
+          <span class="rms-sub-title">Coming soon</span>
+          <a href="pages/browse.html" class="rms-sub-link">All upcoming →</a>
         </div>
-        <div class="cinemas-grid" id="ottGrid">
-          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        <div class="coming-grid" id="comingGrid">
           <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
           <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
           <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
         </div>
       </div>
 
-    </section>
-
-    <!-- COMING SOON — moved above popular -->
-    <section class="home-section">
-      <div class="home-section-head">
-        <div class="home-section-title">Coming soon</div>
-        <a href="pages/browse.html" class="home-see-all">All upcoming →</a>
-      </div>
-      <div class="coming-grid" id="comingGrid">
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-        <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
-      </div>
-    </section>
-
-    <!-- POPULAR RIGHT NOW — two columns both always visible -->
-    <section class="home-section popular-now-section">
-      <div class="home-section-head">
-        <div class="home-section-title">Popular right now</div>
-      </div>
-      <div class="popular-now-grid">
-        <div class="popular-col">
-          <div class="popular-col-head">
-            <span class="popular-col-label">Movies</span>
-          </div>
-          <div class="trending-list-items" id="popularMoviesList">
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          </div>
-        </div>
-        <div class="popular-col">
-          <div class="popular-col-head">
-            <span class="popular-col-label">TV Shows &amp; Series</span>
-          </div>
-          <div class="trending-list-items" id="popularTVList">
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-            <div class="trending-skeleton-item"></div><div class="trending-skeleton-item"></div>
-          </div>
-        </div>
-      </div>
     </section>
 
   </div>
