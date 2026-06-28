@@ -82,7 +82,7 @@
 /* Cinemas grid — large posters */
 .cinemas-grid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 10px;
 }
 
@@ -99,6 +99,7 @@
 .cinema-poster {
   width: 100%; aspect-ratio: 2/3;
   position: relative; overflow: hidden; background: var(--ink3);
+  max-height: 220px;
 }
 
 .cinema-poster img {
@@ -210,7 +211,7 @@
 /* Coming soon grid */
 .coming-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 10px;
 }
 
@@ -417,18 +418,12 @@
   .navras-rasas-mini { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 900px) {
-  .cinemas-grid { grid-template-columns: repeat(5, 1fr); }
-  #ottGrid { grid-template-columns: repeat(3, 1fr) !important; }
-  .coming-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
 @media (max-width: 700px) {
   .home-search-section { padding: 20px; }
   .home-section { padding: 20px; }
   .cinemas-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  #ottGrid { grid-template-columns: repeat(2, 1fr) !important; }
-  .coming-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  #ottGrid { grid-template-columns: repeat(3, 1fr) !important; }
+  .coming-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .ott-platform-tabs { overflow-x: auto; }
   .ranking-tabs { overflow-x: auto; }
   .home-section-head { flex-direction: column; align-items: flex-start; }
@@ -1204,9 +1199,9 @@
   margin-left: 8px;
 }
 
-/* OTT grid fills full width */
+/* OTT grid */
 #ottGrid {
-  grid-template-columns: repeat(6, 1fr) !important;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
 }
 
 @media (max-width: 700px) {
