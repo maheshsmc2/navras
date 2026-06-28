@@ -33,12 +33,11 @@ function renderCinemaCard(film, type) {
           ? `<img src="${posterUrl}" alt="${title}" loading="lazy" onerror="this.parentElement.style.background='var(--ink3)';this.remove()" />`
           : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;">🎬</div>`}
         ${langName ? `<div class="cinema-lang">${langName}</div>` : ''}
-        ${score ? `<div class="cinema-score ${sc}"><div>${score}</div><div class="cinema-score-sub">NAVRAS</div></div>` : ''}
+        ${score ? `<div class="cinema-score ${sc}">${score}</div>` : ''}
       </div>
       <div class="cinema-info">
         <div class="cinema-title">${title||'Unknown'}</div>
         <div class="cinema-meta">${year}</div>
-        <div class="cinema-rasas">${rasas.slice(0,2).map(r=>`<span class="rtag">${r}</span>`).join('')}</div>
       </div>
     </a>`;
 }
@@ -58,14 +57,11 @@ function renderOttCard(f, film) {
           ? `<img src="${posterUrl}" alt="${f.title}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(160deg,${f.color},${f.color}cc)';this.remove()" />`
           : ''}
         <div class="cinema-lang">${f.lang}</div>
-        <div class="cinema-score ${sc}">
-          <div>${score}</div><div class="cinema-score-sub">NAVRAS</div>
-        </div>
+        <div class="cinema-score ${sc}">${score}</div>
       </div>
       <div class="cinema-info">
         <div class="cinema-title">${f.title}</div>
         <div class="cinema-meta">${f.year} · ${f.platform}</div>
-        <div class="cinema-rasas">${f.rasas.map(r=>`<span class="rtag">${r}</span>`).join('')}</div>
       </div>
     </a>`;
 }
