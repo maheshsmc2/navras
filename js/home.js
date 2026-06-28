@@ -312,43 +312,44 @@ async function loadComingSoon() {
   const grid = document.getElementById('comingGrid');
   if (!grid) return;
 
-  const data = await TMDB.get('/movie/upcoming', { region: 'IN' });
-  const results = (data?.results || [])
-    .filter(f => INDIAN_LANGS.includes(f.original_language))
-    .slice(0, 6);
+  // Fetch upcoming Indian films
+  const [upcoming, hiUpcoming] = await Promise.all([
+    TMDB.get('/movie/upcoming', { region: 'IN' }),
+    TMDB.get('/discover/movie', {
+      with_original_language: 'ta,te,ml,kn',
+      sort_by: 'release_date.asc',
+      'primary_release_date.gte': new Date().toISOString().slice(0,10),
+      'primary_release_date.lte': new Date(Date.now() + 60*24*60*60*1000).toISOString().slice(0,10)
+    })
+  ]);
+
+  let results = [
+    ...(upcoming?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language)),
+    ...(hiUpcoming?.results || []).filter(f => INDIAN_LANGS.includes(f.original_language))
+  ]
+  .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
+  .sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
+  .slice(0, 10);
 
   if (!results.length) {
-    // Fallback with global upcoming
-    const fallback = await TMDB.get('/movie/upcoming', {});
-    const filtered = (fallback?.results || []).slice(0, 4);
-    if (filtered.length) {
-      renderComingCards(filtered, grid);
-    } else {
-      grid.innerHTML = '<div style="color:var(--text-muted);grid-column:1/-1;padding:20px;text-align:center;">Upcoming releases loading...</div>';
-    }
+    grid.innerHTML = '<div style="color:var(--text-muted);padding:12px;">No upcoming releases found</div>';
     return;
   }
 
-  renderComingCards(results, grid);
-}
-
-function renderComingCards(results, grid) {
-  grid.innerHTML = results.map(film => {
-    const posterUrl = film.poster_path ? TMDB.poster(film.poster_path, 'w342') : null;
+  // Render as RT-style text list
+  grid.innerHTML = results.map((film, i) => {
     const lang = film.original_language;
     const langName = langNames[lang] || (lang ? lang.toUpperCase() : '');
     const rd = film.release_date
-      ? new Date(film.release_date).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'})
-      : 'Coming soon';
+      ? new Date(film.release_date).toLocaleDateString('en-IN', {day:'numeric', month:'short'})
+      : '';
     return `
-      <a href="pages/movie.html?id=${film.id}" class="coming-card">
-        <div class="coming-poster">
-          ${posterUrl ? `<img src="${posterUrl}" alt="${film.title}" loading="lazy" />` : ''}
-          <div class="coming-date-badge">${rd}</div>
-        </div>
-        <div class="coming-info">
-          <div class="coming-title">${film.title||film.name}</div>
-          <div class="coming-meta">${langName}</div>
+      <a href="pages/movie.html?id=${film.id}" class="prt-row">
+        <div class="prt-num">${i+1}</div>
+        <div class="prt-title">${film.title || film.name}</div>
+        <div class="prt-lang">${langName}</div>
+        <div class="prt-score-wrap" style="color:var(--text-muted);font-size:11px;">
+          ${rd}
         </div>
       </a>`;
   }).join('');

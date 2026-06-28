@@ -1830,3 +1830,14 @@
   .popular-rt-col { border-left: none; padding-left: 0; border-top: 0.5px solid var(--ink3); padding-top: 16px; }
   .ott-poster-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* OTT text list — 2 columns */
+.ott-text-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+}
+
+@media (max-width: 700px) {
+  .ott-text-grid { grid-template-columns: 1fr; }
+}
