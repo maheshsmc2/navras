@@ -1960,6 +1960,16 @@
 
 .ott-split-col .cinemas-grid {
   grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.ott-split-col .cinema-poster {
+  max-height: 140px !important;
+  aspect-ratio: 2/3;
+}
+
+.ott-split-col .cinema-card {
+  min-width: 0;
 }
 
 @media (max-width: 800px) {

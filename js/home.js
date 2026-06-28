@@ -44,24 +44,28 @@ function renderCinemaCard(film, type) {
 
 /* ---- Render OTT card with real poster ---- */
 function renderOttCard(f, film) {
-  // film = TMDb result with poster, f = local OTT data
-  const posterUrl = film && film.poster_path ? TMDB.poster(film.poster_path, 'w342') : null;
+  // Works for both movies and TV shows
+  const posterPath = film?.poster_path || null;
+  const posterUrl = posterPath ? `https://image.tmdb.org/t/p/w342${posterPath}` : null;
   const score = f.score;
   const sc = scoreClass(score);
+  const pageType = f.type === 'tv' ? 'tv' : 'movie';
   const movieLink = f.tmdbId ? `pages/movie.html?id=${f.tmdbId}` : 'pages/movie.html';
+  const bg = f.color || '#1a1a2e';
 
   return `
     <a href="${movieLink}" class="cinema-card">
-      <div class="cinema-poster" style="${!posterUrl ? `background:linear-gradient(160deg,${f.color},${f.color}cc)` : ''}">
+      <div class="cinema-poster" style="${!posterUrl ? `background:linear-gradient(160deg,${bg},${bg}cc)` : ''}">
         ${posterUrl
-          ? `<img src="${posterUrl}" alt="${f.title}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(160deg,${f.color},${f.color}cc)';this.remove()" />`
-          : ''}
+          ? `<img src="${posterUrl}" alt="${f.title}" loading="lazy"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,${bg},${bg}cc)'" />`
+          : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:11px;">No poster</div>`}
         <div class="cinema-lang">${f.lang}</div>
-        <div class="cinema-score ${sc}">${score}</div>
+        ${score ? `<div class="cinema-score ${sc}">${score}</div>` : ''}
       </div>
       <div class="cinema-info">
         <div class="cinema-title">${f.title}</div>
-        <div class="cinema-meta">${f.year} · ${f.platform}</div>
+        <div class="cinema-meta">${f.year}</div>
       </div>
     </a>`;
 }
