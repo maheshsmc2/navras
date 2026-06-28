@@ -157,6 +157,45 @@ const ottFilms = {
   ]
 };
 
+const ottSeries = {
+  netflix: [
+    { title:"IC 814: The Kandahar Hijack", year:2024, lang:"Hindi", score:91, color:"#1a1a2e", platform:"Netflix", tmdbId:242074, type:'tv' },
+    { title:"Squid Game S2", year:2024, lang:"Korean", score:92, color:"#0a0a1e", platform:"Netflix", tmdbId:93405, type:'tv' },
+    { title:"Sacred Games", year:2018, lang:"Hindi", score:93, color:"#1a0d0d", platform:"Netflix", tmdbId:78387, type:'tv' },
+    { title:"Delhi Crime", year:2019, lang:"Hindi", score:89, color:"#0d1a2e", platform:"Netflix", tmdbId:89187, type:'tv' },
+    { title:"Mismatched", year:2020, lang:"Hindi", score:82, color:"#1a0d2e", platform:"Netflix", tmdbId:106968, type:'tv' }
+  ],
+  prime: [
+    { title:"Panchayat S3", year:2024, lang:"Hindi", score:93, color:"#1a2e0d", platform:"Prime Video", tmdbId:94954, type:'tv' },
+    { title:"Mirzapur S3", year:2024, lang:"Hindi", score:88, color:"#2e1a0d", platform:"Prime Video", tmdbId:99966, type:'tv' },
+    { title:"The Family Man S2", year:2021, lang:"Hindi", score:94, color:"#0d1a1a", platform:"Prime Video", tmdbId:95557, type:'tv' },
+    { title:"Four More Shots Please!", year:2019, lang:"Hindi", score:80, color:"#2e0d1a", platform:"Prime Video", tmdbId:83867, type:'tv' },
+    { title:"Bandish Bandits", year:2020, lang:"Hindi", score:88, color:"#1a2e2e", platform:"Prime Video", tmdbId:110491, type:'tv' }
+  ],
+  hotstar: [
+    { title:"Aarya S3", year:2023, lang:"Hindi", score:86, color:"#1a0d2e", platform:"Hotstar", tmdbId:94605, type:'tv' },
+    { title:"Human", year:2022, lang:"Hindi", score:84, color:"#0d1a2e", platform:"Hotstar", tmdbId:131808, type:'tv' },
+    { title:"Rudra", year:2022, lang:"Hindi", score:83, color:"#2e0d0d", platform:"Hotstar", tmdbId:131616, type:'tv' },
+    { title:"Dil Dosti Dilemma", year:2024, lang:"Hindi", score:81, color:"#1a2e0d", platform:"Hotstar", tmdbId:242074, type:'tv' },
+    { title:"Criminal Justice", year:2019, lang:"Hindi", score:87, color:"#0d0d2e", platform:"Hotstar", tmdbId:88478, type:'tv' }
+  ],
+  sony: [
+    { title:"Scam 1992", year:2020, lang:"Hindi", score:97, color:"#2e2e0d", platform:"SonyLIV", tmdbId:113855, type:'tv' },
+    { title:"Aspirants", year:2021, lang:"Hindi", score:89, color:"#1a2e1a", platform:"SonyLIV", tmdbId:112130, type:'tv' },
+    { title:"Rocket Boys S2", year:2023, lang:"Hindi", score:87, color:"#0d0d2e", platform:"SonyLIV", tmdbId:120168, type:'tv' },
+    { title:"Farzi", year:2023, lang:"Hindi", score:86, color:"#2e0d1a", platform:"SonyLIV", tmdbId:209764, type:'tv' },
+    { title:"Paatal Lok S2", year:2024, lang:"Hindi", score:91, color:"#1a0d2e", platform:"SonyLIV", tmdbId:125925, type:'tv' }
+  ],
+  zee5: [
+    { title:"Kaala Paani", year:2023, lang:"Hindi", score:85, color:"#0d1a2e", platform:"ZEE5", tmdbId:229268, type:'tv' },
+    { title:"Raktanchal", year:2020, lang:"Hindi", score:83, color:"#2e0d0d", platform:"ZEE5", tmdbId:108978, type:'tv' },
+    { title:"Gullak S4", year:2024, lang:"Hindi", score:91, color:"#2e2a0d", platform:"ZEE5", tmdbId:91649, type:'tv' },
+    { title:"Sunflower S2", year:2023, lang:"Hindi", score:82, color:"#2e2e0a", platform:"ZEE5", tmdbId:130393, type:'tv' },
+    { title:"Grahan", year:2021, lang:"Hindi", score:85, color:"#0a0a1a", platform:"ZEE5", tmdbId:136680, type:'tv' }
+  ]
+};
+
+
 /* ---- Rankings data ---- */
 const rankingsData = {
   top:[
