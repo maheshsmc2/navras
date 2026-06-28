@@ -1290,3 +1290,38 @@ function initPopularRTTabs() {
 document.addEventListener('DOMContentLoaded', () => {
   initPopularRTTabs();
 });
+
+/* OTT text list for bottom row */
+function renderOttTextCol(platform) {
+  const films = (ottFilms[platform] || []).slice(0, 5);
+  const list = document.getElementById('ottTextList');
+  if (!list) return;
+  list.innerHTML = films.map((f, i) => {
+    const sc = f.score >= 85 ? 'green' : f.score >= 65 ? 'amber' : 'red';
+    const icon = sc === 'green' ? '▲' : sc === 'amber' ? '●' : '▼';
+    return `<a href="pages/movie.html?id=${f.tmdbId||''}" class="prt-row">
+      <div class="prt-num">${i+1}</div>
+      <div class="prt-title">${f.title}</div>
+      <div class="prt-lang">${f.lang}</div>
+      <div class="prt-score-wrap">
+        <div class="prt-score-icon ${sc}">${icon}</div>
+        <div class="prt-score-num">${f.score}</div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+function initOttTextTabs() {
+  document.querySelectorAll('.ott-col-tab[data-otttab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ott-col-tab[data-otttab]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderOttTextCol(btn.dataset.otttab);
+    });
+  });
+  renderOttTextCol('netflix');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initOttTextTabs();
+});

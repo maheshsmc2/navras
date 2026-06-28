@@ -146,12 +146,12 @@
 
       <div class="rms-divider"></div>
 
-      <!-- COMING SOON + POPULAR — below OTT as text lists -->
-      <div class="coming-popular-row">
+      <!-- THREE TEXT LISTS: Coming Soon | OTT | Popular -->
+      <div class="bottom-three-row">
 
-        <!-- Coming soon text list -->
-        <div class="three-col-item">
-          <div class="prt-tab-group" style="margin-bottom:10px;">
+        <!-- Coming soon -->
+        <div class="btrow-col">
+          <div class="prt-tab-group">
             <span class="prt-label">Coming soon</span>
             <a href="pages/browse.html" class="prt-viewall">See all →</a>
           </div>
@@ -162,9 +162,29 @@
           </div>
         </div>
 
-        <!-- Popular right now text list -->
-        <div class="three-col-item">
-          <div class="prt-tab-group" style="margin-bottom:8px;">
+        <!-- New on OTT text list -->
+        <div class="btrow-col">
+          <div class="prt-tab-group">
+            <span class="prt-label">New on OTT</span>
+            <a href="pages/browse.html" class="prt-viewall">See all →</a>
+          </div>
+          <div class="ott-col-tabs" id="ottTextTabs">
+            <button class="ott-col-tab active" data-otttab="netflix">Netflix</button>
+            <button class="ott-col-tab" data-otttab="prime">Prime</button>
+            <button class="ott-col-tab" data-otttab="hotstar">Hotstar</button>
+            <button class="ott-col-tab" data-otttab="sony">Sony</button>
+            <button class="ott-col-tab" data-otttab="zee5">ZEE5</button>
+          </div>
+          <div class="prt-list" id="ottTextList">
+            <div class="prt-skeleton"></div><div class="prt-skeleton"></div>
+            <div class="prt-skeleton"></div><div class="prt-skeleton"></div>
+            <div class="prt-skeleton"></div>
+          </div>
+        </div>
+
+        <!-- Popular right now -->
+        <div class="btrow-col">
+          <div class="prt-tab-group">
             <span class="prt-label">Popular right now</span>
             <a href="pages/browse.html" class="prt-viewall">See all →</a>
           </div>

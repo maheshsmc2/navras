@@ -1915,3 +1915,24 @@
   .coming-popular-row { grid-template-columns: 1fr; }
   .three-col-item { border-right: none; border-bottom: 0.5px solid var(--ink3); }
 }
+
+/* Bottom three text lists */
+.bottom-three-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.btrow-col {
+  padding: 16px 20px;
+  border-right: 0.5px solid var(--ink3);
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.btrow-col:last-child { border-right: none; }
+
+@media (max-width: 900px) {
+  .bottom-three-row { grid-template-columns: 1fr; }
+  .btrow-col { border-right: none; border-bottom: 0.5px solid var(--ink3); }
+  .btrow-col:last-child { border-bottom: none; }
+}
