@@ -1890,3 +1890,28 @@
   .three-col { border-right: none; border-bottom: 0.5px solid var(--ink3); }
   .three-col:last-child { border-bottom: none; }
 }
+
+/* Coming soon + Popular side by side below OTT */
+.coming-popular-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.three-col-item {
+  padding: 16px 20px;
+  border-right: 0.5px solid var(--ink3);
+}
+
+.three-col-item:last-child { border-right: none; }
+
+.prt-col-tabs {
+  display: flex; gap: 0;
+  margin-bottom: 8px;
+  border-bottom: 0.5px solid var(--ink3);
+}
+
+@media (max-width: 700px) {
+  .coming-popular-row { grid-template-columns: 1fr; }
+  .three-col-item { border-right: none; border-bottom: 0.5px solid var(--ink3); }
+}

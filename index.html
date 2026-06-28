@@ -125,32 +125,33 @@
 
       <div class="rms-divider"></div>
 
-      <!-- THREE COLUMNS: OTT | COMING SOON | POPULAR -->
-      <div class="three-col-row">
-
-        <!-- COL 1: New on OTT -->
-        <div class="three-col">
-          <div class="prt-tab-group" style="margin-bottom:8px;">
-            <span class="prt-label">New on OTT</span>
-            <a href="pages/browse.html" class="prt-viewall">See all →</a>
-          </div>
-          <div class="ott-col-tabs" id="ottPlatformTabs">
-            <button class="ott-col-tab active" data-platform="netflix">Netflix</button>
-            <button class="ott-col-tab" data-platform="prime">Prime</button>
-            <button class="ott-col-tab" data-platform="hotstar">Hotstar</button>
-            <button class="ott-col-tab" data-platform="sony">SonyLIV</button>
-            <button class="ott-col-tab" data-platform="zee5">ZEE5</button>
-          </div>
-          <div class="prt-list" id="ottListA">
-            <div class="prt-skeleton"></div><div class="prt-skeleton"></div>
-            <div class="prt-skeleton"></div><div class="prt-skeleton"></div>
-            <div class="prt-skeleton"></div>
+      <!-- NEW ON OTT — poster grid restored -->
+      <div class="rms-sub-section">
+        <div class="rms-sub-head">
+          <span class="rms-sub-title">New on OTT</span>
+          <div class="ott-platform-tabs" id="ottPlatformTabs">
+            <button class="ott-tab active" data-platform="netflix">Netflix</button>
+            <button class="ott-tab" data-platform="prime">Prime Video</button>
+            <button class="ott-tab" data-platform="hotstar">Hotstar</button>
+            <button class="ott-tab" data-platform="sony">SonyLIV</button>
+            <button class="ott-tab" data-platform="zee5">ZEE5</button>
           </div>
         </div>
+        <div class="cinemas-grid" id="ottGrid">
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+          <div class="poster-skeleton"></div><div class="poster-skeleton"></div>
+        </div>
+      </div>
 
-        <!-- COL 2: Coming soon -->
-        <div class="three-col">
-          <div class="prt-tab-group" style="margin-bottom:18px;">
+      <div class="rms-divider"></div>
+
+      <!-- COMING SOON + POPULAR — below OTT as text lists -->
+      <div class="coming-popular-row">
+
+        <!-- Coming soon text list -->
+        <div class="three-col-item">
+          <div class="prt-tab-group" style="margin-bottom:10px;">
             <span class="prt-label">Coming soon</span>
             <a href="pages/browse.html" class="prt-viewall">See all →</a>
           </div>
@@ -161,8 +162,8 @@
           </div>
         </div>
 
-        <!-- COL 3: Popular right now -->
-        <div class="three-col">
+        <!-- Popular right now text list -->
+        <div class="three-col-item">
           <div class="prt-tab-group" style="margin-bottom:8px;">
             <span class="prt-label">Popular right now</span>
             <a href="pages/browse.html" class="prt-viewall">See all →</a>
