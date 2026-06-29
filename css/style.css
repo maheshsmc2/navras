@@ -555,3 +555,92 @@ body:not(.dark-mode) .tricolour span:nth-child(2) { background: #E8E2D9; }
   .mood-grid { grid-template-columns: repeat(3, 1fr); }
   .films-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ===========================
+   PAGE MAX-WIDTH + MARGINS
+   =========================== */
+
+/* Nav stays full width, content gets max-width */
+.top-tabs-bar,
+.editorial-strip,
+.home-search-compact,
+#tab-movies,
+#tab-tv,
+#tab-news,
+.explorer-divider,
+.navras-section,
+.explorer-lists-section,
+.footer-inner {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sections inside get side padding */
+.reviews-mega-section,
+.home-section,
+.rms-sub-section,
+.bottom-three-row,
+.coming-popular-row {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+/* Editorial strip inner padding */
+.editorial-strip {
+  width: 100%;
+}
+
+/* Search compact */
+.home-search-compact {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+/* Three column bottom row */
+.bottom-three-row {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.btrow-col {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+.btrow-col:first-child {
+  padding-left: 40px !important;
+}
+
+.btrow-col:last-child {
+  padding-right: 40px !important;
+}
+
+/* Mood and lists sections */
+.navras-mood-section,
+.explorer-lists-section {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media (max-width: 900px) {
+  .reviews-mega-section,
+  .home-section,
+  .rms-sub-section,
+  .home-search-compact,
+  .btrow-col {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-mega-section,
+  .home-section,
+  .rms-sub-section,
+  .home-search-compact,
+  .btrow-col {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
