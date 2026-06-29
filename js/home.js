@@ -235,54 +235,47 @@ const rankingsData = {
 /* ---- LOAD FUNCTIONS ---- */
 
 /* In cinemas — Indian films only */
+/* In cinemas — curated current releases, guaranteed language mix */
+const currentInCinemas = [
+  { id:1356901, lang:'hi' },   // Saiyaara (Hindi)
+  { id:1100782, lang:'hi' },   // Stree 2 (Hindi)
+  { id:1172034, lang:'hi' },   // Shaitaan (Hindi)
+  { id:1244933, lang:'ta' },   // Vidaamuyarchi (Tamil)
+  { id:824055,  lang:'ta' },   // Vikram (Tamil)
+  { id:1064213, lang:'te' },   // Kalki 2898-AD (Telugu)
+  { id:1087822, lang:'te' },   // Devara (Telugu)
+  { id:1350457, lang:'ml' },   // Lokah (Malayalam)
+  { id:1186532, lang:'ml' },   // Manjummel Boys (Malayalam)
+  { id:763215,  lang:'kn' },   // KGF Chapter 2 (Kannada)
+];
+
 async function loadCinemas() {
   const grid = document.getElementById('cinemasGrid');
   if (!grid) return;
 
-  // Use discover with Indian languages + now playing date range
-  const today = new Date().toISOString().slice(0,10);
-  const threeMonthsAgo = new Date(Date.now() - 90*24*60*60*1000).toISOString().slice(0,10);
+  // Fetch all curated films by ID in parallel — correct posters + language mix
+  const results = await Promise.all(
+    currentInCinemas.map(async ({ id }) => {
+      try {
+        const data = await TMDB.get(`/movie/${id}`, {});
+        if (data && !data.status_code && !data.success === false) return data;
+        return null;
+      } catch { return null; }
+    })
+  );
 
-  let results = [];
+  const valid = results.filter(Boolean);
 
-  // Fetch Hindi films in theatres
-  const hi = await TMDB.get('/discover/movie', {
-    with_original_language: 'hi',
-    'primary_release_date.gte': threeMonthsAgo,
-    'primary_release_date.lte': today,
-    sort_by: 'popularity.desc',
-    region: 'IN'
-  });
-  if (hi?.results) results.push(...hi.results);
-
-  // Fetch South Indian films
-  const south = await TMDB.get('/discover/movie', {
-    with_original_language: 'ta,te,ml,kn',
-    'primary_release_date.gte': threeMonthsAgo,
-    'primary_release_date.lte': today,
-    sort_by: 'popularity.desc',
-    region: 'IN'
-  });
-  if (south?.results) results.push(...south.results);
-
-  // Filter to Indian languages only and deduplicate
-  results = results
-    .filter(f => INDIAN_LANGS.includes(f.original_language))
-    .filter((f, i, arr) => arr.findIndex(x => x.id === f.id) === i)
-    .sort((a,b) => b.popularity - a.popularity)
-    .slice(0, 5);
-
-  if (!results.length) {
-    // Final fallback — trending Indian films
-    const trending = await TMDB.get('/trending/movie/week', {});
-    results = (trending?.results || [])
+  if (valid.length) {
+    grid.innerHTML = valid.map(f => renderCinemaCard(f, 'movie')).join('');
+  } else {
+    // Fallback to now playing
+    const fallback = await TMDB.get('/movie/now_playing', { region: 'IN' });
+    const films = (fallback?.results || [])
       .filter(f => INDIAN_LANGS.includes(f.original_language))
-      .slice(0, 6);
+      .slice(0, 10);
+    grid.innerHTML = films.map(f => renderCinemaCard(f, 'movie')).join('');
   }
-
-  grid.innerHTML = results.length
-    ? results.map(f => renderCinemaCard(f, 'movie')).join('')
-    : '<div style="color:var(--text-muted);grid-column:1/-1;padding:20px;text-align:center;">No current Indian releases found</div>';
 }
 
 /* Recent reviews — Indian films */
@@ -1239,16 +1232,24 @@ async function buildEditorialStrip() {
   const featured = editorialStories[0];
   const stories = editorialStories.slice(1);
 
-  // Load featured poster/backdrop
+  // Load featured backdrop — only use backdrop_path (wide image), never poster
   try {
     const data = await TMDB.get(`/${featured.type}/${featured.tmdbId}`, {});
-    if (data?.backdrop_path || data?.poster_path) {
-      const imgPath = data.backdrop_path || data.poster_path;
-      const imgUrl = `https://image.tmdb.org/t/p/w1280${imgPath}`;
-      const efImg = document.getElementById('efImg');
-      if (efImg) efImg.style.backgroundImage = `url('${imgUrl}')`;
+    const efImg = document.getElementById('efImg');
+    if (efImg && data?.backdrop_path) {
+      const imgUrl = `https://image.tmdb.org/t/p/w1280${data.backdrop_path}`;
+      // Preload to verify it works before setting
+      const testImg = new Image();
+      testImg.onload = () => { efImg.style.backgroundImage = `url('${imgUrl}')`; };
+      testImg.onerror = () => { efImg.style.background = 'linear-gradient(135deg, #2a1a3e, #1a1a2e)'; };
+      testImg.src = imgUrl;
+    } else if (efImg) {
+      efImg.style.background = 'linear-gradient(135deg, #2a1a3e, #1a1a2e)';
     }
-  } catch(e) {}
+  } catch(e) {
+    const efImg = document.getElementById('efImg');
+    if (efImg) efImg.style.background = 'linear-gradient(135deg, #2a1a3e, #1a1a2e)';
+  }
 
   // Set featured content
   const efCat = document.getElementById('efCategory');
