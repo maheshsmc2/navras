@@ -1073,34 +1073,38 @@ async function fetchPostersForList(list) {
   return posters;
 }
 
-function renderExplorerCard(list, posters) {
+function renderExplorerCard(list, posters, variant = 'small') {
   const cells = [0,1,2,3].map(i => {
     const url = posters?.[i];
     return url
       ? `<div class="elc-collage-cell"><img src="${url}" alt="" loading="lazy" /></div>`
-      : `<div class="elc-collage-cell" style="background:var(--ink3);"></div>`;
+      : `<div class="elc-collage-cell"></div>`;
   }).join('');
 
+  if (variant === 'featured') {
+    return `
+      <a href="pages/lists.html" class="elc-featured" data-filter="${list.filter}" data-id="${list.id}">
+        <div class="elc-featured-collage">${cells}</div>
+        <div class="elc-featured-body">
+          <div class="elc-category">${list.category} · ${list.count} films</div>
+          <div class="elc-title">${list.title}</div>
+          <div class="elc-preview">
+            ${list.preview.slice(0,2).map((title, i) => `
+              <div class="elc-preview-item">
+                <span class="elc-preview-rank">#${i+1}</span>
+                <span class="elc-preview-title">${title}</span>
+              </div>`).join('')}
+          </div>
+        </div>
+      </a>`;
+  }
+
   return `
-    <a href="pages/lists.html" class="explorer-list-card" data-filter="${list.filter}">
-      <div class="elc-collage">
-        ${cells}
-        <div class="elc-count">${list.count} films</div>
-      </div>
-      <div class="elc-body">
+    <a href="pages/lists.html" class="elc-small" data-filter="${list.filter}" data-id="${list.id}">
+      <div class="elc-small-collage">${cells}</div>
+      <div class="elc-small-body">
         <div class="elc-category">${list.category}</div>
         <div class="elc-title">${list.title}</div>
-        <div class="elc-preview">
-          ${list.preview.slice(0,2).map((title, i) => `
-            <div class="elc-preview-item">
-              <div class="elc-preview-rank">#${i+1}</div>
-              <div class="elc-preview-title">${title}</div>
-            </div>`).join('')}
-        </div>
-        <div class="elc-footer">
-          <div class="elc-meta">${list.meta}</div>
-          <div class="elc-arrow">→</div>
-        </div>
       </div>
     </a>`;
 }
@@ -1113,19 +1117,28 @@ async function loadExplorerLists(filter) {
     ? explorerLists
     : explorerLists.filter(l => l.filter === filter);
 
-  // Render immediately with placeholders
-  grid.innerHTML = filtered.map(list => renderExplorerCard(list, null)).join('');
+  const featured = filtered[0];
+  const smalls = filtered.slice(1, 4);
+  const bottom = filtered.slice(4, 7);
 
-  // Then load real posters progressively
-  for (const list of filtered) {
+  grid.innerHTML = `
+    <div class="elg-top">
+      ${featured ? renderExplorerCard(featured, null, 'featured') : ''}
+      <div class="elg-stack">
+        ${smalls.map(l => renderExplorerCard(l, null, 'small')).join('')}
+      </div>
+    </div>
+    <div class="elg-bottom">
+      ${bottom.map(l => renderExplorerCard(l, null, 'small')).join('')}
+    </div>`;
+
+  for (const list of filtered.slice(0, 7)) {
     const posters = await fetchPostersForList(list);
-    const card = grid.querySelector(`[data-filter="${list.filter}"] .elc-collage`);
-    // Find the right card by title
-    const allCards = grid.querySelectorAll('.explorer-list-card');
+    const allCards = grid.querySelectorAll('[data-id]');
     for (const card of allCards) {
-      const titleEl = card.querySelector('.elc-title');
-      if (titleEl && titleEl.textContent.trim() === list.title) {
-        const collage = card.querySelector('.elc-collage');
+      if (card.dataset.id === list.id) {
+        const collageClass = card.classList.contains('elc-featured') ? '.elc-featured-collage' : '.elc-small-collage';
+        const collage = card.querySelector(collageClass);
         if (collage) {
           const cells = collage.querySelectorAll('.elc-collage-cell');
           posters.forEach((url, i) => {
